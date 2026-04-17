@@ -1,4 +1,4 @@
-# CLITools
+# CommandLineTools
 
 This resource function exposes various utilities for aiding in the creation of
 Wolfram Language command‑line scripts: parsing flags/arguments, detecting flags,
@@ -28,8 +28,8 @@ names or patterns.
 ```wl
 {
 	<|
-		"Form" :> CLITools["Parse"] /; (
-			OptionValue[CLITools, "ArgumentSpecification"] === None
+		"Form" :> CommandLineTools["Parse"] /; (
+			OptionValue[CommandLineTools, "ArgumentSpecification"] === None
 		),
 		"Return" :> Alternatives[
 			<|( option_String -> argument_ )...|>,
@@ -37,8 +37,8 @@ names or patterns.
 		]
 	|>,
 	<|
-		"Form"   :> CLITools["Parse", stringForm: stringFormP] /; (
-			OptionValue[CLITools, "ArgumentSpecification"] === None
+		"Form"   :> CommandLineTools["Parse", stringForm: stringFormP] /; (
+			OptionValue[CommandLineTools, "ArgumentSpecification"] === None
 		),
 		"Return" :> Alternative[
 			<|
@@ -92,7 +92,7 @@ spec = {
 Input command line (illustrative):
 
 ```wl
-CLITools["Parse",
+CommandLineTools["Parse",
 	"CommandLine" -> {"script.wls", "--verbose", "--count=5", "-ot", "results.txt",
 		"--threshold", "0.25"},
 	"ArgumentSpecification" -> spec
@@ -101,13 +101,20 @@ CLITools["Parse",
 
 Steps / behavior:
 
-* Tokens before the first option (script name etc.) are ignored.
+* The first token before the first option (script name, command name, etc.) is
+	captured as `"$0"` in the result.
+* Additional non-flag tokens that appear before the first flag, or after a
+	boolean flag, or after all flags, are collected as positional arguments and
+	stored as `"$1"`, `"$2"`, etc.
 * Long options may appear as `--name value` or `--name=value`.
 * Short options can be clustered: `-ot` is expanded to `-o -t` (with the last
-	short flag allowed to consume an attached value if supplied as `-t0.25` or by
-	following token / delimiter forms; see limitations below).
+	short flag allowed to consume an attached value if supplied as a following
+	token; see POSIX mode).
 * Boolean flags without explicit value invert (toggle) their default. If no
-	default is provided they become `True` when seen the first time.
+	default is provided they become `True` when seen.
+* When an `ArgumentSpecification` is provided and a flag is defined as boolean,
+	any non-flag token immediately following it is treated as a new positional
+	argument rather than the flag's value.
 * Values containing the argument delimiter (default `","`) are split into a
 	list, otherwise left atomic.
 * After successful parse, unspecified flags that have defaults are inserted.
@@ -116,22 +123,28 @@ Example result (schematic):
 
 ```wl
 <|
+	"$0"      -> "script.wls",
 	"verbose" -> True,
 	"output"  -> "results.txt",
 	"count"   -> 5,
 	"threshold" -> 0.25,
-	"dryRun" -> False
+	"dryRun" -> False,
+	"$1"      -> "extra-positional"
 |>
 ```
+
+Positional keys (`"$0"`, `"$1"`, ...) are only present when the corresponding
+tokens exist. `"$0"` holds the command/script name. `"$1"` onward hold
+non-flag argument tokens in order.
 
 Failures return a `Failure[ ... ]` object (e.g. unknown flag or pattern
 validation mismatch when `StrictParse -> True`).
 
 ### StrictParse
 
-`"StrictParse" -> True` (default) causes unknown flags or pattern mismatches to
-produce a `Failure`. Setting it to `False` relaxes validation (unknown flags are
-still collected but not rejected; pattern conversion is more permissive).
+`"StrictParse" -> True` causes unknown flags or pattern mismatches to produce a
+`Failure`. The default is `False`, which relaxes validation: unknown flags are
+collected with their raw string values and no pattern-match failures are raised.
 
 ### Value Conversion & Pattern Matching
 
@@ -147,7 +160,7 @@ split. A single resulting element is automatically unwrapped to an atom.
 Example:
 
 ```wl
-CLITools["Parse",
+CommandLineTools["Parse",
 	"CommandLine" -> {"script.wls", "--tags=alpha,beta,gamma"},
 	"ArgumentSpecification" -> {"tags" -> _String}
 ]
@@ -164,21 +177,32 @@ If `"ArgumentSpecification" -> None`, parsing is permissive and returns either:
 
 * Association of arbitrary flags encountered, each mapped to either `True` or a
 	parsed value (string or list), or
-* Extracted argument for a specific form if using `CLITools["Parse", form]`.
+* Extracted argument for a specific form if using `CommandLineTools["Parse", form]`.
 
 ### Additional Examples
 
 ```wl
+(* Permissive parse — command name and positionals captured *)
+CommandLineTools["Parse", "CommandLine" -> "curl https://example.com --verbose"]
+(* <| "$0" -> "curl", "verbose" -> True, "$1" -> "https://example.com" |> *)
+
+(* Boolean flag followed by a positional *)
+CommandLineTools["Parse",
+	"CommandLine" -> "tool --flag file.txt",
+	"ArgumentSpecification" -> {"flag"}
+]
+(* <| "$0" -> "tool", "flag" -> True, "$1" -> "file.txt" |> *)
+
 (* Simple permissive parse *)
-CLITools["Parse", "CommandLine" -> {"script.wls", "--foo=bar", "-x", "--list", "a,b"}]
-(* <| "foo" -> "bar", "x" -> True, "list" -> {"a", "b"} |> *)
+CommandLineTools["Parse", "CommandLine" -> "script.wls --foo=bar -x --list a,b"]
+(* <| "$0" -> "script.wls", "foo" -> "bar", "x" -> True, "list" -> {"a", "b"} |> *)
 
 (* Specified parse with validation *)
-CLITools["Parse",
-	"CommandLine" -> {"script.wls", "--count=10", "-v"},
+CommandLineTools["Parse",
+	"CommandLine" -> "script.wls --count=10 -v",
 	"ArgumentSpecification" -> {"count" -> _Integer -> 1, "v"}
 ]
-(* <| "count" -> 10, "v" -> True |> *)
+(* <| "$0" -> "script.wls", "count" -> 10, "v" -> True |> *)
 ```
 
 
@@ -191,7 +215,7 @@ expression, alternatives, or repeated). Returns `True|False`.
 ```wl
 {
 	<|
-		"Form"   :> CLITools["FlagQ", form: stringFormP],
+		"Form"   :> CommandLineTools["FlagQ", form: stringFormP],
 		"Return" :> True | False
 	|>
 }
@@ -200,24 +224,24 @@ expression, alternatives, or repeated). Returns `True|False`.
 Examples:
 
 ```wl
-CLITools["FlagQ", "verbose", "CommandLine" -> {"script.wls", "--verbose"}]
+CommandLineTools["FlagQ", "verbose", "CommandLine" -> {"script.wls", "--verbose"}]
 (* True *)
 
-CLITools["FlagQ", "quiet", "CommandLine" -> {"script.wls", "--verbose"}]
+CommandLineTools["FlagQ", "quiet", "CommandLine" -> {"script.wls", "--verbose"}]
 (* False *)
 ```
 
 Notes:
 * Matching allows 0–2 leading dashes internally; you typically supply the bare
 	name without dashes.
-* To search for a family of flags: `CLITools["FlagQ", RegularExpression["verb.*"]]`.
+* To search for a family of flags: `CommandLineTools["FlagQ", RegularExpression["verb.*"]]`.
 
 - ### Interface
 
 Provides a lightweight REPL for custom command execution. Two forms:
 
-1. `CLITools["Interface"]` — Uses default help and built‑ins only.
-2. `CLITools["Interface", <| pattern :> action, ... |>]` — Adds custom commands.
+1. `CommandLineTools["Interface"]` — Uses default help and built‑ins only.
+2. `CommandLineTools["Interface", <| pattern :> action, ... |>]` — Adds custom commands.
 
 Built‑in commands:
 
@@ -232,7 +256,7 @@ Pattern description:
 ```wl
 {
 	<|
-		"Form"   :> CLITools["Interface", cmds_Association],
+		"Form"   :> CommandLineTools["Interface", cmds_Association],
 		"Return" :> Null | Failure[__]
 	|>
 }
@@ -241,7 +265,7 @@ Pattern description:
 Example:
 
 ```wl
-CLITools["Interface",
+CommandLineTools["Interface",
 	<|
 		"ping" :> Print["pong"],
 		"time" :> Print[DateString[]]
@@ -257,8 +281,8 @@ Terminate with `q`.
 Structured logging with colorized stdout (via `ANSITools`) and optional file
 append. Two primary invocation styles:
 
-1. Direct: `CLITools["Log", type, msg, opts]`
-2. Curried: `CLITools["Log", type][msg]` (returns a logging function for the
+1. Direct: `CommandLineTools["Log", type, msg, opts]`
+2. Curried: `CommandLineTools["Log", type][msg]` (returns a logging function for the
 	 chosen level).
 
 `type` ∈ `{ "INFO", "WARN", "SUCCESS", "ERROR" }`.
@@ -268,7 +292,7 @@ Interface pattern:
 ```wl
 {
 	<|
-		"Form"   :> CLITools["Log", ("INFO"|"WARN"|"SUCCESS"|"ERROR"), msg_String],
+		"Form"   :> CommandLineTools["Log", ("INFO"|"WARN"|"SUCCESS"|"ERROR"), msg_String],
 		"Return" :> Success[__] | Failure[__]
 	|>
 }
@@ -277,8 +301,8 @@ Interface pattern:
 Example:
 
 ```wl
-CLITools["Log", "INFO", "Starting task"];
-withError = CLITools["Log", "ERROR"];
+CommandLineTools["Log", "INFO", "Starting task"];
+withError = CommandLineTools["Log", "ERROR"];
 withError@"Could not open file";
 ```
 
@@ -302,12 +326,15 @@ enabled.
 | `"InterfacePrompt"` | `"wls-cli>"` | Prompt string for `Interface`. |
 | `"OptionDelimiter"` | `" " \| "="` | Characters used to split option from value (e.g. `--count=5`). |
 | `"ArgumentDelimiter"` | `","` | Splits multi-value arguments (e.g. `a,b,c`). |
-| `"HelpMessage"` | `Automatic` | Printed by `help` inside interface. |
+| `"HelpMessage"` | `"CommandLineTools example interface"` | Printed by `help` inside interface and by `Help` method. |
+| `"InterfaceHelp"` | `True` | Include built-in commands section in `Help` output. |
+| `"OptionHelp"` | `True` | Include options section from `ArgumentSpecification` in `Help` output. |
 | `"LogToFile"` | `True` | Enable log file writing. |
 | `"LogToStdOut"` | `True` | Enable colored console log output. |
 | `"LogDirectory"` | `"./logs/wls-cli"` | Directory for log files. |
 | `"ArgumentSpecification"` | `None` | Enable validated parsing when set to a spec list. |
-| `"StrictParse"` | `True` | Reject unknown flags / bad values. |
+| `"StrictParse"` | `False` | When `True`, reject unknown flags / bad values with a `Failure`. |
+| `"POSIX"` | `False` | When `True`, expand clustered short flags (e.g. `-abc` → `-a -b -c`). |
 
 Notes:
 * Set a single custom delimiter for values that should remain intact.
@@ -323,15 +350,18 @@ spec = {
 	"count" -> _Integer -> 1
 };
 
-args = CLITools["Parse",
-	"CommandLine" -> {"tool.wls", "--verbose", "--count=5", "-o", "results.log"},
+args = CommandLineTools["Parse",
+	"CommandLine" -> "tool.wls --verbose --count=5 -o results.log input.txt",
 	"ArgumentSpecification" -> spec
 ];
 
+(* args["$0"]  => "tool.wls"      *)
+(* args["$1"]  => "input.txt"     *)
+
 If[FailureQ[args], Return[args]];
 
-If[TrueQ@args["verbose"], CLITools["Log", "INFO", "Verbose mode enabled"]];
-CLITools["Log", "SUCCESS", "Counting to " <> ToString@args["count"]];
+If[TrueQ@args["verbose"], CommandLineTools["Log", "INFO", "Verbose mode enabled"]];
+CommandLineTools["Log", "SUCCESS", "Counting to " <> ToString@args["count"]];
 ```
 
 Sample output (stdout):
@@ -343,12 +373,17 @@ Sample output (stdout):
 
 ## Future Enhancements (Ideas)
 
-* Auto‑generated usage text from `ArgumentSpecification`.
-* Support for positional (non‑flag) arguments section.
+* Subcommand routing (dispatch on `"$0"` or first positional).
+* Typed positional argument specification.
 
 ---
 
 ## Changelog
 
-Initial version of README completed with full method and option documentation.
+* Added positional argument capture: command name under `"$0"`, subsequent positionals under `"$1"`, `"$2"`, etc.
+* Fixed `ArgumentSpecification` validation pattern to use anonymous blanks inside `Repeated`, preventing multi-element specs from failing.
+* Boolean flags with `ArgumentSpecification` no longer consume the following non-flag token as their value.
+* `StrictParse -> False` (now the default) passes unknown flags through raw; `StrictParse -> True` raises a `Failure` for unknown flags or pattern mismatches.
+* Fixed POSIX mode clustered short-flag parsing (`-abc` expansion).
+* Added `"InterfaceHelp"` and `"OptionHelp"` options for controlling `Help` output sections.
 
