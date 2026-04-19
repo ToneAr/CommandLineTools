@@ -1,8 +1,11 @@
-Get[FileNameJoin[ DirectoryName @ $TestFileName, "CommandLineTools.wl"]];
-
+With[{file = FileNameJoin[DirectoryName @ $TestFileName, "CommandLineTools.wl"]},
+	If[ FileExistsQ @ file,
+		Get @ file
+	]
+];
 
 (* ================================================================== *)
-(* Section 1 – validateOptions                                         *)
+(* Section 1 - validateOptions                                         *)
 (* ================================================================== *)
 
 (* Valid options return Success *)
@@ -40,7 +43,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 2 – Internal spec utilities                                 *)
+(* Section 2 - Internal spec utilities                                 *)
 (* ================================================================== *)
 
 Block[{spec = {
@@ -170,7 +173,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 3 – Parse (no spec)                                         *)
+(* Section 3 - Parse (no spec)                                         *)
 (* ================================================================== *)
 
 (* Long flag with value *)
@@ -283,7 +286,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 4 – Parse (with ArgumentSpecification)                     *)
+(* Section 4 - Parse (with ArgumentSpecification)                     *)
 (* ================================================================== *)
 
 Block[{spec = {
@@ -376,7 +379,7 @@ Block[{spec = {
 
 
 (* ================================================================== *)
-(* Section 5 – Parse: POSIX clustering                                *)
+(* Section 5 - Parse: POSIX clustering                                *)
 (* ================================================================== *)
 
 (* -abc clusters → a, b, c each True *)
@@ -405,7 +408,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 6 – Parse form overload (key extraction)                   *)
+(* Section 6 - Parse form overload (key extraction)                   *)
 (* ================================================================== *)
 
 (* Extract a single named key *)
@@ -437,7 +440,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 7 – FlagQ                                                   *)
+(* Section 7 - FlagQ                                                   *)
 (* ================================================================== *)
 
 (* Long flag present *)
@@ -523,7 +526,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 8 – Help                                                    *)
+(* Section 8 - Help                                                    *)
 (* ================================================================== *)
 
 (* Help returns a String *)
@@ -619,7 +622,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 9 – Regression tests                                        *)
+(* Section 9 - Regression tests                                        *)
 (* ================================================================== *)
 
 (* Regression: flag appearing only after $0 has correct positionals *)
@@ -737,7 +740,7 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 10 – Positional argument specification                      *)
+(* Section 10 - Positional argument specification                      *)
 (* ================================================================== *)
 
 (* Positional with integer pattern is converted *)
@@ -810,4 +813,203 @@ VerificationTest[
 	],
 	"extra",
 	TestID -> "Parse-positional-no-spec-entry-kept-raw"
+];
+
+
+(* ================================================================== *)
+(* Section 11 - Quoted string handling in splitCommandLine / Parse     *)
+(* ================================================================== *)
+
+(* splitCommandLine: double-quoted value with spaces is one token *)
+VerificationTest[
+	splitCommandLine["--name \"John Doe\""],
+	{"--name", "John Doe"},
+	TestID -> "splitCommandLine-double-quoted-value"
+];
+
+(* splitCommandLine: single-quoted value with spaces is one token *)
+VerificationTest[
+	splitCommandLine["--tag 'foo bar'"],
+	{"--tag", "foo bar"},
+	TestID -> "splitCommandLine-single-quoted-value"
+];
+
+(* splitCommandLine: unquoted tokens are split normally *)
+VerificationTest[
+	splitCommandLine["myscript --verbose --port 8080"],
+	{"myscript", "--verbose", "--port", "8080"},
+	TestID -> "splitCommandLine-unquoted-normal-split"
+];
+
+(* splitCommandLine: quotes stripped from result *)
+VerificationTest[
+	splitCommandLine["--file \"my file.txt\""],
+	{"--file", "my file.txt"},
+	TestID -> "splitCommandLine-quotes-stripped"
+];
+
+(* splitCommandLine: double-quoted string containing a single quote is one token *)
+VerificationTest[
+	splitCommandLine["--msg \"it's fine\""],
+	{"--msg", "it's fine"},
+	TestID -> "splitCommandLine-double-quote-contains-single-quote"
+];
+
+(* splitCommandLine: single-quoted string containing a double quote is one token *)
+VerificationTest[
+	splitCommandLine["--msg 'say \"hi\"'"],
+	{"--msg", "say \"hi\""},
+	TestID -> "splitCommandLine-single-quote-contains-double-quote"
+];
+
+(* splitCommandLine: multiple quoted tokens *)
+VerificationTest[
+	splitCommandLine["--first \"John\" --last 'Doe'"],
+	{"--first", "John", "--last", "Doe"},
+	TestID -> "splitCommandLine-multiple-quoted-tokens"
+];
+
+(* splitCommandLine: empty string returns empty list *)
+VerificationTest[
+	splitCommandLine[""],
+	{},
+	TestID -> "splitCommandLine-empty-string"
+];
+
+(* splitCommandLine: quoted string with leading/trailing spaces inside quotes preserved *)
+VerificationTest[
+	splitCommandLine["--val \" spaced \""],
+	{"--val", " spaced "},
+	TestID -> "splitCommandLine-inner-spaces-preserved"
+];
+
+(* Parse: string command line with double-quoted flag value *)
+VerificationTest[
+	CommandLineTools["Parse",
+		"CommandLine" -> "myscript --name \"John Doe\""
+	]["name"],
+	"John Doe",
+	TestID -> "Parse-string-cmdline-double-quoted-value"
+];
+
+(* Parse: string command line with single-quoted flag value *)
+VerificationTest[
+	CommandLineTools["Parse",
+		"CommandLine" -> "myscript --name 'Jane Doe'"
+	]["name"],
+	"Jane Doe",
+	TestID -> "Parse-string-cmdline-single-quoted-value"
+];
+
+(* Parse: quoted value is treated as a single argument, not split further *)
+VerificationTest[
+	CommandLineTools["Parse",
+		"CommandLine" -> "myscript --path \"/home/user/my documents\""
+	]["path"],
+	"/home/user/my documents",
+	TestID -> "Parse-quoted-path-with-spaces"
+];
+
+(* Parse: mix of quoted and unquoted flags *)
+VerificationTest[
+	With[{r = CommandLineTools["Parse",
+			"CommandLine" -> "myscript --host localhost --label \"my server\""
+		]},
+		{r["host"], r["label"]}
+	],
+	{"localhost", "my server"},
+	TestID -> "Parse-mixed-quoted-and-unquoted-flags"
+];
+
+(* Parse: quoted value alongside ArgumentSpecification with _String pattern *)
+VerificationTest[
+	CommandLineTools["Parse",
+		"CommandLine" -> "myscript --output \"result file.csv\"",
+		"ArgumentSpecification" -> {"output" -> _String}
+	]["output"],
+	"result file.csv",
+	TestID -> "Parse-quoted-value-with-string-spec"
+];
+
+(* FlagQ: flag present in string command line with quoted values *)
+VerificationTest[
+	CommandLineTools["FlagQ", "output",
+		"CommandLine" -> "myscript --output \"my file.csv\""
+	],
+	True,
+	TestID -> "FlagQ-string-cmdline-quoted-value-flag-present"
+];
+
+
+(* ================================================================== *)
+(* Section 12 - --flag='quoted value' and --flag="quoted value" forms  *)
+(* ================================================================== *)
+
+(* splitCommandLine: --flag='value with spaces' produces two tokens *)
+VerificationTest[
+	splitCommandLine["--name='John Doe'"],
+	{"--name", "John Doe"},
+	TestID -> "splitCommandLine-equals-single-quoted-value"
+];
+
+(* splitCommandLine: --flag="value with spaces" produces two tokens *)
+VerificationTest[
+	splitCommandLine["--name=\"John Doe\""],
+	{"--name", "John Doe"},
+	TestID -> "splitCommandLine-equals-double-quoted-value"
+];
+
+(* splitCommandLine: --flag=unquoted still splits on = *)
+VerificationTest[
+	splitCommandLine["--port=8080"],
+	{"--port", "8080"},
+	TestID -> "splitCommandLine-equals-unquoted-value"
+];
+
+(* Parse: --flag='value with spaces' as string command line *)
+VerificationTest[
+	CommandLineTools["Parse",
+		"CommandLine" -> "myscript --name='John Doe'"
+	]["name"],
+	"John Doe",
+	TestID -> "Parse-equals-single-quoted-value"
+];
+
+(* Parse: --flag="value with spaces" as string command line *)
+VerificationTest[
+	CommandLineTools["Parse",
+		"CommandLine" -> "myscript --name=\"John Doe\""
+	]["name"],
+	"John Doe",
+	TestID -> "Parse-equals-double-quoted-value"
+];
+
+(* Parse: mix of --flag=value and --flag='spaced value' *)
+VerificationTest[
+	With[{r = CommandLineTools["Parse",
+			"CommandLine" -> "myscript --port=9090 --label='my server'"
+		]},
+		{r["port"], r["label"]}
+	],
+	{"9090", "my server"},
+	TestID -> "Parse-equals-mixed-quoted-and-plain"
+];
+
+(* Parse: --flag='value' with ArgumentSpecification *)
+VerificationTest[
+	CommandLineTools["Parse",
+		"CommandLine" -> "myscript --output='result file.csv'",
+		"ArgumentSpecification" -> {"output" -> _String}
+	]["output"],
+	"result file.csv",
+	TestID -> "Parse-equals-quoted-value-with-spec"
+];
+
+(* FlagQ: flag with equals-quoted form is detected *)
+VerificationTest[
+	CommandLineTools["FlagQ", "name",
+		"CommandLine" -> "myscript --name='John Doe'"
+	],
+	True,
+	TestID -> "FlagQ-equals-single-quoted-flag-present"
 ];

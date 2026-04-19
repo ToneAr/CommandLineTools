@@ -26,6 +26,64 @@ argumentSpecP = HoldPattern[{
 
 
 (* ::Section:: *)(* Utilities *)
+
+splitCommandLine // Options = {
+	"OptionDelimiter" -> (" " | "="),
+	"EscapeCharacter" -> "\\"
+};
+splitCommandLine[""] = {};
+splitCommandLine[s_String, OptionsPattern[]] :=
+	Module[{
+				chars, delim,
+			inEscape = False,
+			escapeRun = 0,
+				tokens = {},
+				current = "",
+				inSingle = False,
+				inDouble = False
+			},
+		chars = Characters[s];
+		(* Resolve OptionValue in the body where OptionsPattern[] scoping is active *)
+		delim = OptionValue["OptionDelimiter"];
+		{tokens} = Last @ Reap[
+			Scan[(c) |-> (
+					If[inEscape,        escapeRun += 1];
+					If[escapeRun == 2,  inEscape = !inEscape];
+					Which[
+						(* Toggle escape ON *)
+						c === OptionValue["EscapeCharacter"],
+							inEscape = ! inEscape;
+							escapeRun = 0,
+						(* Toggle single-quote mode *)
+						c === "'" && ! inDouble && ! inEscape,
+							inSingle = ! inSingle,
+						(* Toggle double-quote mode *)
+						c === "\"" && ! inSingle && ! inEscape,
+							inDouble = ! inDouble,
+						(* Delimiter character outside any quote: flush token *)
+						And[
+							StringMatchQ[c, delim],
+							!inSingle,
+							!inDouble,
+							!inEscape
+						],
+							If[current =!= "",
+								Sow[current];
+								current = ""
+							],
+						(* Any other character: accumulate *)
+						True,
+							current = current <> c
+					]
+				),
+				chars
+			];
+			(* Flush the last token *)
+			If[current =!= "", Sow[current]];
+		];
+		tokens
+	];
+
 validateOptions[o : OptionsPattern[CommandLineTools]] := Module[{
 		opts = <|o|>,
 		pairs = {
@@ -55,37 +113,38 @@ validateOptions[o : OptionsPattern[CommandLineTools]] := Module[{
 	]
 ];
 
+defaultCommands = <|
+	{("help" | "h" | "?"), "Show this help message"} :> Print[ helpMessage ],
+	{("exit" | "quit" | "q"), "Exit the interface"} :> (
+		CommandLineTools`ShouldExit = True
+	),
+	{("eval" | "e"), "Evaluate Wolfram Language expression"} :> (
+		With[{
+					inLbl = StringTemplate["In[``]:= "][$Line],
+					outLbl = StringTemplate["Out[``]:= "][$Line]
+				},
+				Print[outLbl, Input[inLbl]];
+				$Line += 1;
+			]
+	)
+|>;
+
 (* ::Section:: *)(* Options *)
 CommandLineTools // Options = {
-	"CommandLine" -> Automatic,
-	"InterfacePrompt" -> "wls-cli>",
-	"InterfaceCommands" -> <|
-			{("help" | "h" | "?"), "Show this help message"} :>
-	Print[helpMessage],
-			{("exit" | "quit" | "q"), "Exit the interface"} :> (
-				CommandLineTools`ShouldExit = True
-			),
-			{("eval" | "e"), "Evaluate Wolfram Language expression"} :> (
-				With[{
-							inLbl = StringTemplate["In[``]:= "][$Line],
-							outLbl = StringTemplate["Out[``]:= "][$Line]
-						},
-						Print[outLbl, Input[inLbl]];
-						$Line += 1;
-					]
-			)
-		|>,
-	"InterfaceHelp" -> True,
-	"POSIX" -> False,
-	"OptionDelimiter" -> (" " | "="),
-	"OptionHelp" -> True,
+	"CommandLine"       -> Automatic,
+	"InterfacePrompt"   -> "wls-cli>",
+	"InterfaceCommands" -> defaultCommands,
+	"InterfaceHelp"     -> True,
+	"POSIX"             -> False,
+	"OptionDelimiter"   -> (" " | "="),
+	"OptionHelp"        -> True,
+	"HelpMessage"       -> "CommandLineTools example interface",
+	"LogToFile"         -> True,
+	"LogToStdOut"       -> True,
+	"LogDirectory"      -> "./logs/wls-cli",
+	"StrictParse"       -> False,
 	"ArgumentDelimiter" -> ",",
-	"HelpMessage" -> "CommandLineTools example interface",
-	"LogToFile" -> True,
-	"LogToStdOut" -> True,
-	"LogDirectory" -> "./logs/wls-cli",
 	"ArgumentSpecification" -> None,
-	"StrictParse" -> False,
 	"LogStyles" -> {
 			"INFO"    -> Gray,
 			"WARN"    -> Yellow,
@@ -540,8 +599,9 @@ opts : OptionsPattern[]] := Module[{
 		]
 ];
 CommandLineTools["Parse", opts : OptionsPattern[]] := Block[{
-			from, flagPositions, flagsAndArgs, commands,
-			commandName, prePositionals, groupPositionals, allPositionals, parsed
+			from, flagPositions, flagsAndArgs, commands, parsed,
+			commandName, prePositionals, groupPositionals, allPositionals,
+			spec = OptionValue["ArgumentSpecification"]
 		},
 	(* Cache args in kernel session as args will never change during a session *)
 	(*!Once[!*)
@@ -553,7 +613,7 @@ CommandLineTools["Parse", opts : OptionsPattern[]] := Block[{
 						(Automatic /; $EvaluationEnvironment === "Script") :> $ScriptCommandLine,
 						Automatic :> $CommandLine
 					}],
-				s_String :> StringSplit[s, " "]
+				s_String :> splitCommandLine[s, "OptionDelimiter" -> OptionValue["OptionDelimiter"]]
 			];
 			If[ OptionValue["StrictParse"],
 				ConfirmAssert[
@@ -572,11 +632,16 @@ CommandLineTools["Parse", opts : OptionsPattern[]] := Block[{
 			prePositionals = If[from > 2, commands[[2 ;; from - 1]], {}];
 			(* Split command list to include only options *)
 			commands = commands[[from ;; All]];
-			(* Split options delimited by non-space characters *)
+			(*
+			 * Split options delimited by non-space characters (e.g. --flag=value).
+			 * Only apply to option tokens so that argument values containing spaces
+			 * (produced by quoted strings in the command line) are not re-split.
+			 *)
 			commands = Flatten @ ReplaceAt[ commands,
-					s_String :> StringSplit[s, OptionValue["OptionDelimiter"]],
-					{All}
-				];
+				s_String?(StringStartsQ["-"]) :>
+					StringSplit[s, OptionValue["OptionDelimiter"]],
+				{All}
+			];
 			(* Get all option options *)
 			flagPositions = Position[commands, optionsP, {1}];
 			(* Partition a list with all options and any proceeding arguments *)
@@ -604,35 +669,33 @@ CommandLineTools["Parse", opts : OptionsPattern[]] := Block[{
 				non-flag token is a positional rather than the flag's value.
 				Without a spec the original behaviour is preserved: the token
 				immediately after a flag is treated as its value. *)
-			With[{spec = OptionValue["ArgumentSpecification"]},
-				If[Length[flagsAndArgs] > 0,
-					{flagsAndArgs, groupPositionals} =
-						Transpose @ Map[
-							Function[g,
-								Which[
-									Length[g] === 1,
-										{g, {}},
-									spec =!= None && MatchQ[
-										selectArgPattern[spec, g[[1]]],
-										_PatternTest?(Last[#] === BooleanQ &) |
-										_Alternatives?(MatchQ[
-											List @@ #,
-											{OrderlessPatternSequence[True, False]}] &) |
-										_Pattern?(Last[#] === (True | False))
-									],
-										(* Boolean flag: all following tokens are positionals *)
-										{{g[[1]]}, g[[2 ;;]]},
-									True,
-										(* Value-taking flag: keep flag + value, rest are positionals *)
-										{g[[1 ;; Min[2, Length[g]]]],
-											If[Length[g] > 2, g[[3 ;;]], {}]}
-								]
-							],
-							flagsAndArgs
-						];
-					groupPositionals = Flatten[groupPositionals],
-					groupPositionals = {}
-				]
+			If[Length[flagsAndArgs] > 0,
+				{flagsAndArgs, groupPositionals} =
+					Transpose @ Map[
+						Function[g,
+							Which[
+								Length[g] === 1,
+									{ g, {} },
+								spec =!= None && MatchQ[
+									selectArgPattern[spec, g[[1]]],
+									_PatternTest?(Last[#] === BooleanQ &) |
+									_Alternatives?(MatchQ[
+										List @@ #,
+										{OrderlessPatternSequence[True, False]}] &) |
+									_Pattern?(Last[#] === (True | False)&)
+								],
+									(* Boolean flag: all following tokens are positionals *)
+									{{g[[1]]}, g[[2 ;;]]},
+								True,
+									(* Value-taking flag: keep flag + value, rest are positionals *)
+									{g[[1 ;; Min[2, Length[g]]]],
+										If[Length[g] > 2, g[[3 ;;]], {}]}
+							]
+						],
+						flagsAndArgs
+					];
+				groupPositionals = Flatten[groupPositionals],
+				groupPositionals = {}
 			];
 			(* Collect all positional arguments:
 				when no flags exist at all, every token is positional *)
