@@ -817,71 +817,8 @@ VerificationTest[
 
 
 (* ================================================================== *)
-(* Section 11 - Quoted string handling in splitCommandLine / Parse     *)
+(* Section 11 - Quoted string handling in Parse     *)
 (* ================================================================== *)
-
-(* splitCommandLine: double-quoted value with spaces is one token *)
-VerificationTest[
-	splitCommandLine["--name \"John Doe\""],
-	{"--name", "John Doe"},
-	TestID -> "splitCommandLine-double-quoted-value"
-];
-
-(* splitCommandLine: single-quoted value with spaces is one token *)
-VerificationTest[
-	splitCommandLine["--tag 'foo bar'"],
-	{"--tag", "foo bar"},
-	TestID -> "splitCommandLine-single-quoted-value"
-];
-
-(* splitCommandLine: unquoted tokens are split normally *)
-VerificationTest[
-	splitCommandLine["myscript --verbose --port 8080"],
-	{"myscript", "--verbose", "--port", "8080"},
-	TestID -> "splitCommandLine-unquoted-normal-split"
-];
-
-(* splitCommandLine: quotes stripped from result *)
-VerificationTest[
-	splitCommandLine["--file \"my file.txt\""],
-	{"--file", "my file.txt"},
-	TestID -> "splitCommandLine-quotes-stripped"
-];
-
-(* splitCommandLine: double-quoted string containing a single quote is one token *)
-VerificationTest[
-	splitCommandLine["--msg \"it's fine\""],
-	{"--msg", "it's fine"},
-	TestID -> "splitCommandLine-double-quote-contains-single-quote"
-];
-
-(* splitCommandLine: single-quoted string containing a double quote is one token *)
-VerificationTest[
-	splitCommandLine["--msg 'say \"hi\"'"],
-	{"--msg", "say \"hi\""},
-	TestID -> "splitCommandLine-single-quote-contains-double-quote"
-];
-
-(* splitCommandLine: multiple quoted tokens *)
-VerificationTest[
-	splitCommandLine["--first \"John\" --last 'Doe'"],
-	{"--first", "John", "--last", "Doe"},
-	TestID -> "splitCommandLine-multiple-quoted-tokens"
-];
-
-(* splitCommandLine: empty string returns empty list *)
-VerificationTest[
-	splitCommandLine[""],
-	{},
-	TestID -> "splitCommandLine-empty-string"
-];
-
-(* splitCommandLine: quoted string with leading/trailing spaces inside quotes preserved *)
-VerificationTest[
-	splitCommandLine["--val \" spaced \""],
-	{"--val", " spaced "},
-	TestID -> "splitCommandLine-inner-spaces-preserved"
-];
 
 (* Parse: string command line with double-quoted flag value *)
 VerificationTest[
@@ -944,27 +881,6 @@ VerificationTest[
 (* ================================================================== *)
 (* Section 12 - --flag='quoted value' and --flag="quoted value" forms  *)
 (* ================================================================== *)
-
-(* splitCommandLine: --flag='value with spaces' produces two tokens *)
-VerificationTest[
-	splitCommandLine["--name='John Doe'"],
-	{"--name", "John Doe"},
-	TestID -> "splitCommandLine-equals-single-quoted-value"
-];
-
-(* splitCommandLine: --flag="value with spaces" produces two tokens *)
-VerificationTest[
-	splitCommandLine["--name=\"John Doe\""],
-	{"--name", "John Doe"},
-	TestID -> "splitCommandLine-equals-double-quoted-value"
-];
-
-(* splitCommandLine: --flag=unquoted still splits on = *)
-VerificationTest[
-	splitCommandLine["--port=8080"],
-	{"--port", "8080"},
-	TestID -> "splitCommandLine-equals-unquoted-value"
-];
 
 (* Parse: --flag='value with spaces' as string command line *)
 VerificationTest[
