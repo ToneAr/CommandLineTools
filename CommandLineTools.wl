@@ -93,7 +93,7 @@ defaultCommands =
 CommandLineTools // Options =
 	{
 		"CommandLine" -> Automatic,
-		"InterfacePrompt" -> "wls-cli>",
+		"InterfacePrompt" -> "wls-cli> ",
 		"InterfaceCommands" -> defaultCommands,
 		"InterfaceHelp" -> True,
 		"POSIX" -> False,
@@ -885,7 +885,7 @@ CommandLineTools[
 				(* wl-disable-next-line UnloadedContext *)
 				!CommandLineTools`ShouldExit,
 				Pause[.01];
-				in = InputString[OptionValue["InterfacePrompt"] <> " "];
+				in = InputString[OptionValue["InterfacePrompt"]];
 				Replace[in, allCommands]
 			]
 		]

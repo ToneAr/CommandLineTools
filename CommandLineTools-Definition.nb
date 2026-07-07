@@ -4,7 +4,7 @@ Cell[CellGroupData[{
 Cell["CommandLineTools", "Title",
  TaggingRules->{},
  CellTags->{"Name", "TemplateCell", "Title"},
- CellID->530435027,ExpressionUUID->"49d3473a-711c-4b9a-85bf-cde8a8cc03a9"],
+ CellID->530435027,ExpressionUUID->"0bfc6034-3962-4484-b364-408bf14fd9bb"],
 
 Cell["\<\
 A collection of command-line tools and utilities, streamlining wolframscript \
@@ -12,7 +12,7 @@ creation\
 \>", "Text",
  TaggingRules->{},
  CellTags->{"Description", "TemplateCell"},
- CellID->205652736,ExpressionUUID->"14c2a755-b94d-4e58-9a22-1c7cdd15320e"],
+ CellID->205652736,ExpressionUUID->"d2fca23c-3d9c-4551-aa9e-db42b8449132"],
 
 Cell[CellGroupData[{
 
@@ -40,14 +40,14 @@ evaluated before creating the Examples section below.", "MoreInfoText"],
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "c96ddfa3-e80c-47ff-89fa-18ac1aa6f30c"]
+  "26b4138a-a459-4b58-992e-4341eb22e75e"]
 }], "Section",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Function"},
  DefaultNewCellStyle->"Input",
  CellTags->{"Definition", "Function", "TemplateCellGroup"},
- CellID->278433636,ExpressionUUID->"1c1c9677-99e5-489d-8421-94361e5cfba3"],
+ CellID->278433636,ExpressionUUID->"6bf4b7e9-e859-4844-8a58-42b5e0778ecc"],
 
 Cell[BoxData[
  RowBox[{
@@ -93,7 +93,7 @@ Cell[BoxData[
  InitializationCell->False,
  CellTags->"devcell",
  CellLabel->"In[2]:=",
- CellID->3462417,ExpressionUUID->"f2b626fa-6642-46f9-8f33-683a4bbee751"],
+ CellID->3462417,ExpressionUUID->"4a6560ee-134e-47fb-a27a-d841b595727d"],
 
 Cell[BoxData[
  RowBox[{
@@ -277,6 +277,10 @@ Cell[BoxData[
            " ", "\"\<q\>\""}], ")"}], ",", 
          " ", "\"\<Exit the interface\>\""}], "}"}], " ", ":>", " ", 
        RowBox[{"(", "\n", "\t\t\t", 
+        RowBox[{"(*", " ", 
+         RowBox[{"wl", "-", "disable", "-", "next", "-", 
+          RowBox[{"line", " ", "UnloadedContext"}]}], " ", "*)"}], "\n", 
+        "\t\t\t", 
         RowBox[{"CommandLineTools`ShouldExit", " ", "=", " ", "True"}], "\n", 
         "\t\t", ")"}]}], ",", "\n", "\t\t", 
       RowBox[{
@@ -316,8 +320,8 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"\"\<CommandLine\>\"", " ", "->", " ", "Automatic"}], ",", "\n",
        "\t\t", 
-      RowBox[{"\"\<InterfacePrompt\>\"", " ", "->", " ", "\"\<wls-cli>\>\""}],
-       ",", "\n", "\t\t", 
+      RowBox[{"\"\<InterfacePrompt\>\"", " ", "->", 
+       " ", "\"\<wls-cli> \>\""}], ",", "\n", "\t\t", 
       RowBox[{"\"\<InterfaceCommands\>\"", " ", "->", " ", 
        "defaultCommands"}], ",", "\n", "\t\t", 
       RowBox[{"\"\<InterfaceHelp\>\"", " ", "->", " ", "True"}], ",", "\n", 
@@ -2023,6 +2027,10 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"Confirm", " ", "@", " ", 
          RowBox[{"validateOptions", "[", "opts", "]"}]}], ";", "\n", "\t\t\t", 
+        RowBox[{"(*", " ", 
+         RowBox[{"wl", "-", "disable", "-", "next", "-", 
+          RowBox[{"line", " ", "UnloadedContext"}]}], " ", "*)"}], "\n", 
+        "\t\t\t", 
         RowBox[{"CommandLineTools`ShouldExit", " ", "=", " ", "False"}], ";", 
         "\n", "\t\t\t", 
         RowBox[{"allCommands", " ", "=", " ", 
@@ -2047,15 +2055,18 @@ Cell[BoxData[
               RowBox[{"form_", ",", " ", "_String"}], "}"}], " ", ":>", " ", 
              "form"}], "}"}]}], "]"}]}], ";", "\n", "\t\t\t", 
         RowBox[{"While", "[", "\n", "\t\t\t\t", 
+         RowBox[{"(*", " ", 
+          RowBox[{"wl", "-", "disable", "-", "next", "-", 
+           RowBox[{"line", " ", "UnloadedContext"}]}], " ", "*)"}], "\n", 
+         "\t\t\t\t", 
          RowBox[{
           RowBox[{"!", "CommandLineTools`ShouldExit"}], ",", "\n", "\t\t\t\t", 
           RowBox[{
            RowBox[{"Pause", "[", ".01", "]"}], ";", "\n", "\t\t\t\t", 
            RowBox[{"in", " ", "=", " ", 
             RowBox[{"InputString", "[", 
-             RowBox[{
-              RowBox[{"OptionValue", "[", "\"\<InterfacePrompt\>\"", "]"}], 
-              " ", "<>", " ", "\"\< \>\""}], "]"}]}], ";", "\n", "\t\t\t\t", 
+             RowBox[{"OptionValue", "[", "\"\<InterfacePrompt\>\"", "]"}], 
+             "]"}]}], ";", "\n", "\t\t\t\t", 
            RowBox[{"Replace", "[", 
             RowBox[{"in", ",", " ", "allCommands"}], "]"}]}]}], "\n", 
          "\t\t\t", "]"}]}], "\n", "\t\t", "]"}]}], "\n", "\t", "]"}]}], "\n", 
@@ -2162,6 +2173,7 @@ Cell[BoxData[
               RowBox[{"ResourceFunction", "[", "\"\<ANSITools\>\"", "]"}], "[",
                "\n", "\t\t\t\t\t\t", 
               RowBox[{"\"\<Style\>\"", ",", "\n", "\t\t\t\t\t\t", 
+               
                RowBox[{"\"\<[\>\"", " ", "<>", " ", "type", " ", "<>", 
                 " ", "\"\<]: \>\""}], ",", "\n", "\t\t\t\t\t\t", 
                RowBox[{"Replace", "[", "\n", "\t\t\t\t\t\t\t", 
@@ -2602,8 +2614,8 @@ Cell[BoxData[
  GeneratedCell->True,
  CellAutoOverwrite->True,
  CellTags->"source",
- CellID->1954721292,ExpressionUUID->"1bc5fe1e-a7bf-447e-85be-c3260c34154e"]
-}, Open  ]],
+ CellID->480216445,ExpressionUUID->"a1cff2d5-17b8-4f2c-8037-fea47e639af1"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -2612,7 +2624,7 @@ Cell["Documentation", "Section",
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Documentation"},
  CellTags->{"Documentation", "TemplateSection"},
- CellID->109475398,ExpressionUUID->"77a28c54-46c9-4066-8c42-c2a710c5d05d"],
+ CellID->109475398,ExpressionUUID->"e575bedf-2b39-4713-b60e-e1c0eaa17828"],
 
 Cell[CellGroupData[{
 
@@ -2660,14 +2672,14 @@ documentation pages for examples."}], "MoreInfoText"], Background ->
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "1ee1a314-7850-4b56-a3cb-d148cd3113dd"]
+  "1e770b2c-e0f8-4e00-ad0c-1f35d50e6769"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Usage"},
  DefaultNewCellStyle->{"UsageInputs", FontFamily -> "Source Sans Pro"},
  CellTags->{"TemplateCellGroup", "Usage"},
- CellID->788282115,ExpressionUUID->"6bfea49f-23c9-4be0-a971-05d0bc09d0e9"],
+ CellID->788282115,ExpressionUUID->"0c65e800-cd19-4bae-92bb-447f642d51b0"],
 
 Cell[CellGroupData[{
 
@@ -2675,13 +2687,13 @@ Cell[BoxData[
  RowBox[{"CommandLineTools", "[", "\"\<Parse\>\"", "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->551740538,ExpressionUUID->"2be73e2f-4de7-4b70-9482-fd684204d59b"],
+ CellID->1350855822,ExpressionUUID->"0d353f70-824c-4660-8c67-43db1bcd339a"],
 
 Cell["\<\
 parses the command line creating an association of flag-argument pairs.\
 \>", "UsageDescription",
  TaggingRules->{},
- CellID->419928300,ExpressionUUID->"69101f87-0687-4317-be5c-8f56c2749526"]
+ CellID->1260944686,ExpressionUUID->"92c8aa90-44bf-436c-99c7-403d28970dcb"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2692,7 +2704,7 @@ Cell[BoxData[
    StyleBox["form", "TI"]}], "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->209271439,ExpressionUUID->"af69eb2e-5bdf-4a29-b376-29eb7b0d9290"],
+ CellID->1230082274,ExpressionUUID->"911ec3b0-7813-47e3-af87-d7d34647229e"],
 
 Cell[TextData[{
  "parses the command line and returns flag-argument pairs where the flag \
@@ -2700,11 +2712,11 @@ matches ",
  Cell[BoxData[
   StyleBox["form", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "ad4dc8fa-c825-4050-8797-b9364ab5c916"],
+  "7068180f-9a6f-44aa-966e-243565d95a0c"],
  "."
 }], "UsageDescription",
  TaggingRules->{},
- CellID->1411844363,ExpressionUUID->"5cca7fc6-729d-457b-ac27-93828fbb8eb1"]
+ CellID->679360380,ExpressionUUID->"eedfa5bf-150c-4a48-a2bc-34f3d5343600"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2715,7 +2727,7 @@ Cell[BoxData[
    StyleBox["form", "TI"]}], "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->1128062400,ExpressionUUID->"09dd6493-18ee-4fc9-bb83-5ced83a83e64"],
+ CellID->1505952448,ExpressionUUID->"6920fa19-5f85-4b1d-8627-36c63f3a7c1d"],
 
 Cell[TextData[{
  "returns ",
@@ -2733,7 +2745,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "f1943829-e86f-491b-a5e0-e3ebdf958346"],
+  "e083a226-f71d-4b68-9add-afee0ae2fbd8"],
  " or ",
  Cell[BoxData[
   TagBox[
@@ -2749,16 +2761,16 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "8660bfbd-437a-43a5-8699-4e1dd9859590"],
+  "3a4101c8-bfd7-4326-a81c-90b9e0aee577"],
  " based on whether a flag matching ",
  Cell[BoxData[
   StyleBox["form", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "bbf65607-5594-4f61-b3e5-5566f6b89697"],
+  "ecf3c591-dd42-4ccc-8b4d-440eeae847be"],
  " is passed to the command line."
 }], "UsageDescription",
  TaggingRules->{},
- CellID->1280515048,ExpressionUUID->"8c891885-642d-45db-a7fe-4701a1338f34"]
+ CellID->1085130382,ExpressionUUID->"c5f83858-17f3-4423-9595-e9129e86ebc2"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2767,11 +2779,11 @@ Cell[BoxData[
  RowBox[{"CommandLineTools", "[", "\"\<Interface\>\"", "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->2095908261,ExpressionUUID->"282cc741-36f6-4a4f-9c39-0d677064d3bb"],
+ CellID->99744808,ExpressionUUID->"5b6c3273-5ae9-4bea-85d8-68da508c52b6"],
 
 Cell["creates a blocking interface with default commands.", "UsageDescription",
  TaggingRules->{},
- CellID->1064789105,ExpressionUUID->"278aa8ba-83cc-401e-a7af-93fa263b0b92"]
+ CellID->125767594,ExpressionUUID->"ee7aa923-f9ac-4861-8ca6-f4618f05d125"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2782,18 +2794,18 @@ Cell[BoxData[
    StyleBox["cmds", "TI"]}], "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->329725901,ExpressionUUID->"ed7b3f46-1c4f-40f2-9e38-6889d2749130"],
+ CellID->1312361330,ExpressionUUID->"bb25c9bb-3c83-4df2-be6c-88b93406e0d0"],
 
 Cell[TextData[{
  "creates a blocking interface with additional custom commands ",
  Cell[BoxData[
   StyleBox["cmds", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "6d71000c-8a25-4baf-8cc4-4dcbe1d43650"],
+  "a768c065-6863-4f1b-b3b0-e5a01fd9d7ef"],
  "."
 }], "UsageDescription",
  TaggingRules->{},
- CellID->822409829,ExpressionUUID->"b48b1f71-9d8a-44e0-92f8-aed23ed0a5db"]
+ CellID->111826094,ExpressionUUID->"2effe427-5f4f-46f0-887b-ef7cfe54e0ba"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2805,23 +2817,23 @@ Cell[BoxData[
    StyleBox["msg", "TI"]}], "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->1668822406,ExpressionUUID->"627a4bd4-9cdb-4b9e-9dac-ce7024aa7995"],
+ CellID->1891402984,ExpressionUUID->"5d226229-8754-4c09-ac82-6dad29e832dd"],
 
 Cell[TextData[{
  "logs ",
  Cell[BoxData[
   StyleBox["msg", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "63fec124-f3d3-4094-b4ef-fad0f9e185f9"],
+  "9ce7bfa3-43cc-4ebf-9982-79dbe97b09f0"],
  " to stdout and to a file at log level ",
  Cell[BoxData[
   StyleBox["lvl", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "eafdfa5e-7adf-467f-8736-182ef26fb062"],
+  "6c4860ea-5e8e-4dc7-af59-580feeb86847"],
  "."
 }], "UsageDescription",
  TaggingRules->{},
- CellID->922404041,ExpressionUUID->"f3563c4d-ecd5-400e-b778-0c8554dd41af"]
+ CellID->1724168030,ExpressionUUID->"b6e6f01a-30ec-46c8-8f40-3e82a879d71c"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2832,11 +2844,11 @@ Cell[BoxData[
    StyleBox["lvl", "TI"]}], "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->1040188371,ExpressionUUID->"067506fa-5e66-46e6-b098-aa8b92ef6a53"],
+ CellID->701034069,ExpressionUUID->"87a95dce-1975-4771-8df9-d06072ef14ab"],
 
 Cell["is an operator form of Log method.", "UsageDescription",
  TaggingRules->{},
- CellID->852566763,ExpressionUUID->"8ac0ba07-dd89-4edf-a3ba-8bfad9fbe80a"]
+ CellID->2051788770,ExpressionUUID->"0810ca15-8d0e-4171-91d2-8d44142e6d14"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2845,13 +2857,13 @@ Cell[BoxData[
  RowBox[{"CommandLineTools", "[", "\"\<Help\>\"", "]"}]], "UsageInputs",
  TaggingRules->{},
  FontFamily->"Source Sans Pro",
- CellID->810992145,ExpressionUUID->"b8836053-0c23-4155-907c-6d852563f309"],
+ CellID->1989236152,ExpressionUUID->"3b6449cd-f28d-4b9b-a5d4-fcc168af9695"],
 
 Cell["prints a help message to stdout.", "UsageDescription",
  TaggingRules->{},
- CellID->1157498137,ExpressionUUID->"1e8a71dd-a824-4f8d-be8e-de8ebf74c784"]
+ CellID->1104928406,ExpressionUUID->"3d9fc0bc-1195-4d64-ab0c-0b01c2ad3bb3"]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -2881,19 +2893,19 @@ function, its development, and its usage.", "MoreInfoText"], Background ->
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "94b6ec67-b412-41fa-a45b-b8c919c62674"]
+  "74b7c543-8701-4fd9-bd18-e7ff810ffb5c"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Notes"},
  DefaultNewCellStyle->"Notes",
  CellTags->{"Details & Options", "Notes", "TemplateCellGroup"},
- CellID->683467076,ExpressionUUID->"472188dc-da7d-4fd3-8d4c-3519397762cc"],
+ CellID->683467076,ExpressionUUID->"fac4a04f-e364-429c-9ac7-79a5f99f6f95"],
 
 Cell[TextData[{
  Cell[BoxData["CommandLineTools"], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "e4fccd2d-31d7-4101-baaf-8e04525fe5f0"],
+  "07bbd4a4-d291-462f-91b9-b7d2dec04a4c"],
  " takes the following options:"
 }], "Notes",
  TaggingRules-><|
@@ -2912,7 +2924,7 @@ Cell[TextData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellChangeTimes->{{3.9737844036142797`*^9, 3.973784410227131*^9}},
- CellID->488931018,ExpressionUUID->"b70fa906-ed5f-44e5-97e5-48425456e06d"],
+ CellID->488931018,ExpressionUUID->"e0c93f50-0098-458e-b526-c3016d42a30e"],
 
 Cell[BoxData[GridBox[{
    {
@@ -2931,7 +2943,7 @@ Cell[BoxData[GridBox[{
      MouseAppearanceTag["LinkHand"]], 
     RowBox[{"command", " ", "line", " ", "to", " ", "parse"}]},
    {Cell["\"POSIX\"", "TableText",ExpressionUUID->
-     "66f6d8d1-e1d0-4129-bfd9-ea3c27f069c5"], Cell[TextData[Cell[BoxData[
+     "0c3f8dad-3b0f-41c3-a007-4e6ec26269c8"], Cell[TextData[Cell[BoxData[
      TagBox[
       ButtonBox[
        StyleBox["False", "SymbolsRefLink",
@@ -2946,28 +2958,28 @@ Cell[BoxData[GridBox[{
        ContentPadding->False],
       MouseAppearanceTag["LinkHand"]]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "3c389c8e-a506-4557-a18e-f6801a646a6a"]], "TableText",ExpressionUUID->
-     "1cbdb9f3-29c5-4eec-8e1a-329dc3c163dc"], Cell[
+     "6e530b72-addb-41c0-8315-f3db8e6a56d8"]], "TableText",ExpressionUUID->
+     "fd67295f-2ee8-42bb-b548-f36e4b84838b"], Cell[
     "restrict to the POSIX convention for short and long options", 
-     "TableText",ExpressionUUID->"40a970da-dcc0-4d9b-8377-7d4600f84b8e"]},
-   {"\"\<InterfacePrompt\>\"", "\"\<wls-cli>\>\"", 
+     "TableText",ExpressionUUID->"57de267c-31a0-4dc8-9369-eb32aea74c4d"]},
+   {"\"\<InterfacePrompt\>\"", "\"\<wls-cli> \>\"", 
     RowBox[{"interface", " ", "input", " ", "prompt"}]},
    {Cell["\"InterfaceCommands\"", "TableText",ExpressionUUID->
-     "c66cf961-f442-4d8b-876a-5c6079c927c1"], Cell[TextData[Cell[BoxData[
+     "7f533637-32c1-4824-92ff-b290c85f61a6"], Cell[TextData[Cell[BoxData[
      StyleBox["defaultCommands", "TI"]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "75b6d304-2d26-4896-af70-8a5b8e5e2f67"]], "TableText",ExpressionUUID->
-     "4eaf872e-656d-4b96-a6cf-472c4ae89336"], Cell["\<\
+     "738d4242-885b-4d63-8581-d1047eabda96"]], "TableText",ExpressionUUID->
+     "417edd23-9e01-45ae-99fe-019a6a561b09"], Cell["\<\
 delayed rules corresponding to the defined interface commands\
-\>", "TableText",ExpressionUUID->"b865df28-578d-430f-a49e-072f3e08e624"]},
+\>", "TableText",ExpressionUUID->"ab71210e-d943-4cd1-a8d4-fe73950046b9"]},
    {
     StyleBox["\"\<OptionDelimiter\>\"", "InlineCode"], 
     RowBox[{"\"\< \>\"", " ", "|", " ", "\"\<=\>\""}], 
     StyleBox[Cell[TextData[Cell[BoxData[
       RowBox[{"option", " ", "delimiter", "  ", "form"}]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "506114ad-8613-4ef3-90f3-6a6a5cea36cc"]], "TableText",ExpressionUUID->
-      "89dd048b-a35d-439c-afc0-c4ec7294dde7"], "TR"]},
+      "0e5d4de5-26fb-4af1-98c7-582e7830ee1f"]], "TableText",ExpressionUUID->
+      "e159c07f-ac51-4804-ae16-66549ae94490"], "TR"]},
    {
     StyleBox["\"\<ArgumentDelimiter\>\"", "InlineCode"], "\"\<,\>\"", 
     RowBox[{"argument", " ", "delimiter", " ", "form"}]},
@@ -2976,7 +2988,7 @@ delayed rules corresponding to the defined interface commands\
      "InlineCode"], "\"\<CommandLineTools example interface\>\"", 
     RowBox[{"help", " ", "message"}]},
    {Cell["\"InterfaceHelp\"", "TableText",ExpressionUUID->
-     "5c64d79f-58cd-4c89-a1c7-44d056126ce4"], Cell[TextData[Cell[BoxData[
+     "955b5a18-d31e-4052-9d9c-afb032eeca15"], Cell[TextData[Cell[BoxData[
      TagBox[
       ButtonBox[
        StyleBox["True", "SymbolsRefLink",
@@ -2991,12 +3003,12 @@ delayed rules corresponding to the defined interface commands\
        ContentPadding->False],
       MouseAppearanceTag["LinkHand"]]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "df96376c-8725-4356-b8da-2c14afb58899"]], "TableText",ExpressionUUID->
-     "31d5ae4c-a004-4c70-969e-62875b787e24"], Cell[
+     "88747996-7eb4-4f93-8a95-4784eeef8ea7"]], "TableText",ExpressionUUID->
+     "47bb35ea-7d32-4c4f-a96b-f094d02abe56"], Cell[
     "include interface help in help message", "TableText",ExpressionUUID->
-     "ae47a067-ebe6-415d-bbee-4e1445c547a6"]},
+     "3e65cc55-7125-4807-87af-ade7f42f7ad6"]},
    {Cell["\"OptionHelp\"", "TableText",ExpressionUUID->
-     "5560b8aa-431c-4371-ab48-2cf50bde8fad"], Cell[TextData[Cell[BoxData[
+     "6bf00f08-3357-4a5e-8703-18cb543c0a9c"], Cell[TextData[Cell[BoxData[
      TagBox[
       ButtonBox[
        StyleBox["True", "SymbolsRefLink",
@@ -3011,10 +3023,10 @@ delayed rules corresponding to the defined interface commands\
        ContentPadding->False],
       MouseAppearanceTag["LinkHand"]]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "0298daa7-36ca-4e79-8def-2f31fcaf5cb6"]], "TableText",ExpressionUUID->
-     "dea3f601-cbe4-4b6e-8ab4-d78c90fd7cdb"], Cell[
+     "12fad72c-35df-45d3-b3e1-68f4df2834ea"]], "TableText",ExpressionUUID->
+     "b1631910-4140-447b-81ed-d331ac8a7b5c"], Cell[
     "include option help in help message", "TableText",ExpressionUUID->
-     "5d271a49-cf7b-4fee-9ece-eba93e25b83d"]},
+     "579da7a9-8a6c-4a29-af83-1249e2cbb8b6"]},
    {
     StyleBox["\"\<LogToFile\>\"", "InlineCode"], 
     TagBox[
@@ -3056,13 +3068,13 @@ delayed rules corresponding to the defined interface commands\
     "directory", " ", "log", " ", "files", " ", "should", " ", "be", " ", 
      "placed", " ", "in"}]},
    {Cell["\"LogStyles\"", "TableText",ExpressionUUID->
-     "afa68735-151f-4c39-ba3a-8d6f5b12da6e"], Cell[TextData[Cell[BoxData[
+     "8cc21c1e-5a48-48e8-ae90-5ab4d1e29bde"], Cell[TextData[Cell[BoxData[
      StyleBox["defaultStyles", "TI"]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "4bb89447-11de-475d-b967-b92386134451"]], "TableText",ExpressionUUID->
-     "43837c7e-c4a0-41e7-93b3-a8dff3d2ee87"], Cell[
+     "dd73c900-66b0-4c6b-bb4e-61d7bb24ee84"]], "TableText",ExpressionUUID->
+     "bf955c5d-7268-42fd-bdad-b914a46d4bdf"], Cell[
     "log type label style rules", "TableText",ExpressionUUID->
-     "66069fc6-be35-4f7f-bd8d-3206ece3f777"]},
+     "5149d7ae-e5cf-4e64-ae07-c4023afbac5d"]},
    {
     StyleBox["\"\<ArgumentSpecification\>\"", "InlineCode"], 
     TagBox[
@@ -3113,7 +3125,7 @@ delayed rules corresponding to the defined interface commands\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->179772323,ExpressionUUID->"89fea34c-aa5d-4db2-9794-82b24e22b186"],
+ CellID->179772323,ExpressionUUID->"b4959a06-5227-44dc-9606-8f11f2a9c9c7"],
 
 Cell[TextData[{
  "With \"POSIX\" set to ",
@@ -3131,7 +3143,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "353ca199-af44-4a87-810b-dcf2f9480c2c"],
+  "693f3c85-53db-4ea6-8ca7-044409716096"],
  ", short options are split into single letter shorthands. For example, \
 \"-abc 10\" will be parsed as ",
  Cell[BoxData[
@@ -3165,7 +3177,7 @@ Cell[TextData[{
      StyleBox["\"\<10\>\"", "Code"]}]}], 
    StyleBox["|>", "Input"]}]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "e29a6e9f-844b-4093-995b-8a165fe90671"],
+  "4d22e433-ea10-4b02-b381-ab7cf7d216f0"],
  "."
 }], "Notes",
  TaggingRules-><|
@@ -3193,7 +3205,7 @@ Cell[TextData[{
   3.973785200024144*^9, 3.973785200961689*^9}, {3.9738433533234787`*^9, 
   3.973843394068844*^9}},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->386730622,ExpressionUUID->"5dbb7aa3-8cd6-450d-ad79-68959377bcea"],
+ CellID->386730622,ExpressionUUID->"2c897c8c-871e-4011-927c-f0f0d90775e1"],
 
 Cell[TextData[{
  "With \"POSIX\" set to ",
@@ -3211,7 +3223,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "221ef031-c89d-44e6-bcf3-1402fd582efe"],
+  "32806c4a-fdd4-4570-acdd-9ba250a45112"],
  ", short options are not split into single letter shorthands. For example, \
 \"-abc 10\" will be parsed as ",
  Cell[BoxData[
@@ -3226,7 +3238,7 @@ Cell[TextData[{
     StyleBox["10", "Input"]}], 
    StyleBox["|>", "Input"]}]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "5dafbd99-8c5a-4f25-af2f-3d09fa0b6967"],
+  "c23406fa-573f-4f10-852c-b6a7df78b786"],
  "."
 }], "Notes",
  TaggingRules-><|
@@ -3253,13 +3265,13 @@ Cell[TextData[{
  CellChangeTimes->{{3.972575015955328*^9, 3.972575025879368*^9}, {
   3.973785197461184*^9, 3.97378519820443*^9}},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->425132284,ExpressionUUID->"596c3bd1-3516-4214-837a-b18e18b42733"],
+ CellID->425132284,ExpressionUUID->"7780b510-8122-4e48-b43b-6dbe3dd5b69d"],
 
 Cell[TextData[{
  Cell[BoxData[
   StyleBox["cmds", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "5585500b-f456-48a0-b907-0d8150eb29e5"],
+  "edcb8a95-de9b-44c7-996c-08c2acd05641"],
  " and the \"InterfaceCommands\" option expect the form ",
  Cell[BoxData[
   RowBox[{"{", 
@@ -3272,20 +3284,20 @@ Cell[TextData[{
      StyleBox["expr", "TI"]}], ",", 
     StyleBox["\[Ellipsis]", "TR"]}], "}"}]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "212f4340-b5df-426b-a12f-2bb0291eddd8"],
+  "57b7f574-f412-493f-ac56-29ead97008cf"],
  "."
 }], "Notes",
  TaggingRules->{},
  CellChangeTimes->{{3.9738410104634438`*^9, 3.97384101937714*^9}, {
   3.973841737254038*^9, 3.973841768759397*^9}, {3.973956673392989*^9, 
   3.973956730656003*^9}},
- CellID->241424807,ExpressionUUID->"72584e80-4f6e-4b70-99da-ef2feeb16838"],
+ CellID->241424807,ExpressionUUID->"1e637b1f-3aed-4089-b644-d3d75b12949a"],
 
 Cell[TextData[{
  Cell[BoxData[
   StyleBox["defaultCommands", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "eaf464de-aca1-472c-8e6a-3f231b715131"],
+  "988b515a-f045-49d1-90fa-2db7d3ec116b"],
  " contains the following commands:"
 }], "Notes",
  TaggingRules-><|
@@ -3311,32 +3323,32 @@ Cell[TextData[{
    PassEventsDown -> False, PassEventsUp -> False},
  CellChangeTimes->{{3.9738397024132357`*^9, 3.973839736284402*^9}},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->310450498,ExpressionUUID->"ad13f4db-1ea3-4cff-abf3-079ea34f447b"],
+ CellID->310450498,ExpressionUUID->"542964b4-2819-47c2-8e1f-0fed2137b491"],
 
 Cell[BoxData[GridBox[{
    {Cell["\"help\" or \"h\" or \"?\"", "TableText",ExpressionUUID->
-     "05f90a3b-94bc-4d57-b7c8-03dbfbf5cd4e"], Cell[
+     "323ab822-57c2-4d0a-b14f-0ed7d3a45542"], Cell[
     "print help message", "TableText",ExpressionUUID->
-     "ee1136ec-1b47-4a9e-9d44-450f4d04f038"]},
+     "6c4ac91e-c934-4b0f-83f6-215461f66223"]},
    {Cell["\"exit\" or \"quit\" or \"q\"", "TableText",ExpressionUUID->
-     "80bfb8e4-8b06-4716-9053-36eeebf347f4"], Cell[
+     "001c68d9-345a-43d0-9e6d-07fa1dc67a52"], Cell[
     "exit the interface", "TableText",ExpressionUUID->
-     "95830855-761b-4015-9256-9595e07daba7"]},
+     "ff1626e2-01cb-48c2-a62b-c347a739c5d1"]},
    {Cell["\"eval\" or \"e\"", "TableText",ExpressionUUID->
-     "b807de0b-441e-480c-a9ed-32e818bff807"], Cell[
+     "4adde824-6dd1-47ec-8b48-08d37f64ac48"], Cell[
     "evaluate code in the session", "TableText",ExpressionUUID->
-     "da5f066b-7d9b-48a3-b0eb-5e1f840c5937"]}
+     "2920435d-6c11-428f-9745-2d972c73010d"]}
   }]], "TableNotes",
  TaggingRules->{},
  CellChangeTimes->{{3.970152401577531*^9, 3.9701524119762774`*^9}, {
   3.973785103498785*^9, 3.973785105010675*^9}},
- CellID->58698425,ExpressionUUID->"38f84570-a2dc-4517-9aa6-bad3a9e9fb94"],
+ CellID->58698425,ExpressionUUID->"30b3634c-7ad5-4730-a691-d815826f436a"],
 
 Cell[TextData[{
  Cell[BoxData[
   StyleBox["defaultCommands", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "9fb0ee36-d7ff-4605-8229-8acde27a4806"],
+  "2532c7c1-812d-499e-ba1b-0577b1f0377c"],
  " is an ",
  Cell[BoxData[
   TagBox[
@@ -3352,17 +3364,17 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "7312b9fe-fc5e-41e6-9923-bd6dcdbc92b9"],
+  "255dee16-e015-4157-88a5-be53ac4594c4"],
  " contain default functions for all the above commands."
 }], "Notes",
  TaggingRules->{},
  CellChangeTimes->{{3.973839834228105*^9, 3.97383985436909*^9}, 
    3.973955990992797*^9, {3.973956209329625*^9, 3.97395622842835*^9}},
- CellID->242101375,ExpressionUUID->"811a7771-7e50-492b-b6e1-393bd63e0ba4"],
+ CellID->242101375,ExpressionUUID->"4b86685b-ba9e-4721-bf42-05929b5d9edb"],
 
 Cell["Positional arguments use unix convention when parsing.", "Notes",
  TaggingRules->{},
- CellID->167478734,ExpressionUUID->"6a6cee9c-40f3-4dc5-89d9-3dc04eeb3b5f"],
+ CellID->167478734,ExpressionUUID->"b00101b5-2644-404b-924d-156e59fefd7a"],
 
 Cell[TextData[{
  "The main command is behind key \"$0\" and all following positional \
@@ -3370,17 +3382,17 @@ arguments that are not part of any option are added with key \"${",
  Cell[BoxData[
   StyleBox["position", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "9ec1478b-2146-4ed3-98a0-84a04b9ce625"],
+  "748309e7-97a7-469a-9159-a1163e8a194c"],
  "}\"."
 }], "Notes",
  TaggingRules->{},
- CellID->222245442,ExpressionUUID->"7b0b8a40-e653-41b8-bec1-4d21832e2d3e"],
+ CellID->222245442,ExpressionUUID->"3813f80a-a281-45ad-91e4-64b6a2212cf2"],
 
 Cell[TextData[{
  "The \"Interface\" blocking loop checks that the variable ",
  Cell[BoxData["CommandLineTools`ShouldExit"], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "7e1cfe13-d6b1-4a43-bf1e-5fec765758a4"],
+  "4b6afef9-7dba-46ad-be2d-75f454fa02dc"],
  " is ",
  Cell[BoxData[
   TagBox[
@@ -3396,7 +3408,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "4c9d857b-f558-4f60-b621-db357d145fdf"],
+  "57a44a24-26d6-49aa-9058-8521412b7e8e"],
  " to continue blocking, so the \"exit\" function simply sets this variable \
 to ",
  Cell[BoxData[
@@ -3413,7 +3425,7 @@ to ",
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "d5fd0e14-d942-4814-962f-11945e234b86"],
+  "765e758d-4d34-4575-873a-8d54f241bea8"],
  "."
 }], "Notes",
  TaggingRules-><|
@@ -3440,13 +3452,13 @@ to ",
  CellChangeTimes->{{3.9737844941747704`*^9, 3.9737844950263023`*^9}, {
   3.9738421148700647`*^9, 3.9738421223615017`*^9}},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->355747966,ExpressionUUID->"698d6dce-b1d9-40bd-bfd3-9910d5f4f721"],
+ CellID->355747966,ExpressionUUID->"d3b28dcd-728f-4362-8275-bca15f9c759d"],
 
 Cell[TextData[{
  Cell[BoxData[
   StyleBox["lvl", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "2182a0af-dfc7-4918-9028-ae2fea686824"],
+  "3f994459-dd53-4e54-ada4-03d93fbd5e6c"],
  " for \"Log\" can be any string."
 }], "Notes",
  TaggingRules-><|
@@ -3472,7 +3484,7 @@ Cell[TextData[{
    PassEventsDown -> False, PassEventsUp -> False},
  CellChangeTimes->{{3.973785769528701*^9, 3.97378576970082*^9}},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->998998080,ExpressionUUID->"810f8ddd-a3c5-4737-9a3f-7f2084c4e226"],
+ CellID->998998080,ExpressionUUID->"23fd9dac-13c1-48aa-8647-2c8c7bac8270"],
 
 Cell[TextData[{
  "\"LogStyles\" expects the form ",
@@ -3483,22 +3495,22 @@ Cell[TextData[{
      StyleBox["style", "TI"]}], ",", 
     StyleBox["\[Ellipsis]", "TR"]}], "}"}]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "e0f1cd22-3cd7-45e6-b4fd-e867878c5170"],
+  "c1ba5352-29be-4dc5-a589-e8bf15e77c7a"],
  ", where ",
  Cell[BoxData[
   StyleBox["style", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "815eabb2-a35d-495d-9eb0-88cb20fc187e"],
+  "dd3da9aa-eb1d-4a03-b459-6438fd1f52f9"],
  " is typically a color specification."
 }], "Notes",
  TaggingRules->{},
- CellID->816070302,ExpressionUUID->"36e58afd-fb08-4715-a7e9-170862999142"],
+ CellID->816070302,ExpressionUUID->"aea870ee-20bd-40b8-ab46-ec4e3c0269df"],
 
 Cell[TextData[{
  Cell[BoxData[
   StyleBox["defaultStyles", "TI"]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "d98bab04-8572-4b87-8d55-bca47fbc3210"],
+  "93854956-d24e-4723-a347-c1bb80cab49d"],
  " corresponds to the following rules:"
 }], "Notes",
  TaggingRules-><|
@@ -3520,7 +3532,7 @@ Cell[TextData[{
   3.9738406027131853`*^9, 3.973840602907064*^9}, {3.973842777608526*^9, 
   3.9738427917972097`*^9}, {3.9738431277995243`*^9, 3.973843147103603*^9}, {
   3.973956043368037*^9, 3.973956045123213*^9}},
- CellID->100656852,ExpressionUUID->"9ccb8436-9410-4565-b3bc-2f2aea18ce31"],
+ CellID->100656852,ExpressionUUID->"a6324087-6cdf-4dec-8292-26eb9b63abd7"],
 
 Cell["\<\
 {
@@ -3535,7 +3547,7 @@ Cell["\<\
 \>", "Program",
  TaggingRules->{},
  CellChangeTimes->{{3.973840202995573*^9, 3.973840208230404*^9}},
- CellID->188958376,ExpressionUUID->"6bf682f6-9379-4cc8-9b6e-557edb36fafd"],
+ CellID->188958376,ExpressionUUID->"d4b57064-e547-42a8-accb-2ef0b53fa9fe"],
 
 Cell[TextData[{
  "Any \"LogType\" not matching a known style will be styled ",
@@ -3553,7 +3565,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "a3de77b4-aee5-43fa-9990-64c1ab68471e"],
+  "37a4df71-05a5-4fe3-b5b7-c6fa4542ae6c"],
  "."
 }], "Notes",
  TaggingRules-><|
@@ -3572,7 +3584,7 @@ Cell[TextData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellChangeTimes->{{3.973842816414542*^9, 3.973842825735977*^9}},
- CellID->105177513,ExpressionUUID->"2b95ac82-97ac-4919-b6b0-5d3d4bd6c288"],
+ CellID->105177513,ExpressionUUID->"174dc134-7615-4806-9422-73625cd3f085"],
 
 Cell["\<\
 The \"ArgumentSpecification\" is a list containing elements of the following \
@@ -3608,41 +3620,41 @@ forms:\
    3.9739565686142883`*^9, 3.973956583870658*^9}, {3.973956629589161*^9, 
    3.973956638611496*^9}},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->396592187,ExpressionUUID->"13065627-8614-4ed2-89e0-d9a7d32e038f"],
+ CellID->396592187,ExpressionUUID->"1dc022d6-b073-46e3-9c18-80d658ed9029"],
 
 Cell[BoxData[GridBox[{
    {Cell[TextData[Cell[BoxData[
      StyleBox["n", "TI"]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "f5a7edc0-984f-4b92-a5cd-6f4dee77f275"]], "TableText",ExpressionUUID->
-     "62c6b852-d427-4c32-8211-8c11fa6182b0"], Cell[TextData[{
+     "82c7575e-b905-497a-a24a-e229dc6b71f8"]], "TableText",ExpressionUUID->
+     "2f257ee7-9821-414f-8a3c-9b0515526b45"], Cell[TextData[{
      "boolean flag with long name ",
      Cell[BoxData[
       StyleBox["n", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "937ed82a-c3f9-4de1-a6ce-41ca11fabc0b"],
+      "f3e9df72-4d95-44f4-ab4a-21293f0a44f2"],
      "."
-    }], "TableText",ExpressionUUID->"ade017c9-4dfe-446c-954c-561a800e2700"]},
+    }], "TableText",ExpressionUUID->"b5896766-0954-4971-9d59-1f9cc9cbccaa"]},
    {Cell[TextData[Cell[BoxData[
      RowBox[{"{", 
       RowBox[{
        StyleBox["n", "TI"], ",", 
        StyleBox["s", "TI"]}], "}"}]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "9ddb4d18-3244-4188-8fc0-6c166ce96482"]], "TableText",ExpressionUUID->
-     "a9ce531e-d10e-4e43-af70-1d844febd782"], Cell[TextData[{
+     "e1255207-8718-4ba4-89a8-d891b08ada46"]], "TableText",ExpressionUUID->
+     "1927c792-73b7-4a59-a7bb-b5e5a6fc1dda"], Cell[TextData[{
      "boolean flag long name ",
      Cell[BoxData[
       StyleBox["n", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "c1620c46-a366-412f-b4cc-9b06781cca72"],
+      "f5a12440-808e-485f-811e-e5e004bdb466"],
      " and short name ",
      Cell[BoxData[
       StyleBox["s", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "43aca30b-2ea2-495f-8126-441d5631f866"],
+      "26bd9faa-4334-4a0e-b8be-cd3a136a0684"],
      "."
-    }], "TableText",ExpressionUUID->"a0352974-553f-4ae4-953d-ec92bd23b55f"]},
+    }], "TableText",ExpressionUUID->"dd4ea629-f721-4d0f-a36d-56095601b1dd"]},
    {Cell[TextData[Cell[BoxData[
      RowBox[{
       RowBox[{"{", 
@@ -3651,25 +3663,25 @@ Cell[BoxData[GridBox[{
         StyleBox["s", "TI"]}], "}"}], "->", 
       StyleBox["pat", "TI"]}]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "185bd44c-f1aa-4e5e-8309-afd53116424b"]], "TableText",ExpressionUUID->
-     "ee879e5c-8ac8-4f7b-aca5-f6a0415aaa1b"], Cell[TextData[{
+     "85599fb4-6741-4c11-9100-23f518c9b07d"]], "TableText",ExpressionUUID->
+     "107c2dcc-db87-4053-b3d5-33ed380fce11"], Cell[TextData[{
      "option with long name ",
      Cell[BoxData[
       StyleBox["n", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "aa7905f6-3f48-42e4-b9f2-3b0950cf01cb"],
+      "8b661191-58e2-4321-94bd-770b62e41706"],
      " and short name ",
      Cell[BoxData[
       StyleBox["s", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "0d7de299-1d4c-4d50-9e3d-315cd5672f79"],
+      "ea854d3c-4af6-4b4d-afef-f3d96187cfb7"],
      " and pattern restriction ",
      Cell[BoxData[
       StyleBox["pat", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "4bf86d8c-e998-40f1-91d5-ce9c771502a5"],
+      "06676386-fe01-4ba6-bd8d-fc88185bc2a4"],
      " on the argument."
-    }], "TableText",ExpressionUUID->"77335efe-411e-4e21-8ef0-b3a10ce2d87d"]},
+    }], "TableText",ExpressionUUID->"2916d6c7-eb96-4960-8cc9-c0dc0690b42a"]},
    {Cell[TextData[Cell[BoxData[
      RowBox[{
       RowBox[{"{", 
@@ -3680,35 +3692,35 @@ Cell[BoxData[GridBox[{
        StyleBox["pat", "TI"], "->", 
        StyleBox["def", "TI"]}]}]], "InlineFormula",
      FontFamily->"Source Sans Pro",ExpressionUUID->
-     "8900d8ed-0b7b-42e6-acf4-ded41c9bb906"]], "TableText",ExpressionUUID->
-     "8f6a6dc7-8274-4ce1-8dbd-3b129c8acde0"], Cell[TextData[{
+     "8f4c84c8-91da-4c7e-b0be-5073b247df57"]], "TableText",ExpressionUUID->
+     "62d3ed70-c8f3-474f-8bbf-cfb4f9af3d4c"], Cell[TextData[{
      "option with long name ",
      Cell[BoxData[
       StyleBox["n", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "43f02bf5-4544-4559-805b-e8da1669a0d0"],
+      "8c288f2c-887a-4a7c-88b1-e8d349eb0f9d"],
      " and short name ",
      Cell[BoxData[
       StyleBox["s", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "67764910-912f-4235-8b04-2d611923797e"],
+      "0c08e589-fa9d-48ee-b4a4-5f92b0c20dcf"],
      " with pattern restriction ",
      Cell[BoxData[
       StyleBox["pat", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "ddda7d2c-2fb0-41c0-abe1-c904a377544f"],
+      "d016e895-c9af-4ccf-a8df-6a25367e165a"],
      " on the argument and default value ",
      Cell[BoxData[
       StyleBox["def", "TI"]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "c7ddee01-e34e-4c42-9bf6-1035d8231a5c"],
+      "02d6d8ae-c9a7-4e51-8ce3-1a233a3af211"],
      "."
-    }], "TableText",ExpressionUUID->"497e60f5-130e-4ba3-9db1-82c1d416aa79"]}
+    }], "TableText",ExpressionUUID->"92bd331b-0a07-45b4-a638-455c49ab8401"]}
   }]], "TableNotes",
  TaggingRules->{},
  CellChangeTimes->{{3.970152422543963*^9, 3.970152438574379*^9}},
- CellID->704812485,ExpressionUUID->"bcb3ac59-57ff-49cb-97b2-f431b14e453c"]
-}, Open  ]]
+ CellID->704812485,ExpressionUUID->"e93c6885-d527-4c48-9526-6a7d15a9069e"]
+}, Closed]]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -3876,19 +3888,19 @@ usage"}], "MoreInfoText"], Background -> GrayLevel[0.949951173440661],
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "80007540-0da0-4105-ae2e-fecc608c1ba3"]
+  "ac7fa661-dcdb-4c4d-ae5b-9029c47b61f8"]
 }], "Section",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Examples"},
  CellTags->{"Examples", "TemplateCellGroup"},
- CellID->294103511,ExpressionUUID->"30e4837b-a0eb-400d-85a9-c19b2e1738f1"],
+ CellID->294103511,ExpressionUUID->"b941a5d2-751d-444e-b00d-4109b95726c3"],
 
 Cell[CellGroupData[{
 
 Cell["Basic Examples", "Subsection",
  TaggingRules->{},
- CellID->2033419264,ExpressionUUID->"3c5283dd-74ab-4916-83b7-5ab7569cfc27"],
+ CellID->486964802,ExpressionUUID->"fd6f4c43-63cf-4baf-9235-477f390b5543"],
 
 Cell[TextData[{
  "Parse the ",
@@ -3906,7 +3918,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "f9f37f59-9bb6-444d-968a-7e77a742216b"],
+  "5b4d4db4-7bb2-49d9-bc14-84ad91a92105"],
  ":"
 }], "Text",
  TaggingRules-><|
@@ -3925,7 +3937,7 @@ Cell[TextData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellTags->"DefaultContent",
- CellID->1308197671,ExpressionUUID->"cd6b5184-d06e-4d60-8fed-1261cdcb5596"],
+ CellID->664480698,ExpressionUUID->"c146d3e5-261c-43c3-ab92-ed5181a66c93"],
 
 Cell[CellGroupData[{
 
@@ -3948,7 +3960,7 @@ Cell[BoxData[
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellTags->"DefaultContent",
  CellLabel->"In[5]:=",
- CellID->1545819298,ExpressionUUID->"21ce53e8-60f5-4b00-89f4-77a36efe0ec2"],
+ CellID->567422415,ExpressionUUID->"0b3a73f0-3018-4061-be45-c9031facb1bc"],
 
 Cell[BoxData[
  RowBox[{"\[LeftAssociation]", 
@@ -3965,7 +3977,7 @@ WolframKernel\"\>"}], ",",
  TaggingRules->{},
  CellTags->"DefaultContent",
  CellLabel->"Out[5]=",
- CellID->1524689422,ExpressionUUID->"adbd9554-867a-4d78-b01d-04496ff5c7b8"]
+ CellID->1695217130,ExpressionUUID->"d8a25b19-03c0-4b08-a1e9-9e7a49e30e5d"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3973,7 +3985,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "33a03e10-7e1e-4f0b-9edd-02ac67611504"],
+   "5efe9786-c8b2-4074-bc21-1cec2b7f16cb"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -3990,7 +4002,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1478046344,ExpressionUUID->"1f3a2b40-6d31-4b08-bc38-7e5c0826c4cd"],
+ CellID->1333645713,ExpressionUUID->"44af146d-5b04-480f-b2d9-b4aba88fd944"],
 
 Cell[TextData[{
  "Use FlagQ to quickly check if an argument is present in the command line, \
@@ -4009,7 +4021,7 @@ always returning ",
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "cc2d7cb7-326a-4e41-8dfd-5918a87e58de"],
+  "13f158a1-3fb3-46c1-93ee-69b19bea27ef"],
  " or ",
  Cell[BoxData[
   TagBox[
@@ -4025,7 +4037,7 @@ always returning ",
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "5c42e220-4c40-4cee-8887-9a4936c56dca"],
+  "e2298e60-3ab0-409a-ad12-7120f888a3d7"],
  ":"
 }], "Text",
  TaggingRules-><|
@@ -4043,7 +4055,7 @@ always returning ",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->967620128,ExpressionUUID->"c24909db-1819-4d0a-957a-48fdf214ac14"],
+ CellID->1911685747,ExpressionUUID->"fd69841c-1da1-4f89-bb96-6f56ed9ae8d1"],
 
 Cell[CellGroupData[{
 
@@ -4070,7 +4082,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[48]:=",
- CellID->456350999,ExpressionUUID->"ca34836b-a8a2-43d0-8bc9-daf7cf0efc15"],
+ CellID->1852946499,ExpressionUUID->"a376f814-1496-4488-9c6a-a7dc901ae605"],
 
 Cell[BoxData["False"], "Output",
  TaggingRules-><|
@@ -4089,7 +4101,7 @@ Cell[BoxData["False"], "Output",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[48]=",
- CellID->1868934214,ExpressionUUID->"36adf91a-57a2-4960-8c0c-62b28b7793b6"]
+ CellID->1986671992,ExpressionUUID->"52b8dc56-9e96-48c1-b895-b37c45c23396"]
 }, Open  ]]
 }, Open  ]],
 
@@ -4098,7 +4110,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "c1b6a4b5-ddb9-4ed4-96eb-0fcd5ac10f6a"],
+   "5a2ac2d2-d724-4b98-be11-9208a2f996e7"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -4115,13 +4127,13 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->378509088,ExpressionUUID->"21953d90-a2a3-4440-898c-871f31a2682f"],
+ CellID->1139935630,ExpressionUUID->"a45ba635-03b2-496d-8e0f-2314ffc9238e"],
 
 Cell["\<\
 Interface creates a blocking interface with predefined commands:\
 \>", "Text",
  TaggingRules->{},
- CellID->1497531972,ExpressionUUID->"c04a523d-70da-43a8-a549-4a0a1b124a3d"],
+ CellID->1746321678,ExpressionUUID->"4c57cdeb-d41a-4a8a-a0b3-b23f342f0077"],
 
 Cell[CellGroupData[{
 
@@ -4146,7 +4158,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[43]:=",
- CellID->1676171859,ExpressionUUID->"0dfa80b6-e94b-4bc7-ab8b-1c367ee042d7"],
+ CellID->1749233485,ExpressionUUID->"af171d96-76dc-4285-89f2-0317976dd09a"],
 
 Cell[BoxData["\<\"Documentation example\\n\\nCommands:\\n\\n\\thelp | h | ?   \
     Show this help message\\n\\texit | quit | q    Exit the \
@@ -4169,7 +4181,7 @@ interface\\n\\teval | e           Evaluate Wolfram Language expression\"\>"], \
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellChangeTimes->{3.973842044806448*^9},
  CellLabel->"During evaluation of In[43]:=",
- CellID->1182100052,ExpressionUUID->"cecd7923-46de-4495-8303-06b19ae22480"]
+ CellID->197761056,ExpressionUUID->"0a6d0c65-ed24-4edd-bb39-3f1493f9a4de"]
 }, Open  ]]
 }, Open  ]],
 
@@ -4178,7 +4190,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "0b1b7376-8225-458e-a35a-d3bc4d3891da"],
+   "e5e081c7-145b-4f5e-85b7-b9513106464f"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -4195,7 +4207,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1514552153,ExpressionUUID->"26cd9606-d73f-44f3-b7b8-efd221bd3990"],
+ CellID->1809359599,ExpressionUUID->"efef5d8d-2e47-47d6-b859-257de9ed6b16"],
 
 Cell["\<\
 Log is a convenient helper for logging to stdout and to a log file (or any \
@@ -4217,7 +4229,7 @@ work within terminal environments:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1024257862,ExpressionUUID->"a721086a-c620-4de5-829d-c75a3b19e99e"],
+ CellID->408297531,ExpressionUUID->"402afc58-fde5-4ccb-bb66-c71b0248b8d6"],
 
 Cell[CellGroupData[{
 
@@ -4242,7 +4254,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[8]:=",
- CellID->319850711,ExpressionUUID->"e9534cac-3f67-477a-8f89-cff4a0c3afec"],
+ CellID->677977502,ExpressionUUID->"c12b6679-40a0-4c4b-9ca4-b8b962d2057d"],
 
 Cell[BoxData["\<\"\[RawEscape][0;38;2;128;128;128;49m[INFO]: \
 \[RawEscape][0mSome log message\"\>"], "Print",
@@ -4262,7 +4274,7 @@ Cell[BoxData["\<\"\[RawEscape][0;38;2;128;128;128;49m[INFO]: \
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"During evaluation of In[8]:=",
- CellID->2066292692,ExpressionUUID->"80d51829-f521-4bc7-82cc-7dd19bf9e810"],
+ CellID->1012731773,ExpressionUUID->"0a67a60f-3065-4524-8043-38a39d93fb53"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -4395,16 +4407,16 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[8]=",
- CellID->1444186163,ExpressionUUID->"332fd8a2-6124-4895-9cde-88912218cc03"]
+ CellID->1669242218,ExpressionUUID->"38b71ce2-7b0c-4020-ae93-a8aeb101c13e"]
 }, Open  ]]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["Scope", "Subsection",
  TaggingRules->{},
- CellID->529122150,ExpressionUUID->"9d4f67e9-8e58-4cd9-b007-ffdd7b1a4553"],
+ CellID->1908059776,ExpressionUUID->"8d4975e4-5f33-49ce-9f35-471ab2a27401"],
 
 Cell[CellGroupData[{
 
@@ -4425,7 +4437,7 @@ Cell["Parse", "Subsubsection",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellTags->"DefaultContent",
- CellID->1330653407,ExpressionUUID->"260a3c56-6cd2-4294-a78b-c2519fb125e9"],
+ CellID->1692092153,ExpressionUUID->"d10bf89a-d251-4508-bf23-0330cdd73180"],
 
 Cell["\<\
 By default, the parser has no expected arguments and will accept almost any \
@@ -4446,7 +4458,7 @@ POSIX form with the exception of single-letter short flags:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->424764915,ExpressionUUID->"ca2e892f-68d9-4e84-be4b-ea7b791e6925"],
+ CellID->1027711018,ExpressionUUID->"73481cae-0504-4bb2-bde5-ff1e907f7f82"],
 
 Cell[CellGroupData[{
 
@@ -4473,7 +4485,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[35]:=",
- CellID->1809637198,ExpressionUUID->"02f3d740-43a5-48ae-b8c5-e73c0c557e39"],
+ CellID->845706510,ExpressionUUID->"ad28f672-a897-4752-b52a-e0d7d94433f2"],
 
 Cell[BoxData[
  RowBox[{"\[LeftAssociation]", 
@@ -4505,7 +4517,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[35]=",
- CellID->1279078020,ExpressionUUID->"2ff33faa-11c7-401f-ba3d-04caf558680d"]
+ CellID->1791836961,ExpressionUUID->"1fdb4e18-a85a-4af9-86c4-36a40ffe72d3"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -4513,7 +4525,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "5315098c-e174-44da-9b9f-a9d8b7b8ce2c"],
+   "4acfce3f-ba23-4d4f-8e61-d1347ac8bd27"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -4530,13 +4542,13 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1489554021,ExpressionUUID->"243d0cef-a98d-42d9-afbb-e80aec841026"],
+ CellID->1153478612,ExpressionUUID->"9c482f34-b770-4d4d-a1ba-6af4b683e3bb"],
 
 Cell[TextData[{
  "To avoid providing options each time ",
  Cell[BoxData["CommandLineTools"], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "92a86a83-f220-4898-aa5f-1f0c82266a2c"],
+  "886658ed-a1d3-454d-b9c4-87c9d2ae5428"],
  " is called, the session defaults can be changed using ",
  Cell[BoxData[
   TagBox[
@@ -4552,7 +4564,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "76b1b3e3-5818-4df2-a690-57b1c359eb06"],
+  "6bf0d865-24c2-4e52-9656-8f62970e35b5"],
  ":"
 }], "Text",
  TaggingRules-><|
@@ -4571,7 +4583,7 @@ Cell[TextData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellChangeTimes->{{3.973785520251218*^9, 3.973785521130445*^9}},
- CellID->2139363099,ExpressionUUID->"8c1c3548-c018-41ed-9fc3-89675d0f93fe"],
+ CellID->10584192,ExpressionUUID->"699aed80-d802-4e4a-afd9-f75d03ed75a3"],
 
 Cell[CellGroupData[{
 
@@ -4600,7 +4612,7 @@ Cell[BoxData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[9]:=",
- CellID->2101487850,ExpressionUUID->"222d7f39-57c5-48a4-abee-2d86e1b6f8b5"],
+ CellID->1903663055,ExpressionUUID->"a93602f7-7c29-4702-9b2f-abdb2f324003"],
 
 Cell[BoxData[
  RowBox[{"\[LeftAssociation]", 
@@ -4632,7 +4644,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[10]=",
- CellID->1010892779,ExpressionUUID->"86c823e6-b6a9-4748-9273-16df1c84a342"]
+ CellID->897397948,ExpressionUUID->"155424cf-a609-4491-804d-b5ce814b9137"]
 }, Open  ]]
 }, Open  ]],
 
@@ -4641,7 +4653,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "efd52809-d8c6-493d-b3aa-5aa198e298ad"],
+   "10d1de51-a2c9-4d73-bc6a-66f6b101dd58"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -4658,7 +4670,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->914283493,ExpressionUUID->"7054eb52-9ee1-4157-b433-4a5c4ba2af38"],
+ CellID->1734752222,ExpressionUUID->"498538aa-1a61-40f7-b9a8-bde525c35670"],
 
 Cell["Parse for a specified option:", "Text",
  TaggingRules-><|
@@ -4676,7 +4688,7 @@ Cell["Parse for a specified option:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->994192573,ExpressionUUID->"86213848-61ef-4361-a371-923490f12476"],
+ CellID->457213476,ExpressionUUID->"a975a9c4-103b-443a-bfef-2ff2108ba26d"],
 
 Cell[CellGroupData[{
 
@@ -4706,7 +4718,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[11]:=",
- CellID->1863459543,ExpressionUUID->"1bd619a0-83ce-47a3-9c59-013538b33e1a"],
+ CellID->801703070,ExpressionUUID->"f4b596a1-3cc4-42b6-ad7e-703060c1014e"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -4735,7 +4747,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[11]=",
- CellID->1725275638,ExpressionUUID->"8d7b9ca8-4b44-499a-89c4-3c97083675b2"]
+ CellID->1576504726,ExpressionUUID->"5bdaef79-51d7-4286-b234-5a4e193fdd97"]
 }, Open  ]]
 }, Open  ]],
 
@@ -4744,7 +4756,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "fb1c32cf-db53-479a-9bda-6380e970b6fc"],
+   "a604ccaa-9d75-461c-bd5e-8209326baf71"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -4761,7 +4773,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->4207063,ExpressionUUID->"def50ac1-102c-4d35-9309-14b1e449a4fe"],
+ CellID->1562141883,ExpressionUUID->"a90b9576-ad98-4e44-871d-ded5c1b4b617"],
 
 Cell["\<\
 You can enable full POSIX parsing for single-character short options using \
@@ -4782,7 +4794,7 @@ the \"POSIX\" option:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1749395159,ExpressionUUID->"bda4141c-766e-4b1b-86e5-21cce9f74a01"],
+ CellID->1288667872,ExpressionUUID->"b05de226-7e56-4477-a637-b9b95c4f1745"],
 
 Cell[CellGroupData[{
 
@@ -4806,7 +4818,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[60]:=",
- CellID->885989662,ExpressionUUID->"bff286ec-6443-416c-9a63-186ee71947cd"],
+ CellID->93501776,ExpressionUUID->"6bf409eb-b3f2-4049-bc99-3356d1f565b4"],
 
 Cell[BoxData[
  RowBox[{"\[LeftAssociation]", 
@@ -4840,7 +4852,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[60]=",
- CellID->1550026361,ExpressionUUID->"826326b9-b609-4453-9735-53d71ef3a256"]
+ CellID->2129564298,ExpressionUUID->"7b462ab0-d18e-4c78-843d-1a7cc04ec6c9"]
 }, Open  ]]
 }, Open  ]],
 
@@ -4849,7 +4861,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "b19de16f-5277-4c0d-96b3-dfcdce75ebf5"],
+   "56a45cfd-38d4-4cb1-b57b-fba354df9883"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -4866,7 +4878,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1126600934,ExpressionUUID->"f5a381ad-2e9b-4de6-bcb1-b7a2029be180"],
+ CellID->836401354,ExpressionUUID->"0f20e936-710c-4763-9b7b-c2a7ef044453"],
 
 Cell["Define an expected argument pattern and new test command:", "Text",
  TaggingRules-><|
@@ -4884,7 +4896,7 @@ Cell["Define an expected argument pattern and new test command:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->216552358,ExpressionUUID->"0a9cd419-e560-4237-9342-c4e15c6fe57d"],
+ CellID->1427147489,ExpressionUUID->"b1e90eb5-8843-4830-b42a-397c233343a0"],
 
 Cell[CellGroupData[{
 
@@ -4941,7 +4953,7 @@ Cell[BoxData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[36]:=",
- CellID->370162841,ExpressionUUID->"f0e503dd-3205-4d77-8727-32cfb1aaf2c0"],
+ CellID->1893766397,ExpressionUUID->"b7f77cd8-af5a-4192-bfd3-62874491283c"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -5497,7 +5509,7 @@ kClutoAaBlDDBv+D318=
   PlotRange->{{0, 167.5}, {0, 267.}}]], "Output",
  TaggingRules->{},
  CellLabel->"Out[38]=",
- CellID->1582951933,ExpressionUUID->"c8031601-20fa-404c-a1d7-5ca33a91e205"]
+ CellID->541864205,ExpressionUUID->"a3ffa209-ac95-4db1-86b7-5cdc878512b5"]
 }, Open  ]]
 }, Open  ]],
 
@@ -5506,7 +5518,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "00c98e74-dfd0-4631-8ae1-8fad198deff7"],
+   "5c20ed71-bb8c-47d6-bb08-fdf997ba0da1"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -5523,7 +5535,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->2085486573,ExpressionUUID->"1ba578ae-b563-41a4-98f0-d474997d3362"],
+ CellID->1266335834,ExpressionUUID->"0ed3ae92-c29f-4af7-98cf-ede44d16f697"],
 
 Cell["\<\
 By default, unknown arguments will be parsed as strings or boolean flags:\
@@ -5543,7 +5555,7 @@ By default, unknown arguments will be parsed as strings or boolean flags:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->748671929,ExpressionUUID->"99a8aea1-3f18-4c69-b48e-eb34023ac282"],
+ CellID->886218380,ExpressionUUID->"007c62f3-6876-41fb-839a-4b6cce5ac531"],
 
 Cell[CellGroupData[{
 
@@ -5579,7 +5591,7 @@ Cell[BoxData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[39]:=",
- CellID->933000257,ExpressionUUID->"3a3ef26f-4e2c-4861-a4d5-3d1dd5913f53"],
+ CellID->140702235,ExpressionUUID->"66948736-210b-4eab-9b4e-b70f111295ee"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -6269,7 +6281,7 @@ GWDZGQGw7DLAsjMCYNllgGVnBEDd7H0j7zJOgs8/IwDqZp8wDFM7eJ1hmNrB
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[40]=",
- CellID->1614174784,ExpressionUUID->"6bfc0b2f-e9d5-4cea-af3f-ecd5d2f1df33"]
+ CellID->868085671,ExpressionUUID->"ce72b885-75ff-473e-b8e6-c5b1e5d2530f"]
 }, Open  ]],
 
 Cell["\<\
@@ -6290,7 +6302,7 @@ This behaviour can be changed by disabling the \"StrictParse\" option:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1930771981,ExpressionUUID->"6ca95c19-f6bd-42e2-a552-1e2dbcee09d1"],
+ CellID->1083979436,ExpressionUUID->"136deec0-5d16-496e-9570-3acf3b181a98"],
 
 Cell[CellGroupData[{
 
@@ -6318,7 +6330,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[41]:=",
- CellID->300068762,ExpressionUUID->"65a3ed9a-ce6f-4b45-ab9f-5dbe3297e217"],
+ CellID->1950061834,ExpressionUUID->"0e321f1c-7087-4153-95cb-5b6d816a192d"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -6365,7 +6377,8 @@ Cell[BoxData[
                  GridBoxSpacings -> {"Columns" -> {{0}}}], "SummaryItem"]}}, 
              GridBoxAlignment -> {
               "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
-             False, GridBoxItemSize -> {
+             False, 
+             GridBoxItemSize -> {
               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
              GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
               BaseStyle -> {
@@ -6507,7 +6520,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[41]=",
- CellID->490948998,ExpressionUUID->"4324fdfc-e36e-44b7-b1f8-2499949e0314"]
+ CellID->1276383203,ExpressionUUID->"20fd95b4-9963-48c0-808c-0ada59738080"]
 }, Open  ]]
 }, Open  ]]
 }, Closed]],
@@ -6531,7 +6544,7 @@ Cell["FlagQ", "Subsubsection",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellTags->"DefaultContent",
- CellID->103139044,ExpressionUUID->"ac868221-5ef3-4103-b04d-b0192e3efe41"],
+ CellID->1761956938,ExpressionUUID->"c76a4077-9663-42c6-9cc8-cec609243909"],
 
 Cell[TextData[{
  "FlagQ parses combined shorthand options if POSIX is set to ",
@@ -6549,7 +6562,7 @@ Cell[TextData[{
     ContentPadding->False],
    MouseAppearanceTag["LinkHand"]]], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "62cfb43b-2a43-4685-91fd-cfbfb6e36704"],
+  "f35faf7d-6474-42f2-8cdf-89b4ae409bb3"],
  ":"
 }], "Text",
  TaggingRules-><|
@@ -6567,7 +6580,7 @@ Cell[TextData[{
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->218877806,ExpressionUUID->"6a65b268-eeee-4c64-8c7f-49999675c81d"],
+ CellID->815309959,ExpressionUUID->"ad618cfe-35dc-41de-978e-8e65212fdabd"],
 
 Cell[CellGroupData[{
 
@@ -6595,7 +6608,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[1]:=",
- CellID->1935135161,ExpressionUUID->"0bfe6861-04d4-4889-9a31-39d6300693dc"],
+ CellID->798141773,ExpressionUUID->"eb7e2b51-a052-462b-aebe-b57e1ad76885"],
 
 Cell[BoxData["True"], "Output",
  TaggingRules-><|
@@ -6614,7 +6627,7 @@ Cell[BoxData["True"], "Output",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[1]=",
- CellID->632261195,ExpressionUUID->"2ba6b1cd-6b4b-49fe-81b5-3d811ee1085d"]
+ CellID->1522533066,ExpressionUUID->"9a34ae03-45cb-4552-831b-7198ba0cfa13"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -6622,7 +6635,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "fd835a69-804f-4e54-b26d-19b77ade8733"],
+   "8d1f2eb0-b5d1-4dc2-9791-65905d67c727"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -6639,7 +6652,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1549531214,ExpressionUUID->"2bb9a7cb-da4d-43f1-b1ac-f1964e0fb2f7"],
+ CellID->359918464,ExpressionUUID->"798a7f84-40c6-4ab0-b42f-79dcd5639139"],
 
 Cell["FlagQ is around 10 to 25 times faster than the Parse method:", "Text",
  TaggingRules-><|
@@ -6658,7 +6671,7 @@ Cell["FlagQ is around 10 to 25 times faster than the Parse method:", "Text",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellChangeTimes->{{3.973785641130831*^9, 3.973785641771776*^9}},
- CellID->212416429,ExpressionUUID->"f2674ab5-817b-443e-bfc3-7148bde254ad"],
+ CellID->1825852791,ExpressionUUID->"42b6a4ac-834f-42e2-a74e-2f33c8a8eb38"],
 
 Cell[CellGroupData[{
 
@@ -6700,7 +6713,7 @@ Cell[BoxData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[91]:=",
- CellID->294414745,ExpressionUUID->"b79e5fb0-01be-494f-867a-743f7ea1bc9a"],
+ CellID->220755928,ExpressionUUID->"257bb751-8f04-4900-a5e4-995657bad793"],
 
 Cell[BoxData[
  TagBox[
@@ -6737,7 +6750,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[92]//TableForm=",
- CellID->681125586,ExpressionUUID->"e810628b-8542-4c40-bf81-b072299c3cd5"]
+ CellID->4271777,ExpressionUUID->"4ad40ed5-91c9-4fbf-b65a-3926aef9f19c"]
 }, Open  ]]
 }, Open  ]]
 }, Closed]],
@@ -6761,7 +6774,7 @@ Cell["Interface", "Subsubsection",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellTags->"DefaultContent",
- CellID->1701970450,ExpressionUUID->"314cd406-3a70-49ec-9d15-5c3e4c5fa7d3"],
+ CellID->831847755,ExpressionUUID->"58682da2-8477-4fe4-b769-709ca8ff2dc4"],
 
 Cell["\<\
 More custom commands can also be defined using a second argument:\
@@ -6781,7 +6794,7 @@ More custom commands can also be defined using a second argument:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->286294197,ExpressionUUID->"c75873c9-2a2d-40fe-90c9-4bdd78a2dba7"],
+ CellID->231340120,ExpressionUUID->"1e850b70-cf2b-4dea-a133-9784b793f8d3"],
 
 Cell[CellGroupData[{
 
@@ -6813,7 +6826,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[40]:=",
- CellID->635129788,ExpressionUUID->"d4f3bf6c-bdd2-4e72-84a9-9a57212edc63"],
+ CellID->1907934832,ExpressionUUID->"f0ab7d18-e99f-46a1-b6df-bb555c10d6d4"],
 
 Cell[CellGroupData[{
 
@@ -6837,7 +6850,7 @@ expression\\n\\tcustom | c         Custom command\"\>"], "Print",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"During evaluation of In[40]:=",
- CellID->565379581,ExpressionUUID->"31b00c03-1258-48ab-9268-ca290a42e472"],
+ CellID->1729245703,ExpressionUUID->"8a1d59d8-d6d3-429a-948f-87cb970e32df"],
 
 Cell[BoxData["\<\"Running custom command\"\>"], "Print",
  TaggingRules-><|
@@ -6856,7 +6869,7 @@ Cell[BoxData["\<\"Running custom command\"\>"], "Print",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"During evaluation of In[40]:=",
- CellID->1200577690,ExpressionUUID->"a4b1b52e-ff40-4480-bd13-c3da42ba28e2"]
+ CellID->1966092342,ExpressionUUID->"132590c7-94c3-4d3b-a957-2810dd319b3f"]
 }, Open  ]]
 }, Open  ]]
 }, Closed]],
@@ -6880,7 +6893,7 @@ Cell["Log", "Subsubsection",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellTags->"DefaultContent",
- CellID->1629322362,ExpressionUUID->"861e996d-6a79-4d24-9132-8ec41cc7ded4"],
+ CellID->217664661,ExpressionUUID->"f8a2c492-91fd-4cb9-93b4-485e7a3f1e23"],
 
 Cell["\<\
 Log is a convenient helper for logging to stdout and to a log file (or any \
@@ -6902,7 +6915,7 @@ work within terminal environments:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->281355476,ExpressionUUID->"5bada597-7c96-4abc-b6ac-06bc3e2ea53f"],
+ CellID->383465125,ExpressionUUID->"a632bb66-8f9a-490d-bcf6-78b0799988ed"],
 
 Cell[CellGroupData[{
 
@@ -6927,7 +6940,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[186]:=",
- CellID->778369680,ExpressionUUID->"190386cf-b15c-4fdc-94f1-e058b986f461"],
+ CellID->1395113421,ExpressionUUID->"880268e7-6a48-4204-b580-bb569b74bfc1"],
 
 Cell[BoxData["\<\"\[RawEscape][0;38;2;128;128;128;49m[INFO]: \
 \[RawEscape][0mSome log message\"\>"], "Print",
@@ -6947,7 +6960,7 @@ Cell[BoxData["\<\"\[RawEscape][0;38;2;128;128;128;49m[INFO]: \
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"During evaluation of In[186]:=",
- CellID->1633529425,ExpressionUUID->"76a718c9-6471-42e2-b911-19928f7c9d32"],
+ CellID->1779806544,ExpressionUUID->"3e55efa6-1915-4cbb-aca0-df7fbd151c53"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -7043,8 +7056,7 @@ Cell[BoxData[
                  TagBox["\"messaged-logged\"", "SummaryItem"]}]}}, 
              GridBoxAlignment -> {
               "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
-             False, 
-             GridBoxItemSize -> {
+             False, GridBoxItemSize -> {
               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
              GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
               BaseStyle -> {
@@ -7081,7 +7093,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[186]=",
- CellID->2030750636,ExpressionUUID->"f7d7768e-8cac-45c0-8336-0a80c1691cb9"]
+ CellID->1672132997,ExpressionUUID->"4455be84-74d0-458d-9bc7-06489d38cd82"]
 }, Open  ]],
 
 Cell["\<\
@@ -7103,7 +7115,7 @@ can be changed with an option:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1664359342,ExpressionUUID->"8f9fe0c2-62c9-433d-9090-3d8fc90cbe1f"],
+ CellID->1488615197,ExpressionUUID->"59a26d4c-24c6-4d52-9e11-a9a73c55ff3d"],
 
 Cell[CellGroupData[{
 
@@ -7128,7 +7140,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[187]:=",
- CellID->1036072138,ExpressionUUID->"362e5a17-bcd6-4682-a710-010a843ab9c5"],
+ CellID->1761887194,ExpressionUUID->"d37aac08-1505-4b67-bac4-f2a15c9ca636"],
 
 Cell[BoxData["\<\"01:05:01 - [INFO]: Some log message\"\>"], "Output",
  TaggingRules-><|
@@ -7147,7 +7159,7 @@ Cell[BoxData["\<\"01:05:01 - [INFO]: Some log message\"\>"], "Output",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[187]=",
- CellID->1009867922,ExpressionUUID->"648a7d41-7623-4bc2-a265-1ff87d2411f6"]
+ CellID->361050703,ExpressionUUID->"e2d8ef66-7a89-48cd-bf8f-78df137f5856"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -7155,7 +7167,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "5788418f-34c7-4a88-a3b7-060deb4b644f"],
+   "553d367e-e8ba-4da2-8402-3189f8d78566"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules-><|
   "ChatNotebookSettings" -> <|
@@ -7172,7 +7184,7 @@ Cell[BoxData[
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1880911701,ExpressionUUID->"82965dbd-c225-40f7-9d1a-ba5e8a176d8d"],
+ CellID->768279039,ExpressionUUID->"ec3c9233-baf8-491f-8d85-573aac61bc2e"],
 
 Cell["Create a collection of loggers:", "Text",
  TaggingRules-><|
@@ -7190,7 +7202,7 @@ Cell["Create a collection of loggers:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1406234979,ExpressionUUID->"ca23bad2-7331-4f9f-9646-c6c9183263fc"],
+ CellID->1508169944,ExpressionUUID->"4f8ed8e7-4197-4f39-a74b-7d671809a3ca"],
 
 Cell[CellGroupData[{
 
@@ -7224,7 +7236,7 @@ Cell[BoxData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[18]:=",
- CellID->445336207,ExpressionUUID->"46d99b53-dede-4fa1-9f7b-4e5ef56be73f"],
+ CellID->902914908,ExpressionUUID->"227bd03b-44db-42ea-8015-7951a0453768"],
 
 Cell[CellGroupData[{
 
@@ -7246,7 +7258,7 @@ Cell[BoxData["\<\"\[RawEscape][0;38;2;128;128;128;49m[INFO]: \
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"During evaluation of In[18]:=",
- CellID->1818914626,ExpressionUUID->"39b01598-60e6-4d37-8613-63eddd795526"],
+ CellID->2034614873,ExpressionUUID->"900364dc-2201-482c-8a4b-dd10b38b79c2"],
 
 Cell[BoxData["\<\"\[RawEscape][0;31;49m[ERROR]: \[RawEscape][0mError\"\>"], \
 "Print",
@@ -7266,7 +7278,7 @@ Cell[BoxData["\<\"\[RawEscape][0;31;49m[ERROR]: \[RawEscape][0mError\"\>"], \
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"During evaluation of In[18]:=",
- CellID->7423260,ExpressionUUID->"c3324f33-9830-4869-9149-ce50a442aa85"]
+ CellID->246904676,ExpressionUUID->"612d35bb-2212-4a3d-8f91-88236aa03e34"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -7400,7 +7412,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[21]=",
- CellID->1378336464,ExpressionUUID->"cd51e407-f579-4d2c-a0a7-a348dd45072e"]
+ CellID->1043617143,ExpressionUUID->"d0b8383e-13f8-48ab-ac83-3039bd04d992"]
 }, Open  ]]
 }, Open  ]]
 }, Closed]],
@@ -7423,7 +7435,7 @@ Cell["Help", "Subsubsection",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1285605762,ExpressionUUID->"f668c9ed-facd-4c30-9ebf-f9a0fc3d94d7"],
+ CellID->755216896,ExpressionUUID->"479cdae4-ec4a-4cf9-aaff-480b0e60a8c1"],
 
 Cell["\<\
 Help automatically generates a help message based on your options and \
@@ -7444,7 +7456,7 @@ commands:\
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1938195242,ExpressionUUID->"d40f5fa0-dcf5-4540-b797-594f13efaab4"],
+ CellID->1330884112,ExpressionUUID->"1b038296-5b13-4600-ab55-1b399746ee79"],
 
 Cell[CellGroupData[{
 
@@ -7511,7 +7523,7 @@ Cell[BoxData[{
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[26]:=",
- CellID->1678405226,ExpressionUUID->"9064341c-dc46-4926-a37a-4c283642582d"],
+ CellID->846195329,ExpressionUUID->"e1231f61-89c3-476e-839f-184264ec5f33"],
 
 Cell[BoxData["\<\"CommandLineTools documentation example \
 message\\n\\nCommands:\\n\\n\\tc | custom    Print x to the console\\n\\tq | \
@@ -7535,7 +7547,7 @@ False)\\n\\t--flag2, -a <Boolean> (default: False)\\n\\t--flag3, -b <Integer>\
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[27]=",
- CellID->1776554760,ExpressionUUID->"748cff47-202d-4a98-be26-cde86ae340a3"]
+ CellID->2031600099,ExpressionUUID->"2da7bddf-86aa-4a31-85c8-7707d7ee4542"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -7543,16 +7555,16 @@ Cell[CellGroupData[{
 Cell[BoxData[
  InterpretationBox[Cell[
   "\t", "ExampleDelimiter",ExpressionUUID->
-   "dfecbd53-e731-4946-8d90-baa17d6f997c"],
+   "5437af0b-0838-4ae7-a081-349619be3061"],
   $Line = 0; Null]], "ExampleDelimiter",
  TaggingRules->{},
- CellID->2041334286,ExpressionUUID->"a4e8f5d5-561b-470e-9cd3-4ac417fef422"],
+ CellID->945357403,ExpressionUUID->"a988df25-d10d-44d7-9e48-e39a8404c908"],
 
 Cell["\<\
 The interface or option sections can be disabled if not required:\
 \>", "Text",
  TaggingRules->{},
- CellID->1897283033,ExpressionUUID->"5581f7eb-521b-41a6-9293-333d73246c25"],
+ CellID->1661505288,ExpressionUUID->"5ea5fe45-5c89-4651-bf1a-e81457184792"],
 
 Cell[CellGroupData[{
 
@@ -7564,13 +7576,13 @@ Cell[BoxData[
  
  TaggingRules->{},
  CellLabel->"In[28]:=",
- CellID->1564206274,ExpressionUUID->"eb1f3f18-f91c-47e3-87c7-985e432b3230"],
+ CellID->682258224,ExpressionUUID->"9b33a2ff-e5f8-47b7-9fed-328a03fcb5c8"],
 
 Cell[BoxData["\<\"CommandLineTools documentation example message\"\>"], \
 "Output",
  TaggingRules->{},
  CellLabel->"Out[28]=",
- CellID->526111833,ExpressionUUID->"eb41b036-dbf7-4e16-8707-0e455885a721"]
+ CellID->320406821,ExpressionUUID->"5a71a3bc-8840-421c-ad50-bf9c802081e2"]
 }, Open  ]]
 }, Open  ]]
 }, Closed]]
@@ -7594,13 +7606,13 @@ Cell["Applications", "Subsection",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1299330599,ExpressionUUID->"b6c4727d-4efb-480d-8cdc-fde350422a7c"],
+ CellID->2021423752,ExpressionUUID->"da39fe58-a26d-4740-86fb-1e08715fc0e6"],
 
 Cell[TextData[{
  "Define an example script deploying a local WL HTTP server using ",
  Cell[BoxData["LocalDeploy"], "InlineFormula",
   FontFamily->"Source Sans Pro",ExpressionUUID->
-  "2a07cc55-bf3b-49c8-8fd4-5d31e1695985"],
+  "b25bad95-9da5-4771-902f-79f0814e49c1"],
  ":"
 }], "Text",
  TaggingRules-><|
@@ -7618,7 +7630,7 @@ Cell[TextData[{
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1776622703,ExpressionUUID->"9006a6fd-347e-4ff1-97f1-a1eadf6afec5"],
+ CellID->360627367,ExpressionUUID->"7996efb5-83d6-406a-9544-37716ab3e5bf"],
 
 Cell[BoxData[
  RowBox[{"code", " ", "=", " ", 
@@ -7786,7 +7798,7 @@ Cell[BoxData[
    "]"}]}]], "Input",
  TaggingRules->{},
  CellChangeTimes->{{3.970153770832568*^9, 3.970153772387226*^9}},
- CellID->820526579,ExpressionUUID->"c2e77ccf-b242-4348-b9c3-dc3c80dbb6f7"],
+ CellID->541162750,ExpressionUUID->"20fe9ed2-f0e2-4de5-be8e-74918c645346"],
 
 Cell["Export the script:", "Text",
  TaggingRules-><|
@@ -7804,7 +7816,7 @@ Cell["Export the script:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1980456185,ExpressionUUID->"707bc8be-91cf-4515-b839-42fef72bba7d"],
+ CellID->2025695529,ExpressionUUID->"59824548-613a-4795-af9e-77eef3ef4b93"],
 
 Cell[CellGroupData[{
 
@@ -7823,7 +7835,7 @@ Cell[BoxData[
      "\n", "\t", "]"}]}], ",", "\n", "\t", "\"\<Text\>\""}], "\n", " ", 
   "]"}]], "Input",
  TaggingRules->{},
- CellID->1331109505,ExpressionUUID->"73174b2f-acfb-4633-9567-2fef176f194c"],
+ CellID->1192475122,ExpressionUUID->"421ced3a-0436-48d5-994a-2ec26be696b0"],
 
 Cell[BoxData["\<\"http-example.wls\"\>"], "Output",
  TaggingRules-><|
@@ -7842,7 +7854,7 @@ Cell[BoxData["\<\"http-example.wls\"\>"], "Output",
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[2]=",
- CellID->1106820776,ExpressionUUID->"a5339b6d-5cf2-43b8-8b36-ea49b8d31295"]
+ CellID->772502870,ExpressionUUID->"ffb60acf-0dd9-4c5c-bea7-5ec96aa40c1c"]
 }, Open  ]],
 
 Cell["Get help on how to run the script:", "Text",
@@ -7861,7 +7873,7 @@ Cell["Get help on how to run the script:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->468102326,ExpressionUUID->"e7b49050-52a3-4cd9-8511-097b2b4ac6d8"],
+ CellID->1786146713,ExpressionUUID->"6bec25a1-5aeb-44cf-9bde-228a509ab899"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -11126,7 +11138,7 @@ tEVuVjmFAspIu4SIQ2WsJ22FvmyVxSsLtnmoCn57bJd7Z3BGqC++twgfhAgS
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1896489086,ExpressionUUID->"e07dcf1f-6432-4e3a-bfb6-611715f82cb9"],
+ CellID->774237177,ExpressionUUID->"719bc39c-2d72-4739-944c-1acf67592d2d"],
 
 Cell["Run the script:", "Text",
  TaggingRules-><|
@@ -11144,7 +11156,7 @@ Cell["Run the script:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->159914818,ExpressionUUID->"b50548db-3fa9-497b-a26d-3ba303faec4c"],
+ CellID->591111565,ExpressionUUID->"6504359d-2429-4062-972c-caa5c4c57ee3"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -12125,7 +12137,7 @@ Ad0QUf8=
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->2097424688,ExpressionUUID->"0d8b6495-4884-4cc2-96dc-c10c5b10a6b5"],
+ CellID->2003811374,ExpressionUUID->"bfee0243-fb60-4e68-8049-a57efd2eb311"],
 
 Cell["Evaluate an expression in the session:", "Text",
  TaggingRules-><|
@@ -12143,7 +12155,7 @@ Cell["Evaluate an expression in the session:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->30360915,ExpressionUUID->"8fc73e5b-777c-4e46-816b-8c5cd0ffe502"],
+ CellID->1157702302,ExpressionUUID->"ffa5a9bc-ffde-4554-b089-0c402672a667"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -14369,7 +14381,7 @@ cVsbWY38TPXk/wfWAxes
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->938284498,ExpressionUUID->"fd5e7cfc-7d38-4709-8411-7a0c5258800d"],
+ CellID->1986224986,ExpressionUUID->"2df66cfd-2bee-4f07-ac4e-e0a0a533796b"],
 
 Cell["Make a request to the server:", "Text",
  TaggingRules-><|
@@ -14387,7 +14399,7 @@ Cell["Make a request to the server:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->1583470465,ExpressionUUID->"8c33052c-33cf-4817-9257-8f563682b974"],
+ CellID->1636134270,ExpressionUUID->"85d4a9ee-d170-41ee-94ab-1c64367f7d53"],
 
 Cell[CellGroupData[{
 
@@ -14416,7 +14428,7 @@ Cell[BoxData[
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"In[7]:=",
- CellID->2061111551,ExpressionUUID->"488ed5b2-22fa-4958-9da4-348defb7fe57"],
+ CellID->682351651,ExpressionUUID->"07e8a1a8-d123-40f9-85e7-a5729263a9b1"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -14639,7 +14651,7 @@ P/7xj3/84x//Kv7v/wAuQrKH
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
  CellLabel->"Out[7]=",
- CellID->455160193,ExpressionUUID->"15ca7d40-e717-4267-bb7b-07507747bd32"]
+ CellID->1327356535,ExpressionUUID->"27f0e9c8-4360-49da-80ba-9b33318ee5a4"]
 }, Open  ]],
 
 Cell["Exit the script using the quit command:", "Text",
@@ -14658,7 +14670,7 @@ Cell["Exit the script using the quit command:", "Text",
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->472058955,ExpressionUUID->"5fe43570-d0c9-46fc-aef6-d855443bba5b"],
+ CellID->1250537817,ExpressionUUID->"6d68a607-3eea-46c0-8544-3679ed130a44"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -17578,7 +17590,7 @@ SUABBpmEDJombfEnMpdqkrJNH02oU/A/kFNPzPYfId7/Baa75u8=
       "Service" -> "Anthropic", "Name" -> "claude-opus-4-20250514"|>, 
      "ServiceDefaultModel" -> <|
       "OpenAI" -> "gpt-4.1", "Anthropic" -> "claude-opus-4-20250514"|>|>|>,
- CellID->923495825,ExpressionUUID->"31ddfe9e-fb4c-4e46-9b33-a45d9cae88d0"]
+ CellID->1043402354,ExpressionUUID->"bfa840f3-9f2c-4d31-aff6-287f24b7fdab"]
 }, Closed]]
 }, Closed]],
 
@@ -17589,7 +17601,7 @@ Cell["Source & Additional Information", "Section",
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Source & Additional Information"},
  CellTags->{"Source & Additional Information", "TemplateSection"},
- CellID->132008035,ExpressionUUID->"22966b7d-a1cd-4265-832b-7ed518c7a70f"],
+ CellID->132008035,ExpressionUUID->"8b97cb4e-c197-4df3-95ec-f0888cc4095b"],
 
 Cell[CellGroupData[{
 
@@ -17614,19 +17626,19 @@ publicly credited with contributing this function.", "MoreInfoText"],
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "2086c2e7-1f29-48c2-a9a8-0f4d7005cce5"]
+  "8e55dfd7-343f-4cf9-b992-9c86f2ed3d88"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Contributed By"},
  DefaultNewCellStyle->"Text",
  CellTags->{"Contributed By", "ContributorInformation", "TemplateCellGroup"},
- CellID->890927849,ExpressionUUID->"11c313c9-134a-4b1e-86fb-3c5095da4ae4"],
+ CellID->890927849,ExpressionUUID->"977fe7c7-a576-4a84-aea8-69fd15746966"],
 
 Cell["Antonis Aristeidou", "Text",
  TaggingRules->{},
- CellID->311862708,ExpressionUUID->"260924b5-21b1-402b-ab8f-1b8bdb113479"]
-}, Open  ]],
+ CellID->311862708,ExpressionUUID->"4a08ab95-8859-4e12-8a99-c6a4564c1b2d"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -17651,39 +17663,39 @@ concepts) that should be used to include the function in search results.",
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "113a2411-de97-4421-b064-ad1f1351498a"]
+  "263a975e-d78b-42fc-9926-4226b309154f"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Keywords"},
  DefaultNewCellStyle->"Item",
  CellTags->{"Keywords", "TemplateCellGroup"},
- CellID->507444849,ExpressionUUID->"7823ab68-736a-4676-9f94-475ea3bcf95b"],
+ CellID->507444849,ExpressionUUID->"de560f74-ce11-4e05-91d7-38d4e0ba0e54"],
 
 Cell["Command", "Item",
  TaggingRules->{},
- CellID->448838289,ExpressionUUID->"fa20e34e-d4b6-4606-a897-8f996ee303d3"],
+ CellID->448838289,ExpressionUUID->"c6e4be56-0474-4bc0-906f-bcfafe38fe61"],
 
 Cell["Line", "Item",
  TaggingRules->{},
- CellID->242800428,ExpressionUUID->"c64c7cb9-9922-4187-8ddf-ebe4a8ef9e67"],
+ CellID->242800428,ExpressionUUID->"663f89b9-55ee-4f50-b04f-7b957d2bff9b"],
 
 Cell["Interface", "Item",
  TaggingRules->{},
- CellID->409607264,ExpressionUUID->"5c5ed3d4-f590-4117-86e7-e9d1d59496c2"],
+ CellID->409607264,ExpressionUUID->"fda26f15-1960-417d-a4a5-2a128d5c87d3"],
 
 Cell["CLI", "Item",
  TaggingRules->{},
- CellID->18495682,ExpressionUUID->"18c4a898-3cd8-4c9d-b203-ac28e7b0b29c"],
+ CellID->18495682,ExpressionUUID->"4a230abf-269c-4975-a90a-a89ed5d3a750"],
 
 Cell["Shell", "Item",
  TaggingRules->{},
- CellID->406734089,ExpressionUUID->"f2b0c924-52e1-4089-a641-8d6a080ffd0d"],
+ CellID->406734089,ExpressionUUID->"3452fd1b-41ca-4132-9091-c7f7e3543832"],
 
 Cell["Script", "Item",
  TaggingRules->{},
- CellID->628273633,ExpressionUUID->"82e3f7c4-12c1-47b6-9f1b-7aa13452edbb"]
-}, Open  ]],
+ CellID->628273633,ExpressionUUID->"2b56be69-260b-4dbb-98f1-0c8247a19fa6"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -17708,14 +17720,14 @@ repository.", "MoreInfoText"], Background -> GrayLevel[0.949951173440661],
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "681fb822-6f02-45e2-8365-1f9dcd413333"]
+  "d416d86d-cd95-4b2b-91e5-7cad4ceca55e"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Categories"},
  DefaultNewCellStyle->"Item",
  CellTags->{"Categories", "TemplateCellGroup"},
- CellID->492439321,ExpressionUUID->"85eec472-ae6d-49bf-a5f0-0037aebfe578"],
+ CellID->492439321,ExpressionUUID->"b9b03e19-0e4a-403f-bbc0-3a578c531bdd"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -17958,8 +17970,8 @@ FxlrjuuzCpjdskGADiRhtVgeMDRvvsm0GyBIUWalBNCuEvVWvzWGqEA1ygnnZMHY+KkPL6vA+/\
 c1OSt+L/RNXlWOMISJ/ymBWuARyJdTJi1JIg5XTB2i0a3rCr/iZMjx4p9ryhOQltnhOAWG6E9e+\
 YS9tCV2O"},
  CellTags->{"Categories", "Categories-Checkboxes", "CheckboxCell"},
- CellID->290624486,ExpressionUUID->"2f3e79a2-e898-4966-9f8c-9353d36db91c"]
-}, Open  ]],
+ CellID->290624486,ExpressionUUID->"184d8f8f-df2f-45b7-83b6-00ceb319adb2"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -17983,23 +17995,23 @@ related to the function.", "MoreInfoText"], Background ->
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "a7da8569-8176-49e6-8bdc-cc24e6d3538f"]
+  "41d2fdba-8645-4d2d-b475-7460bab46efa"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Related Symbols"},
  DefaultNewCellStyle->{"RelatedSymbol", FontFamily -> "Source Sans Pro"},
  CellTags->{"Related Symbols", "TemplateCellGroup"},
- CellID->539071740,ExpressionUUID->"f70b589f-63e8-4df0-ac40-872a30558c9f"],
+ CellID->539071740,ExpressionUUID->"0a4d4724-ae8d-4a14-a9d7-2f5b3720ea97"],
 
 Cell["Run", "Item",
  TaggingRules->{},
- CellID->388580567,ExpressionUUID->"897f5c58-0674-4647-a586-9b8050f65b0c"],
+ CellID->388580567,ExpressionUUID->"32761fb3-ebe3-4d8c-af32-afbcbf68d642"],
 
 Cell["RunProcess", "Item",
  TaggingRules->{},
- CellID->697760817,ExpressionUUID->"fb9edf7a-d21c-471d-aa47-9015ed135917"]
-}, Open  ]],
+ CellID->697760817,ExpressionUUID->"523e9603-d8f0-4b75-8561-2ac915eb7b78"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -18023,27 +18035,27 @@ repository that are related to this function.", "MoreInfoText"], Background ->
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "e83592e5-f8f8-4721-8afa-f73fa2f5e184"]
+  "533f4aa3-89a5-482a-9aeb-6b52eeb1fe42"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Related Resource Objects"},
  DefaultNewCellStyle->"Item",
  CellTags->{"Related Resource Objects", "TemplateCellGroup"},
- CellID->373327345,ExpressionUUID->"b1ecfd3f-6cd7-4715-8968-53bd3715a83d"],
+ CellID->373327345,ExpressionUUID->"9dc2c852-ba7d-4f4b-b809-95603f0b0f32"],
 
 Cell["ANSITools", "Item",
  TaggingRules->{},
- CellID->114074792,ExpressionUUID->"23e97d08-f4b4-476c-bef6-2a1985e18b29"],
+ CellID->114074792,ExpressionUUID->"87721495-07bc-4f6a-bfa2-52ce82cf102d"],
 
 Cell["CommandLineParse", "Item",
  TaggingRules->{},
- CellID->189171333,ExpressionUUID->"5505628b-fcc9-4392-ae02-62de2dab39ac"],
+ CellID->189171333,ExpressionUUID->"fad8f6a8-5578-4646-b8dd-03e5f3944296"],
 
 Cell["SystemShellRun", "Item",
  TaggingRules->{},
- CellID->778493920,ExpressionUUID->"5824e465-b5f1-4183-986d-a1f95256caa9"]
-}, Open  ]],
+ CellID->778493920,ExpressionUUID->"81c574ad-7f77-47c4-91a2-fee59ef86afa"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -18068,14 +18080,14 @@ repository).", "MoreInfoText"], Background -> GrayLevel[0.949951173440661],
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "6dc0e148-086b-4c1d-85e3-eab254b305c1"]
+  "d6f42ca0-7f3d-43ba-8459-4316ab947bd5"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Source/Reference Citation"},
  DefaultNewCellStyle->"Text",
  CellTags->{"Source/Reference Citation", "TemplateCellGroup"},
- CellID->219053193,ExpressionUUID->"10953377-045a-489f-8ab5-173b75d1b11c"],
+ CellID->219053193,ExpressionUUID->"44dde86a-fb28-4a73-9f72-a8e6e30710ac"],
 
 Cell["Source, reference or citation information", "Text",
  TaggingRules->{},
@@ -18086,8 +18098,8 @@ Cell["Source, reference or citation information", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->785472627,ExpressionUUID->"d6d9a1fd-a2e9-4525-90d3-c8209c84a403"]
-}, Open  ]],
+ CellID->785472627,ExpressionUUID->"b4136352-4560-4138-8ab5-72f455d8e359"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -18111,14 +18123,14 @@ to the function.", "MoreInfoText"], Background ->
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "1633ac8e-b454-4ea3-be89-40e112f06275"]
+  "5c2842fe-537c-4fd3-9140-59812a957469"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Links"},
  DefaultNewCellStyle->"Item",
  CellTags->{"Links", "TemplateCellGroup"},
- CellID->766509273,ExpressionUUID->"f40828a6-4527-45e4-b84b-c1b02bcbacab"],
+ CellID->766509273,ExpressionUUID->"db5d5232-f6f6-4c70-b1d5-61c9037ae58c"],
 
 Cell[TextData[ButtonBox["WolframScript",
  BaseStyle->"Hyperlink",
@@ -18129,8 +18141,8 @@ Cell[TextData[ButtonBox["WolframScript",
   "http://reference.wolfram.com/language/ref/program/wolframscript.html"]], \
 "Item",
  TaggingRules->{},
- CellID->69193868,ExpressionUUID->"2d2310d3-737e-44ce-b575-dde7dcea9cb1"]
-}, Open  ]],
+ CellID->69193868,ExpressionUUID->"e2496d0c-b625-4614-af60-7a7742cff1ba"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -18174,14 +18186,14 @@ Input/Output cell pairs or as symbolic ",
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "84df56ae-2ba1-43fc-a98e-641af5d884d6"]
+  "9749cf16-f391-4932-9c97-4386dc84ec33"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "VerificationTests"},
  DefaultNewCellStyle->"Input",
  CellTags->{"TemplateCellGroup", "Tests", "VerificationTests"},
- CellID->446147352,ExpressionUUID->"b567cf66-76c2-4e10-98a4-e9d1f7a434e0"],
+ CellID->446147352,ExpressionUUID->"1861b5ad-95d7-4512-881f-61af49255ad7"],
 
 Cell[CellGroupData[{
 
@@ -18194,7 +18206,7 @@ Cell[BoxData[
   "]"}]], "Input",
  TaggingRules->{},
  CellLabel->"In[45]:=",
- CellID->319857603,ExpressionUUID->"88c20a80-c5f3-4bfc-a457-cd0e715af570"],
+ CellID->319857603,ExpressionUUID->"6af880e5-1910-4b9e-a742-400f285bc0c5"],
 
 Cell[BoxData[
  InterpretationBox[
@@ -20315,7 +20327,7 @@ Fjr/A1MCoq4=
   Selectable->False]], "Output",
  TaggingRules->{},
  CellLabel->"Out[45]=",
- CellID->533937792,ExpressionUUID->"23ba07c1-1def-4558-9c28-661c08d52658"]
+ CellID->533937792,ExpressionUUID->"3c62387f-d156-49bd-8fb1-569acdbbbd1d"]
 }, Open  ]]
 }, Closed]],
 
@@ -20341,13 +20353,13 @@ discoverable on the correct platforms.", "MoreInfoText"], Background ->
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "fe67d9b8-10ca-4ed1-b7e9-315bbc6acc1f"]
+  "c618d751-2abd-46ed-bd26-fe636f1bf4f0"]
 }], "Subsection",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Compatibility"},
  CellTags->{"Compatibility", "TemplateCellGroup"},
- CellID->497418034,ExpressionUUID->"8cf3d92e-11dd-4efd-a28d-c51c7d74dcdd"],
+ CellID->497418034,ExpressionUUID->"54c3bed3-28b9-4d97-a565-fa712fb58450"],
 
 Cell[CellGroupData[{
 
@@ -20372,7 +20384,7 @@ Cell[TextData[{
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "6b108934-05ac-42e5-b36d-f97856a7d1ef"]
+  "44745432-9028-4cc4-9eb0-51c3b1b9125e"]
 }], "Subsubsection",
  Editable->False,
  Deletable->False,
@@ -20384,13 +20396,13 @@ Cell[TextData[{
  CellTags->{
   "CompatibilityWolframLanguageVersionRequired", "TemplateCellGroup", 
    "Wolfram Language Version"},
- CellID->329236511,ExpressionUUID->"2601b889-b3cf-4035-9aaf-8d91501f05a5"],
+ CellID->329236511,ExpressionUUID->"49799b9a-e98c-4794-90f6-5c529f7a1479"],
 
-Cell["12.3+", "Text",
+Cell["13.0+", "Text",
  TaggingRules->{},
  CellTags->{"DefaultContent", "ScrapeDefault"},
- CellID->354669986,ExpressionUUID->"84b39af1-1a79-44f2-96dd-d1cca2800b27"]
-}, Closed]],
+ CellID->354669986,ExpressionUUID->"b1cd2b11-c644-4925-b20e-67679c4fff4d"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -20414,7 +20426,7 @@ function properly.", "MoreInfoText"], Background ->
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "9155c610-ceeb-4559-971f-c400ea59e8c0"]
+  "2b5a012e-af0f-4f0d-8255-caa4da42e1a8"]
 }], "Subsubsection",
  Editable->False,
  Deletable->False,
@@ -20424,7 +20436,7 @@ function properly.", "MoreInfoText"], Background ->
  FontSize->16,
  CellTags->{
   "CompatibilityOperatingSystem", "Operating System", "TemplateCellGroup"},
- CellID->592311848,ExpressionUUID->"108d1f30-ed2e-4cf4-9289-b801605f754a"],
+ CellID->592311848,ExpressionUUID->"42f4186c-bb4a-4308-adbb-dd7b43d916c4"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -20487,7 +20499,7 @@ wakU58dAhj2dkIOODt9TRNjsldwU9gd/wmth"},
  CellTags->{
   "CheckboxCell", "CompatibilityOperatingSystem", 
    "CompatibilityOperatingSystem-Checkboxes"},
- CellID->119931900,ExpressionUUID->"17507cf6-b0a3-47b2-a08b-52e521f5ffa6"]
+ CellID->119931900,ExpressionUUID->"4334ab21-3a28-4ec5-9727-9d66932b43db"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20530,7 +20542,7 @@ to be compatible. See ",
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "c0a283c3-86a5-40f8-8954-3c604c644996"]
+  "81db6e51-2790-41f9-9b1c-367344f36d5a"]
 }], "Subsubsection",
  Editable->False,
  Deletable->False,
@@ -20540,7 +20552,7 @@ to be compatible. See ",
  FontSize->16,
  CellTags->{
   "CompatibilityEvaluationEnvironment", "Environments", "TemplateCellGroup"},
- CellID->419423097,ExpressionUUID->"9793d762-adbf-409f-b596-3b3b72435284"],
+ CellID->419423097,ExpressionUUID->"47663d0e-90f7-4898-88e4-600910fddfb8"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -20652,7 +20664,7 @@ RattowgXcjovJd9GB+7lgGS8E/gz2jD31msxmf0BrOKtKw=="},
  CellTags->{
   "CheckboxCell", "CompatibilityEvaluationEnvironment", 
    "CompatibilityEvaluationEnvironment-Checkboxes"},
- CellID->216614709,ExpressionUUID->"b2fa1278-a2ca-483a-8773-e2b3efd6bf64"]
+ CellID->216614709,ExpressionUUID->"a3134666-df54-4374-818b-26736de88dd5"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20677,7 +20689,7 @@ cloud.", "MoreInfoText"], Background -> GrayLevel[0.949951173440661],
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "20300d4f-d64c-4e73-a1ac-043a9f4cc78d"]
+  "f839a557-b36b-4b16-8eca-0d3290b2631a"]
 }], "Subsubsection",
  Editable->False,
  Deletable->False,
@@ -20686,7 +20698,7 @@ cloud.", "MoreInfoText"], Background -> GrayLevel[0.949951173440661],
  DefaultNewCellStyle->"Text",
  FontSize->16,
  CellTags->{"Cloud Support", "CompatibilityCloudSupport", "TemplateCellGroup"},
- CellID->632107999,ExpressionUUID->"5fd32e42-2dac-41ad-8fb3-dfd396cc96a0"],
+ CellID->632107999,ExpressionUUID->"493625bf-d626-40bf-ba2e-55ad6ab276cb"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -20723,7 +20735,7 @@ e8QXLWq6uFDLb98ikyeKwRITNWYMtp/4ArJNZew=="},
  CellTags->{
   "CheckboxCell", "CompatibilityCloudSupport", 
    "CompatibilityCloudSupport-Checkboxes"},
- CellID->612843554,ExpressionUUID->"290fcf5d-d87e-47bd-80dc-cf63fef3e636"]
+ CellID->612843554,ExpressionUUID->"059dd58c-e92a-4885-97b1-86cd5800d338"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20753,7 +20765,7 @@ Cell[TextData[{
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "5b0fe7a5-88ce-4ab4-86cd-d3b2701c143f"]
+  "40559717-93b1-4c43-8dda-6e8a86ba8dd2"]
 }], "Subsubsection",
  Editable->False,
  Deletable->False,
@@ -20762,7 +20774,7 @@ Cell[TextData[{
  DefaultNewCellStyle->"Item",
  FontSize->16,
  CellTags->{"CompatibilityFeatures", "Required Features", "TemplateCellGroup"},
- CellID->872504941,ExpressionUUID->"b2ea7a63-9269-4131-9cd5-396a6f129987"],
+ CellID->872504941,ExpressionUUID->"c6d0fbad-1c0c-47f9-b0ac-f22d8067171b"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -20824,9 +20836,9 @@ U6s354QREmf9rnCOht3ovOPcg2FJUIj1KbLDQNR0wjgXwi4a6GUOpFatfh0CQ4oJ2CygbrqQtYwERe\
 5FCZWjIRR5qnvjCX7KxZuqI4bSbS9AKMnCR46gN70Euzz7AqnIcMQ="},
  CellTags->{
   "CheckboxCell", "CompatibilityFeatures", "CompatibilityFeatures-Checkboxes"},
- CellID->226866169,ExpressionUUID->"84437be0-2a29-4a62-b9c3-ca3ac6e387c2"]
+ CellID->226866169,ExpressionUUID->"6cfb9c72-7164-4a6f-82a0-00ef1297e877"]
 }, Closed]]
-}, Open  ]]
+}, Closed]]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20854,27 +20866,41 @@ that are otherwise beyond the scope of the function documentation.",
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "4f60d603-c054-4b10-8c07-8253ac35f91e"]
+  "dd8a065f-4ea7-401f-b6fa-0a5dafb52969"]
 }], "Section",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Author Notes"},
  DefaultNewCellStyle->"Text",
  CellTags->{"Author Notes", "TemplateCellGroup"},
- CellID->344001195,ExpressionUUID->"b1aba3c2-f338-4a76-ad96-e3c07651b66f"],
+ CellID->344001195,ExpressionUUID->"7dcc4d1a-9888-45b5-b100-b2596f95e6d4"],
+
+Cell[CellGroupData[{
+
+Cell["1.2.3", "Subsection",
+ TaggingRules->{},
+ CellLabel->"In[46]:=",
+ CellID->822728193,ExpressionUUID->"14a5df2a-4c9b-4ac2-a5b9-cb6ed14a9be0"],
+
+Cell["\<\
+- Update Interface prompt (remove space for complete control over output)\
+\>", "Text",
+ TaggingRules->{},
+ CellID->1609977657,ExpressionUUID->"e9fe34d9-f2b8-4f9d-a05c-787f3e56ce1b"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["1.2.2", "Subsection",
  TaggingRules->{},
  CellLabel->"In[46]:=",
- CellID->17020181,ExpressionUUID->"56d73465-08ef-480d-b6b3-13c4bda3a4e6"],
+ CellID->17020181,ExpressionUUID->"18a841a5-2f93-4d94-b598-01c3cd287887"],
 
 Cell["\<\
 - Use ResourceFunction[\"CommandLineSplit\"] for string splitting\
 \>", "Text",
  TaggingRules->{},
- CellID->1495569651,ExpressionUUID->"75cc1d84-6287-4aed-8f8f-f11779b877fa"]
+ CellID->1495569651,ExpressionUUID->"dd471e1a-48af-4ec9-8eea-2527d2747d7b"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20882,38 +20908,38 @@ Cell[CellGroupData[{
 Cell["1.2.1", "Subsection",
  TaggingRules->{},
  CellLabel->"In[46]:=",
- CellID->188588246,ExpressionUUID->"e14e720f-86ad-4e95-b7fd-a1e6b8974307"],
+ CellID->188588246,ExpressionUUID->"084e1ff9-f1f0-4717-922f-b24a6920207d"],
 
 Cell["- Allow space characters within strings", "Text",
  TaggingRules->{},
- CellID->1878293934,ExpressionUUID->"6b3cb703-94c8-4471-b253-e9f25c10c7f3"],
+ CellID->1878293934,ExpressionUUID->"74e1c6f9-0cd3-4693-898b-21f5a21b5bc4"],
 
 Cell["- Typos and docs", "Text",
  TaggingRules->{},
- CellID->803590963,ExpressionUUID->"00154a2e-c3b8-4623-b56d-181eb5613e46"]
+ CellID->803590963,ExpressionUUID->"9b28088a-de5c-4bf7-b8ba-244e623d689b"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["1.2.0", "Subsection",
  TaggingRules->{},
- CellID->1368832032,ExpressionUUID->"cd7ce969-f9bc-4fc8-8cd1-6d2452680e78"],
+ CellID->1368832032,ExpressionUUID->"085db6dc-cb26-477d-8215-ff0375e3c247"],
 
 Cell["- Better positional argument support", "Text",
  TaggingRules->{},
- CellID->2007502872,ExpressionUUID->"82c4c2b8-26f5-4723-8bd8-b0f119075fab"],
+ CellID->2007502872,ExpressionUUID->"b8d7347d-91e7-49b0-80bc-f9f1dd0e239c"],
 
 Cell["- Make interface and option help sections optional", "Text",
  TaggingRules->{},
- CellID->1885717194,ExpressionUUID->"0413c6e8-15ec-4e3f-856d-0517979cf450"],
+ CellID->1885717194,ExpressionUUID->"452d43cb-d04e-4f0f-bdbb-f4040dd648e0"],
 
 Cell["- Update docs", "Text",
  TaggingRules->{},
- CellID->599684848,ExpressionUUID->"75c23549-25a8-451d-819c-741cc29fe36a"],
+ CellID->599684848,ExpressionUUID->"f8b5d693-60f7-4e93-a7bf-a1c2697f9228"],
 
 Cell["- Regression tests", "Text",
  TaggingRules->{},
- CellID->1145624986,ExpressionUUID->"4dc4fa07-7be4-4c56-a472-4b77d4677c25"]
+ CellID->1145624986,ExpressionUUID->"f83e7990-2401-4184-88df-94769dda3517"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20927,7 +20953,7 @@ Cell["1.1.1", "Subsection",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->1676428788,ExpressionUUID->"8538abb9-de02-46ef-85ba-aa1e0b9f35fa"],
+ CellID->1676428788,ExpressionUUID->"977285c1-31cb-4f8a-9615-1845829edd31"],
 
 Cell["- Fixed undefined 'delim'", "Text",
  TaggingRules->{},
@@ -20938,7 +20964,7 @@ Cell["- Fixed undefined 'delim'", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->130606426,ExpressionUUID->"4a343cdb-97e9-4e78-ba7e-104a02e31464"]
+ CellID->130606426,ExpressionUUID->"e31f11e6-5898-40a4-97e3-631ef8fb36fc"]
 }, Closed]],
 
 Cell[CellGroupData[{
@@ -20952,7 +20978,7 @@ Cell["1.1.0", "Subsection",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->774696098,ExpressionUUID->"7564b4ea-091a-465d-995d-2f85d6713b9c"],
+ CellID->774696098,ExpressionUUID->"b041ada5-1e93-4659-bbdc-2e418e9dfb35"],
 
 Cell["- Add POSIX support to FlagQ", "Text",
  TaggingRules->{},
@@ -20963,7 +20989,7 @@ Cell["- Add POSIX support to FlagQ", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->1570279427,ExpressionUUID->"1d6bae78-58de-4766-b8ea-ce90fd30757d"],
+ CellID->1570279427,ExpressionUUID->"60003e54-c13c-4fcd-8b2d-bd6b3f2d5f9f"],
 
 Cell["- Wording changes, typos and delimiters", "Text",
  TaggingRules->{},
@@ -20974,7 +21000,7 @@ Cell["- Wording changes, typos and delimiters", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->2027889459,ExpressionUUID->"9fb5f369-1d50-4164-834d-99f842de8f3b"],
+ CellID->2027889459,ExpressionUUID->"8bacb95c-da00-4a1a-92d7-7206bd2d980b"],
 
 Cell["- Implement and document LogStyles as an option", "Text",
  TaggingRules->{},
@@ -20985,7 +21011,7 @@ Cell["- Implement and document LogStyles as an option", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->191418724,ExpressionUUID->"f77cacd5-d37f-4cef-9f59-9bfc074a7e3a"],
+ CellID->191418724,ExpressionUUID->"fec79ea3-e3f9-405f-966d-3eb888503309"],
 
 Cell["- More specific option patterns", "Text",
  TaggingRules->{},
@@ -20996,7 +21022,7 @@ Cell["- More specific option patterns", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->2096391260,ExpressionUUID->"25728b13-986c-4f5c-a037-c1aa6c6ab029"],
+ CellID->2096391260,ExpressionUUID->"d507e5c9-158d-45d4-aa08-c571b86fb5c3"],
 
 Cell["- StrictParse returns failure when no flags found", "Text",
  TaggingRules->{},
@@ -21007,7 +21033,7 @@ Cell["- StrictParse returns failure when no flags found", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->1179736410,ExpressionUUID->"7c20fc1e-d043-47fd-87de-b139a8187e75"]
+ CellID->1179736410,ExpressionUUID->"546193eb-6c1d-4a29-abde-f9b59ac2ec9e"]
 }, Closed]]
 }, Closed]],
 
@@ -21034,14 +21060,14 @@ resource.", "MoreInfoText"], Background -> GrayLevel[0.949951173440661],
     CurrentValue[
      EvaluationNotebook[], {TaggingRules, "ResourceCreateNotebook"}]],
    ImageSize->Automatic]],ExpressionUUID->
-  "c6c46402-0c8c-49b1-886d-1c0bb5dfe7af"]
+  "12a70b48-ba4b-4bfe-a023-de787ae47bbb"]
 }], "Section",
  Editable->False,
  Deletable->False,
  TaggingRules->{"TemplateGroupName" -> "Submission Notes"},
  DefaultNewCellStyle->"Text",
  CellTags->{"Submission Notes", "TemplateCellGroup"},
- CellID->14627886,ExpressionUUID->"e22d585d-a284-4ece-91f1-0805cda26d74"],
+ CellID->14627886,ExpressionUUID->"13e130ac-6744-486f-bbab-cbde0615fbbf"],
 
 Cell["Additional information for the reviewer.", "Text",
  TaggingRules->{},
@@ -21052,11 +21078,11 @@ Cell["Additional information for the reviewer.", "Text",
        SelectedNotebook[], All, CellContents, AutoScroll -> True]], 
    PassEventsDown -> False, PassEventsUp -> False},
  CellTags->{"DefaultContent", "TabNext"},
- CellID->820829112,ExpressionUUID->"b0b3fbf1-2882-4ec0-b3b4-c302292d5788"]
+ CellID->820829112,ExpressionUUID->"dcf079ee-1699-4497-91b1-8c4585c4d57d"]
 }, Closed]]
 }, Open  ]]
 },
-WindowSize->{1238.25, 577.5},
+WindowSize->{948.75, 1036.5},
 WindowMargins->{{Automatic, 7.5}, {7.5, Automatic}},
 WindowTitle->"CommandLineTools | Definition Notebook",
 Visible->True,
@@ -21097,7 +21123,7 @@ DockedCells->{
                     DateString[
                     TimeZoneConvert[
                     DateObject[
-                    3.986207923531337`16.35313493723421*^9, TimeZone -> 0]], {
+                    3.99237262843855`16.353806058579444*^9, TimeZone -> 0]], {
                     "MonthName", " ", "DayShort", ", ", "Year", " ", 
                     "Hour12Short", ":", "Minute", " ", "AMPMLowerCase"}], 
                     StandardForm], SingleEvaluation -> True, Evaluator -> 
@@ -21121,7 +21147,7 @@ DockedCells->{
                     DateString[
                     TimeZoneConvert[
                     DateObject[
-                    3.986207923531337`16.35313493723421*^9, TimeZone -> 0]], {
+                    3.99237262843855`16.353806058579444*^9, TimeZone -> 0]], {
                     "MonthName", " ", "DayShort", ", ", "Year", " ", 
                     "Hour12Short", ":", "Minute", " ", "AMPMLowerCase"}], 
                     StandardForm], SingleEvaluation -> True, Evaluator -> 
@@ -21147,7 +21173,7 @@ DockedCells->{
                    DateString[
                     TimeZoneConvert[
                     DateObject[
-                    3.986207923531337`16.35313493723421*^9, TimeZone -> 0]], {
+                    3.99237262843855`16.353806058579444*^9, TimeZone -> 0]], {
                     "MonthName", " ", "DayShort", ", ", "Year", " ", 
                     "Hour12Short", ":", "Minute", " ", "AMPMLowerCase"}], 
                    SingleEvaluation -> True, Evaluator -> "System"], 
@@ -21162,7 +21188,7 @@ DockedCells->{
               DateString[
                TimeZoneConvert[
                 DateObject[
-                3.986207923531337`16.35313493723421*^9, TimeZone -> 0]], {
+                3.99237262843855`16.353806058579444*^9, TimeZone -> 0]], {
                "MonthName", " ", "DayShort", ", ", "Year", " ", "Hour12Short",
                  ":", "Minute", " ", "AMPMLowerCase"}], StandardForm], 
              SingleEvaluation -> True, Evaluator -> "System"], FontSlant -> 
@@ -21171,7 +21197,7 @@ DockedCells->{
           Alignment -> {Right, Baseline}], "\"   \"", 
          ItemBox[
           StyleBox[
-          "\"Opened version 1.2.1 of published notebook\"", LineBreakWithin -> 
+          "\"Opened version 1.2.2 of published notebook\"", LineBreakWithin -> 
            Automatic, LineIndent -> 0, StripOnInput -> False], ItemSize -> 
           Fit, StripOnInput -> False], "", 
          TagBox[
@@ -21233,8 +21259,8 @@ DockedCells->{
                  Not[
                   FreeQ[
                   DefinitionNotebookClient`Stripes`PackagePrivate`c$, 
-                   "4fdcff16-5ae8-4eb9-87c1-787291195906"]]]]]], Appearance -> 
-           None, BoxID -> "4fdcff16-5ae8-4eb9-87c1-787291195906", Evaluator -> 
+                   "3cce1f37-8575-4b89-b18e-cb41a3a70f8f"]]]]]], Appearance -> 
+           None, BoxID -> "3cce1f37-8575-4b89-b18e-cb41a3a70f8f", Evaluator -> 
            Automatic, Method -> "Preemptive"], 
           MouseAppearanceTag["LinkHand"]]}}, 
        GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}, 
@@ -21265,8 +21291,8 @@ DockedCells->{
                     DateString[
                     TimeZoneConvert[
                     DateObject[
-                    3.986208083823828`16.35313495469796*^9, TimeZone -> 0]], {
-                    "MonthName", " ", "DayShort", ", ", "Year", " ", 
+                    3.992372815302899`16.353806078906743*^9, TimeZone -> 
+                    0]], {"MonthName", " ", "DayShort", ", ", "Year", " ", 
                     "Hour12Short", ":", "Minute", " ", "AMPMLowerCase"}], 
                     StandardForm], SingleEvaluation -> True, Evaluator -> 
                    "System"], FontSlant -> Italic, FontColor -> 
@@ -21309,8 +21335,8 @@ stripeText["Your resource has been submitted for review."]]& ], "\"\""}},
                     GridBox[{{"\"Submission ID:\"", 
                     
                     TemplateBox[{
-                    "\"5837\"", 
-                    "OEM6eJxLYyzmCEosd8qvSC0OZlMytTA2VwIAPmEFgg=="}, 
+                    "\"5106\"", 
+                    "OEM6eJxLYyzmCEosd8qvSC0OZlMyNTQwUwIAPjoFdw=="}, 
                     "ClickToCopyTemplate"]}}, AutoDelete -> False, 
                     GridBoxItemSize -> {
                     "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
@@ -21379,26 +21405,26 @@ Consider reducing the size to avoid potential issues.\""}, "RowDefault"] :>
                     DefinitionNotebookClient`PackageScope`setHint[
                     "Warning", "Function", 
                     DefinitionNotebookClient`$CurrentNotebook, 
-                    "e794d7ef-c515-404b-b080-6bcae30df8fc", 820526579, 
+                    "556b4bee-78fe-46b1-8ee8-9f951ddb7dad", 541162750, 
                     "LargeCellBounds/CellArea", <|
-                    "Type" -> "area", "CellID" -> 820526579, "CellObject" -> 
+                    "Type" -> "area", "CellID" -> 541162750, "CellObject" -> 
                     CellObject[
-                    "c2e77ccf-b242-4348-b9c3-dc3c80dbb6f7", 
-                    "0bc7bcaa-9d73-42ad-98ce-3e1ce6818989"], 
-                    "CellSerialNumber" -> 12220, 
+                    "20fe9ed2-f0e2-4de5-be8e-74918c645346", 
+                    "dc245f71-5379-487b-9af2-5c265129dd94"], 
+                    "CellSerialNumber" -> 16577, 
                     "CellSize" -> {792.059453125, 1351.16015625}, 
                     "CellTags" -> {}, "ContentData" -> BoxData, 
                     "ContentDataForm" -> StandardForm, "CursorPosition" -> 
                     None, "Evaluatable" -> True, "Evaluating" -> False, 
                     "ExpressionUUID" -> 
-                    "c2e77ccf-b242-4348-b9c3-dc3c80dbb6f7", 
+                    "20fe9ed2-f0e2-4de5-be8e-74918c645346", 
                     "FirstCellInGroup" -> False, "Formatted" -> True, 
                     "NeedsRendering" -> False, "Position" -> 126, "Rendering" -> 
                     False, "Style" -> "Input", "TemplateGroup" -> False, 
                     "TemplateGroupName" -> None, "Area" -> 500000., "Height" -> 
                     750., "Width" -> 2000|>]; 
                     DefinitionNotebookClient`PackageScope`seekAfter[
-                    820526579]; Null]}, Appearance -> None], "BoxID" -> 
+                    541162750]; Null]}, Appearance -> None], "BoxID" -> 
                   "WarningCountButton", StripOnInput -> False], 
                  TagBox[
                   ButtonBox[
@@ -21462,8 +21488,8 @@ Consider reducing the size to avoid potential issues.\""}, "RowDefault"] :>
                     Not[
                     FreeQ[
                     DefinitionNotebookClient`Stripes`PackagePrivate`c$, 
-                    "36b02a3c-d7ce-4495-8cd2-09bcadf1b94a"]]]]]], Appearance -> 
-                   None, BoxID -> "36b02a3c-d7ce-4495-8cd2-09bcadf1b94a", 
+                    "63862d66-6fe4-477f-89ea-5ed9b4d0393f"]]]]]], Appearance -> 
+                   None, BoxID -> "63862d66-6fe4-477f-89ea-5ed9b4d0393f", 
                    Evaluator -> Automatic, Method -> "Preemptive"], 
                   MouseAppearanceTag["LinkHand"]]}}, 
                GridBoxAlignment -> {
@@ -21491,8 +21517,8 @@ Consider reducing the size to avoid potential issues.\""}, "RowDefault"] :>
                     DateString[
                     TimeZoneConvert[
                     DateObject[
-                    3.986208083823828`16.35313495469796*^9, TimeZone -> 0]], {
-                    "MonthName", " ", "DayShort", ", ", "Year", " ", 
+                    3.992372815302899`16.353806078906743*^9, TimeZone -> 
+                    0]], {"MonthName", " ", "DayShort", ", ", "Year", " ", 
                     "Hour12Short", ":", "Minute", " ", "AMPMLowerCase"}], 
                     StandardForm], SingleEvaluation -> True, Evaluator -> 
                    "System"], FontSlant -> Italic, FontColor -> 
@@ -21535,8 +21561,8 @@ stripeText["Your resource has been submitted for review."]]& ], "\"\""}},
                     GridBox[{{"\"Submission ID:\"", 
                     
                     TemplateBox[{
-                    "\"5837\"", 
-                    "OEM6eJxLYyzmCEosd8qvSC0OZlMytTA2VwIAPmEFgg=="}, 
+                    "\"5106\"", 
+                    "OEM6eJxLYyzmCEosd8qvSC0OZlMyNTQwUwIAPjoFdw=="}, 
                     "ClickToCopyTemplate"]}}, AutoDelete -> False, 
                     GridBoxItemSize -> {
                     "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
@@ -21605,26 +21631,26 @@ Consider reducing the size to avoid potential issues.\""}, "RowDefault"] :>
                     DefinitionNotebookClient`PackageScope`setHint[
                     "Warning", "Function", 
                     DefinitionNotebookClient`$CurrentNotebook, 
-                    "e794d7ef-c515-404b-b080-6bcae30df8fc", 820526579, 
+                    "556b4bee-78fe-46b1-8ee8-9f951ddb7dad", 541162750, 
                     "LargeCellBounds/CellArea", <|
-                    "Type" -> "area", "CellID" -> 820526579, "CellObject" -> 
+                    "Type" -> "area", "CellID" -> 541162750, "CellObject" -> 
                     CellObject[
-                    "c2e77ccf-b242-4348-b9c3-dc3c80dbb6f7", 
-                    "0bc7bcaa-9d73-42ad-98ce-3e1ce6818989"], 
-                    "CellSerialNumber" -> 12220, 
+                    "20fe9ed2-f0e2-4de5-be8e-74918c645346", 
+                    "dc245f71-5379-487b-9af2-5c265129dd94"], 
+                    "CellSerialNumber" -> 16577, 
                     "CellSize" -> {792.059453125, 1351.16015625}, 
                     "CellTags" -> {}, "ContentData" -> BoxData, 
                     "ContentDataForm" -> StandardForm, "CursorPosition" -> 
                     None, "Evaluatable" -> True, "Evaluating" -> False, 
                     "ExpressionUUID" -> 
-                    "c2e77ccf-b242-4348-b9c3-dc3c80dbb6f7", 
+                    "20fe9ed2-f0e2-4de5-be8e-74918c645346", 
                     "FirstCellInGroup" -> False, "Formatted" -> True, 
                     "NeedsRendering" -> False, "Position" -> 126, "Rendering" -> 
                     False, "Style" -> "Input", "TemplateGroup" -> False, 
                     "TemplateGroupName" -> None, "Area" -> 500000., "Height" -> 
                     750., "Width" -> 2000|>]; 
                     DefinitionNotebookClient`PackageScope`seekAfter[
-                    820526579]; Null]}, Appearance -> None], "BoxID" -> 
+                    541162750]; Null]}, Appearance -> None], "BoxID" -> 
                   "WarningCountButton", StripOnInput -> False], 
                  TagBox[
                   ButtonBox[
@@ -21688,8 +21714,8 @@ Consider reducing the size to avoid potential issues.\""}, "RowDefault"] :>
                     Not[
                     FreeQ[
                     DefinitionNotebookClient`Stripes`PackagePrivate`c$, 
-                    "36b02a3c-d7ce-4495-8cd2-09bcadf1b94a"]]]]]], Appearance -> 
-                   None, BoxID -> "36b02a3c-d7ce-4495-8cd2-09bcadf1b94a", 
+                    "63862d66-6fe4-477f-89ea-5ed9b4d0393f"]]]]]], Appearance -> 
+                   None, BoxID -> "63862d66-6fe4-477f-89ea-5ed9b4d0393f", 
                    Evaluator -> Automatic, Method -> "Preemptive"], 
                   MouseAppearanceTag["LinkHand"]]}}, 
                GridBoxAlignment -> {
@@ -21741,7 +21767,7 @@ Consider reducing the size to avoid potential issues.\""}, "RowDefault"] :>
                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
                     TagBox[
                     "\"Your resource has been submitted for review. Your \
-submission id is 5837.\"", "SummaryItem"]}]}, {
+submission id is 5106.\"", "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"Name\"", "\": \""}, "RowDefault"], 
@@ -21787,7 +21813,7 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
                     TagBox[
                     "\"Your resource has been submitted for review. Your \
-submission id is 5837.\"", "SummaryItem"]}]}, {
+submission id is 5106.\"", "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"Name\"", "\": \""}, "RowDefault"], 
@@ -21803,13 +21829,13 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     TemplateBox[{"\"UUID\"", "\": \""}, "RowDefault"], 
                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
                     TagBox[
-                    "\"ad2e9b1b-e5d3-4ff7-9ce1-96f265a4572a\"", 
+                    "\"1a53b52e-9cf7-453b-b0eb-943bde2ccadb\"", 
                     "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"SubmissionID\"", "\": \""}, "RowDefault"],
                      "SummaryItemAnnotation"], "\[InvisibleSpace]", 
-                    TagBox["\"5837\"", "SummaryItem"]}]}, {
+                    TagBox["\"5106\"", "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"ResourceType\"", "\": \""}, "RowDefault"],
@@ -21823,14 +21849,14 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     "\[InvisibleSpace]", 
                     TagBox[
                     TemplateBox[{
-                    RowBox[{"\"Sun 26 Apr 2026 16:01:22\"", 
+                    RowBox[{"\"Tue 7 Jul 2026 00:26:53\"", 
                     StyleBox["\"GMT\"", "TimeZoneLabel"]}], 
                     RowBox[{"DateObject", "[", 
                     RowBox[{
                     RowBox[{"{", 
                     
-                    RowBox[{"2026", ",", "4", ",", "26", ",", "16", ",", "1", 
-                    ",", "22.683501`8.108285068108644"}], "}"}], ",", 
+                    RowBox[{"2026", ",", "7", ",", "7", ",", "0", ",", "26", 
+                    ",", "53.764275`8.483068768512746"}], "}"}], ",", 
                     "\"Instant\"", ",", "\"Gregorian\"", ",", "0.`"}], "]"}]},
                      "DateObject", Editable -> False], "SummaryItem"]}]}, {
                     RowBox[{
@@ -21867,37 +21893,39 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     Dynamic[Typeset`open$$], ImageSize -> Automatic]}, 
                     "SummaryPanel"], DynamicModuleValues :> {}], "]"}], 
                     Short[#, 0.75]& ], 
-                    "OEM6eJztWEtz2zYQtixKsmTHURJ3Ok0vGo6np8pjybbi5JLKtOW4YycaQ\
-elzOmNIBGWkJMgBQDtqpz+hp1576L9qz+2tl/\
-6EdsGXaMruuIo6ycE8iBR2sfthsQ8srJxY6uGLPfc1EVZB3DtiknCPE4kldRkMWzlR7LmKwdKEdkyF\
-tBZFsY9HMIJKyB8OiRBoGfmOg/n4GcEmyn1t5UV1f8ywQ4cnrunbRE1fTKbnEZFitT/\
-2iCDy1PUIW18XhQ62BYmpazGVOANiIoBD1tdRoQfyx8Cz3CeOZ8NgiDAUnBd3u5gRRGwylC6/\
-rFPrAYxYSUGUDjk1L0+O3yUlRJGKorznSxmboRKtKJT7sHPQ5fQcIJx2uMvkATN7RLg+\
-HxJU7hzsUelgT6BqZBiY9ALWSbgCr6DsExuPiSlWQxUdnw2Vxa+zjtbnPkmWUWl7HsEcMzC+\
-9txlE0p5DwuC5Ngm1kJm7eWDc2z7GCwjym1fug5s8TChFk+\
-IPHNNVOlyAraV9DwltG3TEXMIk7FBRdEgylPi94T1yMEjguh3BCxWiiyWzLqkt9CnDhF8IXhWPklGY\
-OKK4XMOgj8DwATd6YB9Dew9I3R0piAUuu4F6MyJtfZAuLYvSZpf3DnBI0YtOgx82Pgbtnupw7ETbGp\
-eLAXmUe5b0H//+ScdBJb3KQefUWsGeu9wz3Btl/P3g+fXp/\
-xB8PzxlH8RPL89NT5IVryCJKfeC3bEPF9OvDgkrhoAHYB1sWlSNsqSKwGsAE9mH1cCygnmI8pE2o3V\
-21gwFrLf12MpTpw9lpNL3nFs57OxnQ2yaCoq6ycQ8LDHOtL0JzUdVUDCPrGwb0v0XuTtR5I4bcbcMI\
-ug/F8//pLKGp/qX0Kc1HgULrUzLGoDQlhN+AOHSknMmuUq+\
-jklFxu1gDkgCQHSatSsUVHb2d16tKEniUdpfJNlFfXnYO/Z13RfN1xgY+\
-YxZaTvurbIYIu3qBrtxVRIxRyoBM7nO0yklhNGj3ZMrAmbBhinea6I7IoagnRDJMn6390IjEIYxOyN\
-sUzruTmgWCvy8FAFxY21Gov/\
-XVkqIWqZhLiGztwLFTFsZJxBNh2qhJY10fJzHyoQh0j8doq2ChUAYhtSB1WeaeQnuxyIHjOJX4fRnZ\
-36P7tBvu96764DVNWe2BAoXVfQqOqFG5wzcglXWPLeSqk2bFfMXKqzOf62Vt/W6hlqdeW2Vr+\
-tWv0G2JZ1yPxcvrsAi/rLl0f7s2P7SMdmkzweNAZ1smNu1bct61H98ZA06o9bVrO1g7d3HjXx/\
-PCu6ihxpzfBXdSVF84TV1xDVPqfHVdFj+vJ/LBVUzbbB9rM6EDlVQpSmGKVD0ElqzVbtbbHa81N+\
-Gi0nmw2njSbKmen0/jhSV9Hd1T1+\
-AqS6DEeEHv6jgFVFO4Xg1eQ6dV9woShdJ1ZUO771OByNKgpLCj3Mcptq9/\
-F8M9iIxxrqN8Pm82N1u7WzmbjdHejsbnb3N3ZbO3CR2sb5vygWMr6ERMSM6mrf8v6IScjl1PMgv/\
-5zY1TlPsmjTnJ8ksHJpV4kFw9zG2Pl3R1KeKL2T2vDFnGG0Olm6fjhcXZ4ASHLj0ruDlbq6ADfXY0a\
-0mwTwLrtr+77e9u+7sZ+rtJr5Ftna7oTFLi0UoUb6rps7PN2YNL981hcxG3VZCcgT25rL4/\
-HcztSh3djQ7Lcf5AvTkcfU/Tp5fTjTq6F2npYtU0KI9s5+\
-pqaRM2pKmjSh1p6hSJqtmzYB2VkzPmVVRNHfDQ+\
-k2OadcoXkkfbdBSfECpo9XL5wqIuHTNK4bWfvVnydCMh0bVyPX+\
-tbaWoqKKykk9jTrMhYU6Kob1TXloUKVA++XiMtWghRf/qWJ7bRVOCPfDOZ9TeRZ1fyK8d/\
-gHkMpsHg=="}, "ClickToCopyTemplate"]}, {
+                    "OEM6eJztWM1PG0cUt/\
+EXNoSQhKpKelmtUE81MgZjkktqFkyIILE8Tj9VifHu2Ey6O2vNzELcqn9CT7320P+qPbe3XvontG/\
+2y8saKuq4Sg4skped92beb968zxlkxWIXX+y5b4gYFMS9IyYJH3EisaQug+FBVhS7rmIY5EX+\
+mAo5WBDFHh7CCCohzzSJEGgJeY6D+\
+fgZwRbKfj3IidX9McMONU9cy7OJmr4QT88hIsVKbzwigshTd0TY+\
+rootLEtSERdi6jE6RMLARyyvo4KXVh/\
+DDxLPeKMbBgMEAYL58TdDmYEEZuY0uWXZea7ACMSUhClQ06ty5Ojd0ktokhFUd7zpIzUUAl3FKz7qH\
+3Q4fQcIJy2ucvkAbO6RLgeNwkqtw/2qHTwSKDVUDEw6SXsk3AFXkHZJzYeE0usBCLaHjOVxq/\
+TTr7HPRJvo9IajQjmmIHy8y9cNqGU97AgSI5tMsik9l4+\
+OMe2h0EzotzypOvAEZsxtXhC5JlroUqHE9CtpOeJRVs2HTKHMBkpVBQNoiwlek9Yjxw8JIh+\
+R0BjpVBj8axLcgs96hDBM/6z/\
+Gk8AhOXDY9zWPgzAEzQnTbo18CjZ4QOzxSEQse9AJlZsdbqC9f2JEnyizsneMjogJq+DRt/\
+w3Evtjl2/EPNiUVfPcp8C/rvP/+kw4LlfcrBZtSegd493DNc2+X8Q//59Sl/4D9/POVf+\
+M9vT42H8Y6XkeR09JIdsZEnJ1YcEFcMgA7AOtiyKBumyRUflo8ndY7LPuUE8yFlImnG6m1kjEz6/+\
+uxFCfGHq2Tjd+Rb+fSvp12snAqKusn4PBwxjrK6080HVVghX0ywJ4t0QehtR9J4rQYc4MognJ//\
+fhLImo8178EP9F46C7aGRZanxCmCa/vUCmJpQ1cRT+\
+n5GJD85l9khCwmkYtjQqtsVnb2dDjwKMkvs22ivoL0Pfse7qvGy6wMeuYMtJzXVuksEVHtBqexZRLR\
+RyoBMbnOUwkthN4T/6YDCZsecA4zXOFZ1fUEIQbIkna/\
+u6GYBRC32dvjGVazs0BRVLRCJvKKW4s1Vj478ISATGfCohr6My9UB7DhsYZRFNTBbS0ipZeeJCBOHj\
+it1O0FcgA4NsQOqiyTCM3OWV/6TGT+E3g3emp/\
+7MZ5Hru6P01gFV1JjY4SscVNMx6wQFnjWzMFaS8d5KqDdsVM6fqdIy/zdW3uXqGXF25zdXvKle/\
+BbYlHSI/l+8vwKL+6tXR/\
+uzYPtY3cWOr36iT6mNz0Kxuw0e1XyP96uPtrb5F6qaJrf788K7oKDant8Fd1JUVzhNXlENU+\
+J8dV0WP8sn8sK0mdLYPtJnRgcirBCQwRSIf6j2PaE3tuWdr9Vp9R6vVntR3njS2VMhORvHDk56O7qj\
+k8RXE0GPcJ/b0FQOqKNgv+\
+68h0KvrhAlD6TqtoOz3icGlcDCvsKDsJyjbTPzW1O9CQPiosbXR3NmuNxunuxvbu1u1nd3mzm5js97\
+cBvoPiqWsHzEhMZO6+lrSDzkZupxi5n/nahunKPtNEnIc4xcPLCpxP754mNsJL+\
+rqSsQTs9tdGWLMaAx5bp5mF6RmgxMcGPSs4OasrYIO9NnRrMWuPnGr2+\
+7utru77e5m6O4mnUa6cbqiL0ksj5ZDf1Mtn51uzR5cum0OWouoqYLgDOzxVfX9aWduVaroblgqR/\
+EDdedQ+J4ma5fTjSq6F0rpYNUyKItsZatqaxM2lFeFShXlVQ2JVtOVYBWV4wrzKmpelXdo/\
+SZF2jWCl5OFDVqMypMqWrlcVYDHJXNeMdD26z9LhvrLGI+6/\
+5pbS2FSReU4n4b9ZSZTRcUgvykL9bMUSL+cXKbas+DaP5Fsr83CMeF+MOdzKs/C3k8Etw7/\
+AJ8MbKc="}, "ClickToCopyTemplate"]}, {
                     "\"\[FilledVerySmallSquare]\"", "\"Resource object:\"", 
                     TemplateBox[{
                     TagBox[
@@ -21963,9 +21991,7 @@ pz0wd8iJnnJTAej/iVfXzpv8z9whNOubgzYwfNhS1pfXm1g4SC0uDTEFhp+p
                     AspectRatio -> 1, Axes -> False, Background -> None, 
                     Frame -> None, FrameTicks -> None, 
                     ImageSize -> {Automatic, 30}}], 
-                    StyleBox[
-                    RowBox[{"\"Comm\"", "\[Ellipsis]", "\"ools\""}], 
-                    FontFamily -> Dynamic[
+                    StyleBox["\"CommandLineTools\"", FontFamily -> Dynamic[
                     CurrentValue["PanelFontFamily"]], FontSize -> 
                     0.8 Inherited, ShowStringCharacters -> False, 
                     StripOnInput -> False]}}, 
@@ -21985,111 +22011,113 @@ pz0wd8iJnnJTAej/iVfXzpv8z9whNOubgzYwfNhS1pfXm1g4SC0uDTEFhp+p
                     DefaultBaseStyle -> {Background -> None}, 
                     BaselinePosition -> Baseline, Method -> "Preemptive"], 
                     "]"}], Short[#, 0.75]& ], 
-                    "OEM6eJztXQl8E9W675IutKWURYUCJaTpQinYpEsalvak6UKhLdgpV6CgT\
-JNpOzSdCTMTSlsQF1Dh8uSiKJuiAgpcFBW5iODyrghuuN0rDwUVEEUUFVFQFpf3nUkmmSTTUnjvXvW\
-9GfojOed/lu/7zne+c86X8/2mPpSPriZbitjZFF8fyUfWkA3wvV7Dx9ZQzU4HKVA4GcprKmhegM/\
-IarbFXcCdE8ZHE0KrQywVJlUn4qspnnVxNmp83QzKJhCxhKu5meRax1CknbimimXKGYHinBwlkHUOy\
-gPK2yJCazsuF84nFLcyZDNtq2TtLqlviZ5wghL4+\
-JpWJ8VTwnTWSTF6PR9RSjp4SkL7SCjVXEfZCQG41OuJiGqgDlPhx7qvYUWJhPM9JpAMRVAO4JPl/\
-GtoqoE6qe8IPqqMo+3+\
-laXPKNwIhiL5bkUuQWAZd7kYD6PudhNLSyZw9CwgYXopxzJCCWOXBE10Ky0pooVm0skTCR5BQaXxwD\
-7FYeIxKcWUg2yl7Hy8u4tSF2MTaJbpSGiaGs5FedmIsTidFMmRjI3iNTA0PqRbEclT4sjVhwTw3q1k\
-FulwkSAZvpvFJbDNpEDbvGhkJSU0snYiZgJHgWwFepasUYuDbmCaKUaQBMpHWimsDtKnr2h5M9lAEX\
-QbBRKL8kjMW8uv34gaupniuRDxiUPeHKgYZ3VxHDT8JyCYIrqXgnytpHMMRTc0YhIiJrAt0Gco38dS\
-x7MOl0DJy/\
-PdK8kGhq6nbSSWqPVXGFPfxIhQUNhQf4XVeweylReoZquDhqanS6MNQqTt3hGJuLTOSUMXW8aRzkba\
-xrvJkGZxtxrIa2Ionuf+nFix+9ueSwshN7qUtFGlLNeMS0DF1gpqFuXgrrONHc04DhVCc/\
-GltMNB2YHzWX5MaPwV2hpq1VjDZanwS6Skdrr72MCfnnGqQp4vBSgYaUkYSZz4MMOHfDLScHLPmDKp\
-TkhIQJ0CBURqpKM6ISHB/XiRDmgDRCKlo36qAusUKCAB/\
-ATVARkE9RMstw5H113iW6XRlUY1MWB0Q6xh1pDLGN3fKhUC6ZAOUv+\
-Kkv879dypqE5lfqX9KmGxVzy6V9rv5ZbsXBZXSpNSStJ4U4Ad2n02feqSIpi3o2MOrHOOtqBgRAQWy\
-ZCC1kkbcysBeWXIiLvfOCZD+mfsPb/6L4BUPfvSrqmjinyI2EjMUMTNxB39RYYcTnw/4++\
-9MhG37u4RoZWTrD5Ev+2zqYsuDkPc6cZjd/4tutiHLDh53Y6kkizEvbkPnsUyZPuzhtHkZAPiZqx/\
-5LtZCSU+JD3mzMJRzxoRtz3h04fmUzIkW3xyPDblZhly9uHYL2uH5yJOM6Do3lULZMh5w/\
-EtKfo8xPV9+6GH502RIUfb+mwpOwrIGPwtSobcfDou8UKZCXHTn+y/fdjHMqozNvV+p3g2IOt/\
-Wn9ww2oZMgizegMg7bjVKTJk2qLNr78wFJCnshe81SSXzlVCe7ntZaDgdm7ttAX/\
-KZPojiRoLh8QaKutz10y5OIb37y2uxcgGdWkY/\
-AceZ1J191GHwEZjP1H7j0sJ0PeDL3V3PYYIGtWnK1L52XIsb9uPbVoNiBv3fmPj4/\
-Ikc92ECMmlQHyOHP2/jM3yZD1oB8HkgGpxlQulSFLXgJVHA/jMxV/+\
-0mGiEp1fTbivgJ9WNAkk4HIIGNUQLAc294zKCBia8sNHlmPKA7QEB4Q8cv3MgrSfhzZJ2IsIDUjJv3\
-6eaYS8svcvQvCqSKF1sTBXSObP+\
-IknGvwcDrKoiCdIERUMyxRkZ9YS4AMhkt15iAfIk7CJ0Giq1bCMxkpUNAxIn55Pk8BEYlcl+\
-NDREHuBEQ0JrfmBMj6GqDAPZWVEFFZzxkDZhaZ2hkS1JoolJNDFCjw2rd6/\
-DyqhARx6kWCpCNqVZ9UBUQEtqRIcw4FtPZSmmxM4wKss0havdlDyc8yjr2IyLFcu8SMPYWdIeIMe0q\
-mKe4pN0rB1rtNIiCiiG9RQsRmU1BHdUiTAiLa7X05ChS4VSZHgWr3fFVCvNJJDJCfKOE6JO0WzSgYc\
-Tci2+M+OKg0WkTeGzPus68TCn3IB1Nu1G+bCUj11/88vWKyDPmy27hRDy0G5Fa+\
-dNkPd8mQCzvyahZvAGRG5fd3ES/LkLcOzy/S7AMkdkjhph+OFgbI4jTyyE+OuG2XVQG5WHjH+\
-e90xQqIm1NAqnu8eyK+TgkJkoEXCZLbgYoXPjiOkfNV+9oM2/\
-J9SNSNKyquqgFkQmjWGkuTDOn9neXtejMg166bxNC5MuTiluhfnkkCpEfJLQVLf5VpynNTX26puwCc\
-rnqrKrLsqKlDGZg6lJsMWU9cX/DGG4Ace2XFrvuOyBBH7bIPtHh8lu5/fM09v8iQiTN+\
-QEPxmEban2iZlyOjOnGdqyYX60Fu6cmNM2bIEOuAk5/kYd1ZnzeTe/\
-HpfAV980o0cK6LJT4pVpjrXiRoBoiyEEo9FnGHDBHNw+\
-2lCjPNi4ijvsCkgIgkapEC4l5JLAoUuFsL3D9iqkUKHlNCxPXCFrgy9h7TGSLahwsgnV4++\
-YmOgVgL76RsQjV2U1hDff4Cy2yK93nJPB6fItLW1MCxLsYe4PGJKOXI5kA3UIyYWUPbmvhAB9Hv0UG\
-jSuT3KpFgMViTZM16+o8ZP4viHGRrgJNWdXipDi/V4RWcUh1eqsNLdXipDi/V4aU6vFSHl+\
-rwUh1eqsNLdXipDq8g5A/u8JLJ73fhzFDdO11y72h8V+ACnDjSJTn5IV4kO6qY5ptk3h9rDPyLklL+\
-Th9x+V25qdDvWpbvClYHjoC/h4RpwkPhL9zzp5QR4ZfhzuvpyQsJDfH+r/\
-gnh7y9Jod1D3Prgx65Pw3otucXDjYv7OtNuz+jUcHgkaxt11Bv2r9eNIqZ/NGXuJ5//\
-eBy7cTSmOB2DN76/v3q0athqc6Tv2ShfdQ6/qadQ9G7ukPn8WfFUcvTOD+Qfj+\
-mGkN773C19EAj3gz7On5lojdNeT63fXN8E86X0lI9KW1bedPC2U9neOv/88Gfx/\
-Ts6etUSj96Z9xmXE5KS59S/cB6E7PgxJWQhVZdl/nMtlWJKPsAvf6RrRlo0twt2+vm+\
-eiQ6AWmEsLmRNB7124Cidyzvin1xkHoyafG1bAf6dH65dDKmSR0qv+N7fXn9ejg1VTeq/\
-YkVL7gqQXaH0Eyb4y9p/qdgagUlrg0wD/tM/\
-C1zwoHIo2GP3MO6hvD7z196ukByPLBsqHPbdajqdyHQwZWDEADyh7bsyFLj+6z/tnxeXt/\
-9OmuZTvtc5K96T3Hjx2cEJrsLc+FNi4b/oAOaYbecfUHwwei6SMeP/TQGh2a8ZxwT9/\
-5SWhtW9P0zZpkdIGc/22jbRAqnj+\
-vZ85NyejUhr3jTP20aPEwjTndoEerm5mK8X21KJBfEMLwsLnHmt7OXJmKkrQr1r0yfgh6+\
-2DzNatGpqH84ccejdyajhh70vnblqahrbtQ+S3709A54tgjq+enoY/\
-fJAZy36ei797MMz3akobeWvLito2nUlDv/bXhtRGAz3r42aqLenRge/\
-rTltJUtHzjx4nvj9UjOMAue7A4BcHeYvHYsclo8+CZSx45rEc/\
-fjF7H9qjQ1O6L2zPfFyPZk75du0TWh0aZ3lmec52PTo1pajgROtg1Hbw6BOvHdR50wOWzyTC9+\
-vQQn1bvz29dOjmFfNjW7/SoRugm5rNOhSyN7vxxCAQsmbjJmpkMjp3evnVZ8lk9P6173c/\
-tDcZtXz47a4vXkhGh19snfmJVY8WH2oMYUFo971+qGcVDN6xqi+m/7xEj35Ivf1Te1gKer9sw5Y5x/\
-Xo5zvOHDpApqDbP4wzHclOQfFA9txXU9BXZYtefXJGCsrYvaN/cX+QD2yV9t+Rgg7/\
-MjXHPicV2V2bP18PaTzGjx1ORUsOHzrTsATanTDj2rWVaajlm9FTOUcK+mnvgTWTd6ahB4/\
-UlXRPTUFJG06MGd4jHaU1vWfNOahHW386v3365HSU8zfH49dyenTvfx3udfO8dLR6UU3f2mg9ik/\
-Y9+6xlnQ0YcOonT3XJKO2n8vnfDMnHX36YL+Xo/KSkeOG/\
-ZOHTUpHZ889XznvuA6BdJrm9kxHZypXRZas1qGza16nx7+\
-WhqZERbX35nXIdGFFj2h7GrKlpx2cOFuH9Pdf/dyJi6ko6rEBU+ztWm96x2hL3S5ei7aWbexX/\
-VEaiv5r6ROR72iRrv+Ya1ZvT0fixrBlMJq1e3vJysohCJPx5LU69J6tNvL+z4agp0Z+\
-1PpJv2QUffzE6fbsDATb78gbgZ9nCTiPp2WgnndHVBz5QY/O3ZXYuy4vA/\
-U1x7YfPJqCGlccrI76YggK1GfZDXifWxnWkuqyIivrYDmuXXxOFnKDxOfFQq63+\
-Owu9C6BcYTA0c7xTDnjdAmBC61vfbTGKWV292b28GZaxNvbRGw1xUOqhi2lZRevg69PR1TjjQMfWcQ\
-KsO5eRknfFqZr15S9TcdbYcsCBSaQdjvNNATyHCfuFipJroFmeGuIAtv+WyX/O+zlDC3Q0GEbKb/\
-D3lUCIwjo+jo+Rk/A9gDqlxeX9zEa8swGkynLaDTkZhsMOWZzvjmw295+F7ndO62gW+/\
-9iFbG1sixDOvi/ckMFEF3K2lrpKTtTpCAlDQm0hdHEO5/VpCFZ/gQKSQjWlcFHI/\
-Q6oirPOEB5SAfC8OwgkgZEX7qPx6Sle+\
-ls7JQjLFX0AzoFuvgdd4wDlxTVjRMFwR1hR4cbdB1emJ0UriCf2dQ7q6d3h695RWDRALu3Os61RUHj\
-oGAjWZnTPTQFVO8DcYI09VlXjoP8oiqYd3ROOF8VDXldIC1gdyUTmnlGdpZzAo8MdGitbEOHBcA3Wr\
-ZekiJgzjMAaOoFfAwaiGpdQm0A/\
-SS4jO1cIqiyGbAYYZqW1hHPUxKN09aGyCi1nZBUpLSYnmVzLZRTjz8EUUOkmniI7EeMw2YOQIodVLC\
-b0moRwusIXh+QR8kZxfNedeCZLrWQ5SVArpFlt3Hua7U8xwCz/\
-mWjH9PzE3g5O2ywVOeiGI3CR4bFbS4SCWIKFg4Xc0ML1ta3auPpoKq9xXTwOQLLqPAWAzOAqopgQq0\
-oz08xIhkyo6gl6YluJ+uEyT1SjhJG179utyrNezyO5PpgyZAH/\
-oQjWyLewZaG0GZbDiGKlBEsVWu5jqKg8W4KQiLBy2FRZyjbDReKq3hvlEWm25lBHK22HdQ1X+\
-xGoTXsM7frwIk4DHB9mwCy9MeG+Ie4FC538UT0/UbRAdaHSx/xdGBgZ4iNTxQDQ9Ub0sFIx3Qpt6W+\
-q1T6m0p9baUeltKvS2l3pZSb0upt6XU21LqbSn1tpR6W0q9LfX/6baUGh74e78tpUpEDQ/0X/\
-pVh5fq8FIdXqrDS3V4qQ4v1eGlOrxUh5fq8PKzzqrDS3V4qQ4v1eGlOrzU8MD/I+\
-4dNTxQDQ9UwwPV8EA1PFAND1TDA9XwQDU8sAvhgZH+ZwU1PLBeDQ9UwwPV8MDfNjzwklM/\
-TjeOam1hOTvf9Skj/+\
-b3nrZoDymhmUS4LlNHdJPslo6I1GHbBeZCJ75lrh5mko6I0FkrynVElI5opBwOHdghQtQhHdETCL6e\
-FhoJygkix+KDVaKR5QLYDOkSj7G6P1EcfzlWgRAH+\
-Er6itZNnFhe3PWOUnVGY259To6BGmbON2UNyyFNOcPy8235w2y2PEOWyWgnTTaTToEUNfJTjfz8N6n\
-BHznyU7ZhDgiq7HyPS8R5Zhx2hTnqu3VxmxBWXg8ZYePFiMgKGCk+Xu+xPu6h9/\
-wslIq9i1ETGR5vfYP8iwnVLgYvrd7Vg4ioYG2kQ9wsYw0g9DWNNK9lxTd+am0kti/\
-aOkrr4im7luS1NN6lDvfyUIJfvQka2w/IxOvrdDHDA1aQdZSDD3iLKJ1eSobIhaf4Gk+ZvC5vAY/\
-mdUqk+N5AKtrKSGsjy/KUIm3lI0zZ+\
-YZsIxwTsvPyTaYcc7Y5P9eUazTlGfOM2eYcY052dla20ZyTk2UwZZtzzWaj0WTIyzcac2DN7O4RLS2\
-N6CUY9eOOTypxiHOUL3Y1Oz0FvYG+FO9TzWKqnnQ5BK/VIHrJR8QtFEU9LGcaKY4WYNQUTE+\
-otOQXw2mGbXBnSuWiShj8/\
-la73NsdzodbGNxUXBnenVFcyUwXzNxOVNN9Jrs8xRRPcZd43WvwXkqBVc++\
-SFEKShsqb5i1KFVshC7zqBjtexXutA5fhYutl7MV1m2fvSumedj8tHrVGnskfN81hIMVZF79q/\
-3VW6kWsVej/YM+5hj/WVo7ag4+5WqHFWgDT6+\
-Z2lMPPGwwn3pgbaYWNND7w0gNBRYeVxjDOuxQyYkXmdrAErX4P08fFp5nbbQI1YLSkOVMPcxPMY3bw\
-bu4TK30kwze/OPc7OFgKXLzsvLMYDWMhux8rSFLm6nF+\
-oubxkVEXXZnVYIRh2kp0oVh0P7pnrxKUrA1QrFKqpnlWq1gDwSOhDUcFwVK4HQktLp5zRZ5LZmNf+\
-yh7ONdAphnsUHOBQRCGo5cIm2EywZzAiRUStIOF0fh2SRxMm2a2JhRbAuTUl6MoVGjjIaCAjdmNgE4\
-bU7BtKAfj9wR6lidA6HoEjutCPRy18H7cI/ziA94TXEEXuyL/yem+L8B9Hwkew=="}, 
+                    "OEM6eJztXQl8E9W675IutKWURYUCJUzThVKwadOkYWlPmrSl0BbslCtQU\
+KbJtBmazoSZCaUtiAuocHlyUZRNUQEFLoJsFxFc3hXBDbd75aGgAqKIoiIKyuLyzplkkslkWgrv3au\
++N0N/JOf8z/J93/nOd875cr7f1IdzsdVEczEzk+Tqo7noGqIBfq/XcPE1ZJPbRfAkSoZzmgqK4+\
+FndDXT7C3gzYngYnG+\
+xSWUihCr44nVJMd4WDs5tm4aaefxeNzT1ESwLaNIwoHfUMXQ5TRPsm6W5Ik6F+\
+kDpW3h4bXtl4vkkmwtNNFE2SsZh0fsW6QnEid5LrGmxU1yJD+\
+VcZO0TsdFlRIujhTRXiJKNtWRDpyHXOp0eFQ1pA5REcR6oGFFiURy3cYRNImTLsgnwwbX0FRD6sS+\
+o7iYMpZyBFcWP2NQIwiK5roUe3ieob3l4nyMettNLi0Zx1IzIAlTS1mG5ktohyhovEtpSTHFNxFuDk\
+/yCQpWGgvZJ1lEPCLFRrqIFtLBJXq7KPXQdp5i6PaEpqlhPaSfjTiL200SLEHbSU4DhyaAdCkmOFIY\
+ufowGe9dSmYQLg8BJcN1sXh4pongKbsfja4keSfjwOPGsSSULU/NkDRqcVENdBNJ86JAuWgridRB/\
+AwULW8iGkicaiWhxGJ8EvPXCuo3qoZqIjk2THgSgD8HVkywelgWNvwnSDCJdy2F8rUS7lEk1eBEJES\
+NY5phn+FcL0sdx7g8PCktz3WtJBpoqp6yE0ii1l/\
+hmAYmRpSCwoYHK6zOP5AtHE82WV0UbHqqONpQiJTDPyJRV9Y5cejiy1jC7aTsnJcMcRZ3qYF5jTTJc\
+eyfkyv2ftt9cRHMjS0l7GQpwzahErBiSwU5g3SxN9lHj6RdR4pgc4mllMtFOiDnM4KY0AQrtDXcqrF\
+GSlKRV0iJ7XQNsIE+feNUBXxfCkEo0pw0HD/1YVYA+WS4/vS+UWVinbAwWZ1CBURspL06YWGh/\
+fiRdmiDiEhKe/1UyesUKiAyfkLqQBmE9BMqt3ZH11viW6XRFUc1WTa6YdYIa9hVjO5vlQqD6bB2Uv+\
+Kkv879bypmA5lfq39KmHx1zy619rv1ZbsWBbXSpNSStR4k8wO7T2fOXlRMZy3I+\
+MOrXGPtIBQRAAWSJDClgnr8ysh8sqgYfe/\
+cUKC9M3af3HlXyBS9exLeyaPKA4gQiNxgwE7HXX0FwlyNPn9rL/3yAbsmvuHhVdOsAYQ3Y7PJi+\
+4PASwZ50n7v1brC2AzDt9066UkhzAvnkAPgslyM5n9SOJiXrATlv7xHczkkoCSGbcufkjns0F7M6kT\
+x+bS0qQPOEx+GzK7RLk/OPxX9YOzQespl/xgyvmSZCL+pOb03RGwPZ++\
+7HH50ySIMdbe20uOw6RUehbjAS5/WxC8qUyE2Cnbum7c8jHEqqzNvR8xzYTImt/\
+Wnt43UoJMgCxegtE2lCrkyTIlAUbX39hMES25s17q1Eqnev4tnL7y5CCu9nVU+\
+b9p0Siu1JgcwUQgW219rpPglx+45vX9vaASFY14Ro4S1pnwk13UcegDEb/I/\
+8BhpUgb4bfaW59CiKrlp2vy+QkyIm/bjuzYCZE3rr3Hx8fkyKf7cKHTSiDyCb6/MPnbpMga6F+\
+HEqFSDWicrEEWfQSVMWxcHwmo28/SRBBqW7OA+xXUB/mNUpkIDBI5yogSI6t7+\
+kVEKG1pXqfrIfZZBrCQUT48r2Egowfh/eKGg2RmmETfv08Wwn5Zfb+\
+eZFksUJrwuCukswfYRLO1vs4HWFRkE4IIqgZkqjAT7xFJoOhYp1ZIIAIk3ALlOiK5fCZCBQoaB8Rvj\
+xvVEAEItcYAoggyN0QEYzJnQaZrG+AFHinshIiKOuFXNnMItI7QkJaE4RyepACBX77Vo+\
+eJ5WQEE79SIh0BK3qla6ACMDmNHHOAVlrL2VIxjRBZp0F0urNPkp+\
+lnDsRwSOpdolZOwr6ggRZthWiaZ4p9wIBVvvNYkQEUR8hxIiNJsG2qtDmBQQwW4fMChQ4FUZgwLV3v\
+mqhPilkyyTnyDhOiDuFs0gFPE2ItnjPjqgNFZA3hs15rOvk4oCyAeTbtXtmA6R6q//\
+eXbZRAnyZZcxIx5bCJE7udIlP9wnQS7tMtYsXAeRaZXf34e/\
+LEHeOjq3WHMAIvGDijb8cLxIJouzwCc/KeK1XVYF5HLRPRe/w2wKiJdTiFR3e/\
+dUYp0SEiIDPxIit0MVL3xwEiEXqw606ncUBJCYW5dVXFcDkXHhOassjRKk53eWt+\
+vNELlxzQSaypcglzfH/vJMCkS6ldxRuPhXiaY8N/\
+nl5rpLkNMVb1VFlx03tSsDU7tykyBr8ZsL33gDIideWbbnoWMSxFW75AMtGp/FBzeteuAXCTJ+\
+2g9gMBrTaMfTzXMMEqqT13hq8pEe5JeeXj9tmgSx9jv9iRHpzlrjdPbF7QUK+uaXqHyuCyU+\
+sSnMdT8SMgMEWfClPou4S4II5uHuUoWZ5keEUZ9nUkAEErVAAfGuJBYFCrytyfePiGqBgqeUEGG9sM\
+tXxp6jOkIE+3AJSqdHQH6CYyDewrlJO1+N3BTW8IC/wDKT5AJeMp/Hp5iwNzawjId2yDw+\
+UaUs0SR3A8UJmTWUvZGTO4h+jw4aVSK/V4mEisGaImnW13/\
+c2Bkk6yJaZE5a1eGlOrxUh1doSnV4qQ4v1eGlOrxUh5fq8FIdXqrDS3V4qQ4v1eGlOrxCkD+\
+4w0siv9+FM0N173TKvaMJXIGTOXHES3LSQ7xAdoyN4hol3h9rHPwXI6aCnT7C8rt8Q1HQtazAFax2H\
+AF/D4vQRIbDv0jfn1JGVFCGN6+7Ly8sPMz/v+KfFPL3mhrRNcKrDzrg/dSDu56fP9A8v7c/\
+7f2MBYUDhzP2PYP96eB6sSBu4kdfonrB9UPLteGL40Lb0fvrB/erA69GpLtP/\
+5IDDpBruNt2DwbvYkcuos+K45btKF9OfxBTzvCeuzzN3cCwNyO+Tlye7E+\
+Tvs8d35zcgPLFtFhPTNuX3zZ/5vYsf/1/\
+PvrzqO7dA52K6SfvTdiIyolp8VOsL683PgeeuJJywIqbsp/\
+ZsSIZ5B2i1j6xLQtMmL15Z92cAB0ivZCppIhZUdT+1RugRB5Y25h+\
+6wCwZeuYGuYjHVi7FLZyLgWc6XtrW/1FHTh8PWl81ZECyudtnaf9EUrmjdEPVL/TH5TCJS4D4p/\
+26v/aZ0X9gUbDnbsA6+dGPnj2zPZ+wPLBksHPbdSByeyHg/pX9AP9yp7aty5HBx6y/\
+tn1eVtf8OmeJbsds1L96X0nTxweF57qL8+GO5cMfQQDmsH3XP/B0P5g6rBNRx5bhYFpz/\
+EP9J6bAla3Nk7dqEkFl4i53zrtA4Bt7pzuhttSwZl1+8eY+\
+mjBwiEac6ZeB1Y20RVje2uBnF8ohKERs080vp29PB2kaJeteWXsIPD24aYbVgzPAAVDTzwZvS0T0I6\
+Ui3ctzgDb9oDyOw5mgAv4iSdWzs0AH7+J92e/TwffvWk0PdmcAd5a9OKO9WfSQM+\
+DtZG1URCf8fizVZd14NDOzO2W0nSwdP3Hye+\
+P1gF4gF3yqC0NwL3FwtGjU8HGgdMXPXFUB378YuYBsA8Dk7rOb8vepAPTJ327+\
+mktBsZYnllq2KkDZyYVF55qGQhaDx9/+rXDmD/db+l0PPIgBubrWvvs64GB25fNjW/\
+5CgO3wG5qNmIgbH+e89QAKGTN+g3k8FRw4ezS688TqeD9G9/vemR/Kmj+8Ns9X7yQCo6+\
+2DL9E6sOLDziDGOg0B56/Uj3Kjh4J6q+mPrzIh34If3uTx0RaeD9snWbZ53UgZ/\
+vOXfkEJEG7v4wwXQsLw0kQrJnv5oGvipb8OqWaWkga++uvra+\
+UD5wq3TwnjRw9JfJBsesdODwbPx8LUyjMX7qaDpYdPTIuYZFsN1x025cXZkBmr8ZOZl1pYGf9h9aNX\
+F3Bnj0WF1J1/\
+Q0kLLu1Kih3TJBRuN7VsNhHdj208WdUydmAsPfXJtuZHXgwf862uP2OZlg5YKa3rWxOpCYdODdE82Z\
+YNy6Ebu7r0oFrT+Xz/pmVib49NE+L8cYU4HrloMTh0zIBOcvPF855yQGoHQaZ3fPBOcqV0SXrMTA+\
+VWvU2NfywCTYmLaenIYMF1a1i3WkQHsmRmHx8/\
+EgO7h6587dTkdxDzVb5KjTetP7xppqdvDacG2svV9qj/KALF/LX06+\
+h0twPqOumHlzkwgbAybB4IZe3eWLK8cBBAZW27EwHv22uiHPxsEtg7/\
+qOWTPqkg9uSps215WQBuv6Nvhfw8i8PzeEYW6H5/\
+VMWxH3Tgwn3JPeuMWaC3Ob7t8PE04Fx2uDrmi0FArs+SG/\
+ABtzJcS6rLiq2Mi2HZNuE5XcQOEJ4Xi9iewrO3yL8EJuA8S7nH0uW028PLF9rA+mhNUMrs6s/s5s+\
+0CLe38fhqkoOpGqaUkly8Dr0+\
+HVWNNg5cdDHDw3X3KkoGtjCdu6bsbzrRCrcssMA4wuGg6AY5zwnCbqGSYBsomrOGKbAdvFUKvsNeTl\
+M8BTtsJaR32DtLYBQOu76Ji9PhcHsA65fbynvl6k15uXqj2WAwmMyG/\
+Bx9Tp5e3m3PoIvc3p1WyK33PngLbXeyDM14uGAy5SLoaiXsTlLc7oQISEljogNxBJHBZwVJeEYAEUM\
+yYrEqyPEwLYZf5wsPKIfysdA0wwuU4ZFn/uMxSfkemJWBxWhHBUVD3WJcHOYP40A1JUUjsBCoM/\
+SgaIPO0xOHieEKwZ3Bcvft9vfoL68YJCK7c491qCsuFAMBN5odMdENs5GcHY4RoqvTvHQc5BFTw3ij\
+cSK5mGrS7YLWBuamdUgrR1NuG8Nz+\
+HiL1s64UFwA7FbL1MOUMIhDXHAUtTwaRi1Maj085YJ6SXLZWniKIokmiMMZqm1mXPVwUnp50tohImh\
+tJyQlKi2SV8lMO+lGwx9V7CLoRi4a6THdgJjDIaVukv8tCfVpgTUMzS/\
+YB8E6BHPeuSCZzvUQYyUh3QLL3uNcZ+\
+r5DoEXAkvGvyfmRj55O23wlCei0E2Sz0aFLC5iCTwGLpyeJpqTLK3e1UdTQdYHimng5Asto8BYHMqC\
+VJM8Kbej3XzECGRKjqBXpiW0n84TJPaKuwk7Wv063as14uo7k+iDRqYPvXAn0+\
+ydgVYnVCY7iqGSiyi+ytNUR7JwMW4MwRKhlsJFnCXtFFoqrZGBURaabqF5YqbQd0jVf7EaRNYw7t+\
+vAiShMUH2bBzDUT4b4h3gcKnfxRfT9RtEB1pdDHfN0YFyT5EaHqiGB6q3pUKRdmhTb0v91in1tpR6W\
+0q9LaXellJvS6m3pdTbUuptKfW2lHpbSr0tpd6W+v90W0oND/y935ZSJaKGBwYv/\
+arDS3V4qQ4v1eGlOrxUh5fq8FIdXqrDS3V4BVln1eGlOrxUh5fq8FIdXmp44P8R944aHqiGB6rhgWp\
+4oBoeqIYHquGBanigGh7YifDA6OCzghoeWK+GB6rhgWp44G8bHnjFqZ+AjSFbmhnWwXV+yki/\
+Bb2nLdZHSng2HollY3gX0W5heDSGbBc0F5jwlrl6OJMwPAqzVpRjeAyGO0mXC4N2CBd0CMO7Q4Jvpn\
+gnTrqhyJH44CrhZFgZm2Gd4jEe+xPJcldjFXBhgK+lr1hs/PhyW+\
+c7SsfsdpODrKt3DMk3FRiGGHLz8oeYTXbjEKMxhzQ79Ga7qSAfUyBFjfxUIz//\
+TWrwR478lGyYZUGVHe9x8QTfjEOuMFd9l05uEyLK62FGxFghIrICjhSXqPNZH+/Q+\
+34WSkfexZjxNIe2viH+xaRqD42WVv/\
+qgUdVMHbCJWyWkQbguhonxWkZ4Y2fWjuB7Iu2jtR6ONKhJTgthXapQ/\
+08lKBXb0KN7QPJROvrVCHDB1YQdaSLk71FlHLeTIRJhaf4Gk+JvK5uAY/\
+lMCVSAm8gFWxltNXJMBypSFv5MFOeOT/HZMjJN+\
+Xk6PONZnNeTkFeboEx32zUG4x5eab8PLMxN99YkJtjNuQY8nMLDDkmo8GQlwvXzK4+\
+0VLiiF6B0SDuuJQSlzBHOZunye0r6A/0JbmAatrIesLj4v1WA+\
+8hHRGvUBT1sJx2kizFw1FTMD3h4pJvg6cZpsGbKZaLKaHR+\
+1sdUm93JBdpoVFTCWVod0ayJdM9cOZ2oJreM9nVKaZwirvC615D91IKrPr2RYpSUNpQ+\
+cOsBakiI3SVR8XYwKtwp7T7KlxkvdwtcN0O2DsbxcHNT4tfrZFHIvBdg7sYXuLVvz5YvZVq4fs12j/\
+oY44LnqW1I2ahU652SKFWfnrN1p555HG9+cwjq7O1UAP9P4zUkNDCowqjGJcDVnKjRaZWXqIW/\
+efrw8JxjJ0SoFqoNEQ5XQ/np5BG7aBdXLZW/EkGbf5Rbt5Qc0F+\
+vjHHaDYZzLn6vAKtPkebrUX6i5pGRQRd9mZVQiMOp6VAF4Kh9k/\
+15VUSvN0Ji1WSTQzbYoX2gGcJuIajopASeDriW7y85gm8lsxEP/\
+aQjrEeHppnoUHWAwmEaXjkEmjDPXY4J6CESgnK5WFJNJtETqZMERrLFdpCpJTbEDRiRK6+\
+sNCLmU0QnDKrcErIj0feCHWkznIotsRBKQI9vHXQPtznPOJkrymOQou97X9iiv8bfUklWQ=="}, 
                     "ClickToCopyTemplate"]}}, 
                     GridBoxAlignment -> {"Columns" -> {{Left}}}, AutoDelete -> 
                     False, GridBoxItemSize -> {
@@ -22126,7 +22154,7 @@ bU7BtKAfj9wR6lidA6HoEjutCPRy18H7cI/ziA94TXEEXuyL/yem+L8B9Hwkew=="},
              DateString[
               TimeZoneConvert[
                DateObject[
-               3.986208083823828`16.35313495469796*^9, TimeZone -> 0]], {
+               3.992372815302899`16.353806078906743*^9, TimeZone -> 0]], {
               "MonthName", " ", "DayShort", ", ", "Year", " ", "Hour12Short", 
                ":", "Minute", " ", "AMPMLowerCase"}], SingleEvaluation -> 
              True, Evaluator -> "System"], FontSlant -> Italic, FontColor -> 
@@ -22152,7 +22180,7 @@ bU7BtKAfj9wR6lidA6HoEjutCPRy18H7cI/ziA94TXEEXuyL/yem+L8B9Hwkew=="},
                 RawBoxes[
                  
                  TemplateBox[{
-                  "\"5837\"", "OEM6eJxLYyzmCEosd8qvSC0OZlMytTA2VwIAPmEFgg=="},
+                  "\"5106\"", "OEM6eJxLYyzmCEosd8qvSC0OZlMyNTQwUwIAPjoFdw=="},
                    "ClickToCopyTemplate"]]}}], LineBreakWithin -> Automatic, 
              LineIndent -> 0], ItemSize -> Fit], 
            Style[
@@ -22214,24 +22242,24 @@ reducing the size to avoid potential issues."}] :>
                 DefinitionNotebookClient`PackageScope`setHint[
                  "Warning", "Function", 
                   DefinitionNotebookClient`$CurrentNotebook, 
-                  "e794d7ef-c515-404b-b080-6bcae30df8fc", 820526579, 
+                  "556b4bee-78fe-46b1-8ee8-9f951ddb7dad", 541162750, 
                   "LargeCellBounds/CellArea", <|
-                  "Type" -> "area", "CellID" -> 820526579, "CellObject" -> 
+                  "Type" -> "area", "CellID" -> 541162750, "CellObject" -> 
                    CellObject[
-                    "c2e77ccf-b242-4348-b9c3-dc3c80dbb6f7", 
-                    "0bc7bcaa-9d73-42ad-98ce-3e1ce6818989"], 
-                   "CellSerialNumber" -> 12220, 
+                    "20fe9ed2-f0e2-4de5-be8e-74918c645346", 
+                    "dc245f71-5379-487b-9af2-5c265129dd94"], 
+                   "CellSerialNumber" -> 16577, 
                    "CellSize" -> {792.059453125, 1351.16015625}, 
                    "CellTags" -> {}, "ContentData" -> BoxData, 
                    "ContentDataForm" -> StandardForm, "CursorPosition" -> 
                    None, "Evaluatable" -> True, "Evaluating" -> False, 
-                   "ExpressionUUID" -> "c2e77ccf-b242-4348-b9c3-dc3c80dbb6f7",
+                   "ExpressionUUID" -> "20fe9ed2-f0e2-4de5-be8e-74918c645346",
                     "FirstCellInGroup" -> False, "Formatted" -> True, 
                    "NeedsRendering" -> False, "Position" -> 126, "Rendering" -> 
                    False, "Style" -> "Input", "TemplateGroup" -> False, 
                    "TemplateGroupName" -> None, "Area" -> 500000., "Height" -> 
                    750., "Width" -> 2000|>]; 
-                DefinitionNotebookClient`PackageScope`seekAfter[820526579]; 
+                DefinitionNotebookClient`PackageScope`seekAfter[541162750]; 
                 Null]}, Appearance -> None], "BoxID" -> "WarningCountButton"], 
            MouseAppearance[
             Button[
@@ -22292,8 +22320,8 @@ reducing the size to avoid potential issues."}] :>
                   Not[
                    FreeQ[
                    DefinitionNotebookClient`Stripes`PackagePrivate`c$, 
-                    "36b02a3c-d7ce-4495-8cd2-09bcadf1b94a"]]]]]], Appearance -> 
-             None, BoxID -> "36b02a3c-d7ce-4495-8cd2-09bcadf1b94a"], 
+                    "63862d66-6fe4-477f-89ea-5ed9b4d0393f"]]]]]], Appearance -> 
+             None, BoxID -> "63862d66-6fe4-477f-89ea-5ed9b4d0393f"], 
             "LinkHand"]}}, Alignment -> {Left, Baseline}], 
         Grid[{{"", 
            Style[
@@ -22335,7 +22363,7 @@ reducing the size to avoid potential issues."}] :>
                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
                     TagBox[
                     "\"Your resource has been submitted for review. Your \
-submission id is 5837.\"", "SummaryItem"]}]}, {
+submission id is 5106.\"", "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"Name\"", "\": \""}, "RowDefault"], 
@@ -22383,7 +22411,7 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
                     TagBox[
                     "\"Your resource has been submitted for review. Your \
-submission id is 5837.\"", "SummaryItem"]}]}, {
+submission id is 5106.\"", "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"Name\"", "\": \""}, "RowDefault"], 
@@ -22399,13 +22427,13 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     TemplateBox[{"\"UUID\"", "\": \""}, "RowDefault"], 
                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
                     TagBox[
-                    "\"ad2e9b1b-e5d3-4ff7-9ce1-96f265a4572a\"", 
+                    "\"1a53b52e-9cf7-453b-b0eb-943bde2ccadb\"", 
                     "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"SubmissionID\"", "\": \""}, "RowDefault"],
                      "SummaryItemAnnotation"], "\[InvisibleSpace]", 
-                    TagBox["\"5837\"", "SummaryItem"]}]}, {
+                    TagBox["\"5106\"", "SummaryItem"]}]}, {
                     RowBox[{
                     TagBox[
                     TemplateBox[{"\"ResourceType\"", "\": \""}, "RowDefault"],
@@ -22419,14 +22447,14 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     "\[InvisibleSpace]", 
                     TagBox[
                     TemplateBox[{
-                    RowBox[{"\"Sun 26 Apr 2026 16:01:22\"", 
+                    RowBox[{"\"Tue 7 Jul 2026 00:26:53\"", 
                     StyleBox["\"GMT\"", "TimeZoneLabel"]}], 
                     RowBox[{"DateObject", "[", 
                     RowBox[{
                     RowBox[{"{", 
                     
-                    RowBox[{"2026", ",", "4", ",", "26", ",", "16", ",", "1", 
-                    ",", "22.683501`8.108285068108644"}], "}"}], ",", 
+                    RowBox[{"2026", ",", "7", ",", "7", ",", "0", ",", "26", 
+                    ",", "53.764275`8.483068768512746"}], "}"}], ",", 
                     "\"Instant\"", ",", "\"Gregorian\"", ",", "0.`"}], "]"}]},
                      "DateObject", Editable -> False], "SummaryItem"]}]}, {
                     RowBox[{
@@ -22464,37 +22492,39 @@ submission id is 5837.\"", "SummaryItem"]}]}, {
                     Dynamic[Typeset`open$$], ImageSize -> Automatic]}, 
                     "SummaryPanel"], DynamicModuleValues :> {}], "]"}], 
                    Short[#, 0.75]& ], 
-                  "OEM6eJztWEtz2zYQtixKsmTHURJ3Ok0vGo6np8pjybbi5JLKtOW4YycaQel\
-zOmNIBGWkJMgBQDtqpz+hp1576L9qz+2tl/\
-6EdsGXaMruuIo6ycE8iBR2sfthsQ8srJxY6uGLPfc1EVZB3DtiknCPE4kldRkMWzlR7LmKwdKEdkyF\
-tBZFsY9HMIJKyB8OiRBoGfmOg/n4GcEmyn1t5UV1f8ywQ4cnrunbRE1fTKbnEZFitT/\
-2iCDy1PUIW18XhQ62BYmpazGVOANiIoBD1tdRoQfyx8Cz3CeOZ8NgiDAUnBd3u5gRRGwylC6/\
-rFPrAYxYSUGUDjk1L0+O3yUlRJGKorznSxmboRKtKJT7sHPQ5fQcIJx2uMvkATN7RLg+\
-HxJU7hzsUelgT6BqZBiY9ALWSbgCr6DsExuPiSlWQxUdnw2Vxa+zjtbnPkmWUWl7HsEcMzC+\
-9txlE0p5DwuC5Ngm1kJm7eWDc2z7GCwjym1fug5s8TChFk+\
-IPHNNVOlyAraV9DwltG3TEXMIk7FBRdEgylPi94T1yMEjguh3BCxWiiyWzLqkt9CnDhF8IXhWPklGY\
-OKK4XMOgj8DwATd6YB9Dew9I3R0piAUuu4F6MyJtfZAuLYvSZpf3DnBI0YtOgx82Pgbtnupw7ETbGp\
-eLAXmUe5b0H//+ScdBJb3KQefUWsGeu9wz3Btl/P3g+fXp/\
-xB8PzxlH8RPL89NT5IVryCJKfeC3bEPF9OvDgkrhoAHYB1sWlSNsqSKwGsAE9mH1cCygnmI8pE2o3V\
-21gwFrLf12MpTpw9lpNL3nFs57OxnQ2yaCoq6ycQ8LDHOtL0JzUdVUDCPrGwb0v0XuTtR5I4bcbcMI\
-ug/F8//pLKGp/qX0Kc1HgULrUzLGoDQlhN+AOHSknMmuUq+\
-jklFxu1gDkgCQHSatSsUVHb2d16tKEniUdpfJNlFfXnYO/Z13RfN1xgY+\
-YxZaTvurbIYIu3qBrtxVRIxRyoBM7nO0yklhNGj3ZMrAmbBhinea6I7IoagnRDJMn6390IjEIYxOyN\
-sUzruTmgWCvy8FAFxY21Gov/\
-XVkqIWqZhLiGztwLFTFsZJxBNh2qhJY10fJzHyoQh0j8doq2ChUAYhtSB1WeaeQnuxyIHjOJX4fRnZ\
-36P7tBvu96764DVNWe2BAoXVfQqOqFG5wzcglXWPLeSqk2bFfMXKqzOf62Vt/W6hlqdeW2Vr+\
-tWv0G2JZ1yPxcvrsAi/rLl0f7s2P7SMdmkzweNAZ1smNu1bct61H98ZA06o9bVrO1g7d3HjXx/\
-PCu6ihxpzfBXdSVF84TV1xDVPqfHVdFj+vJ/LBVUzbbB9rM6EDlVQpSmGKVD0ElqzVbtbbHa81N+\
-Gi0nmw2njSbKmen0/jhSV9Hd1T1+\
-AqS6DEeEHv6jgFVFO4Xg1eQ6dV9woShdJ1ZUO771OByNKgpLCj3Mcptq9/\
-F8M9iIxxrqN8Pm82N1u7WzmbjdHejsbnb3N3ZbO3CR2sb5vygWMr6ERMSM6mrf8v6IScjl1PMgv/\
-5zY1TlPsmjTnJ8ksHJpV4kFw9zG2Pl3R1KeKL2T2vDFnGG0Olm6fjhcXZ4ASHLj0ruDlbq6ADfXY0a\
-0mwTwLrtr+77e9u+7sZ+rtJr5Ftna7oTFLi0UoUb6rps7PN2YNL981hcxG3VZCcgT25rL4/\
-HcztSh3djQ7Lcf5AvTkcfU/Tp5fTjTq6F2npYtU0KI9s5+\
-pqaRM2pKmjSh1p6hSJqtmzYB2VkzPmVVRNHfDQ+\
-k2OadcoXkkfbdBSfECpo9XL5wqIuHTNK4bWfvVnydCMh0bVyPX+\
-tbaWoqKKykk9jTrMhYU6Kob1TXloUKVA++XiMtWghRf/qWJ7bRVOCPfDOZ9TeRZ1fyK8d/\
-gHkMpsHg=="}, "ClickToCopyTemplate"]]}, {
+                  "OEM6eJztWM1PG0cUt/\
+EXNoSQhKpKelmtUE81MgZjkktqFkyIILE8Tj9VifHu2Ey6O2vNzELcqn9CT7320P+qPbe3XvontG/\
+2y8saKuq4Sg4skped92beb968zxlkxWIXX+y5b4gYFMS9IyYJH3EisaQug+FBVhS7rmIY5EX+\
+mAo5WBDFHh7CCCohzzSJEGgJeY6D+\
+fgZwRbKfj3IidX9McMONU9cy7OJmr4QT88hIsVKbzwigshTd0TY+\
+rootLEtSERdi6jE6RMLARyyvo4KXVh/\
+DDxLPeKMbBgMEAYL58TdDmYEEZuY0uWXZea7ACMSUhClQ06ty5Ojd0ktokhFUd7zpIzUUAl3FKz7qH\
+3Q4fQcIJy2ucvkAbO6RLgeNwkqtw/2qHTwSKDVUDEw6SXsk3AFXkHZJzYeE0usBCLaHjOVxq/\
+TTr7HPRJvo9IajQjmmIHy8y9cNqGU97AgSI5tMsik9l4+\
+OMe2h0EzotzypOvAEZsxtXhC5JlroUqHE9CtpOeJRVs2HTKHMBkpVBQNoiwlek9Yjxw8JIh+\
+R0BjpVBj8axLcgs96hDBM/6z/\
+Gk8AhOXDY9zWPgzAEzQnTbo18CjZ4QOzxSEQse9AJlZsdbqC9f2JEnyizsneMjogJq+DRt/\
+w3Evtjl2/EPNiUVfPcp8C/rvP/+kw4LlfcrBZtSegd493DNc2+X8Q//59Sl/4D9/POVf+\
+M9vT42H8Y6XkeR09JIdsZEnJ1YcEFcMgA7AOtiyKBumyRUflo8ndY7LPuUE8yFlImnG6m1kjEz6/+\
+uxFCfGHq2Tjd+Rb+fSvp12snAqKusn4PBwxjrK6080HVVghX0ywJ4t0QehtR9J4rQYc4MognJ//\
+fhLImo8178EP9F46C7aGRZanxCmCa/vUCmJpQ1cRT+\
+n5GJD85l9khCwmkYtjQqtsVnb2dDjwKMkvs22ivoL0Pfse7qvGy6wMeuYMtJzXVuksEVHtBqexZRLR\
+RyoBMbnOUwkthN4T/6YDCZsecA4zXOFZ1fUEIQbIkna/\
+u6GYBRC32dvjGVazs0BRVLRCJvKKW4s1Vj478ISATGfCohr6My9UB7DhsYZRFNTBbS0ipZeeJCBOHj\
+it1O0FcgA4NsQOqiyTCM3OWV/6TGT+E3g3emp/\
+7MZ5Hru6P01gFV1JjY4SscVNMx6wQFnjWzMFaS8d5KqDdsVM6fqdIy/zdW3uXqGXF25zdXvKle/\
+BbYlHSI/l+8vwKL+6tXR/\
+uzYPtY3cWOr36iT6mNz0Kxuw0e1XyP96uPtrb5F6qaJrf788K7oKDant8Fd1JUVzhNXlENU+\
+J8dV0WP8sn8sK0mdLYPtJnRgcirBCQwRSIf6j2PaE3tuWdr9Vp9R6vVntR3njS2VMhORvHDk56O7qj\
+k8RXE0GPcJ/b0FQOqKNgv+\
+68h0KvrhAlD6TqtoOz3icGlcDCvsKDsJyjbTPzW1O9CQPiosbXR3NmuNxunuxvbu1u1nd3mzm5js97\
+cBvoPiqWsHzEhMZO6+lrSDzkZupxi5n/nahunKPtNEnIc4xcPLCpxP754mNsJL+\
+rqSsQTs9tdGWLMaAx5bp5mF6RmgxMcGPSs4OasrYIO9NnRrMWuPnGr2+\
+7utru77e5m6O4mnUa6cbqiL0ksj5ZDf1Mtn51uzR5cum0OWouoqYLgDOzxVfX9aWduVaroblgqR/\
+EDdedQ+J4ma5fTjSq6F0rpYNUyKItsZatqaxM2lFeFShXlVQ2JVtOVYBWV4wrzKmpelXdo/\
+SZF2jWCl5OFDVqMypMqWrlcVYDHJXNeMdD26z9LhvrLGI+6/\
+5pbS2FSReU4n4b9ZSZTRcUgvykL9bMUSL+cXKbas+DaP5Fsr83CMeF+MOdzKs/C3k8Etw7/\
+AJ8MbKc="}, "ClickToCopyTemplate"]]}, {
               "\[FilledVerySmallSquare]", "Resource object:", 
                RawBoxes[
                 TemplateBox[{
@@ -22561,9 +22591,7 @@ pz0wd8iJnnJTAej/iVfXzpv8z9whNOubgzYwfNhS1pfXm1g4SC0uDTEFhp+p
                     AspectRatio -> 1, Axes -> False, Background -> None, 
                     Frame -> None, FrameTicks -> None, 
                     ImageSize -> {Automatic, 30}}], 
-                    StyleBox[
-                    RowBox[{"\"Comm\"", "\[Ellipsis]", "\"ools\""}], 
-                    FontFamily -> Dynamic[
+                    StyleBox["\"CommandLineTools\"", FontFamily -> Dynamic[
                     CurrentValue["PanelFontFamily"]], FontSize -> 
                     0.8 Inherited, ShowStringCharacters -> False, 
                     StripOnInput -> False]}}, 
@@ -22584,114 +22612,116 @@ pz0wd8iJnnJTAej/iVfXzpv8z9whNOubgzYwfNhS1pfXm1g4SC0uDTEFhp+p
                     DefaultBaseStyle -> {Background -> None}, 
                     BaselinePosition -> Baseline, Method -> "Preemptive"], 
                     "]"}], Short[#, 0.75]& ], 
-                  "OEM6eJztXQl8E9W675IutKWURYUCJaTpQinYpEsalvak6UKhLdgpV6CgTJN\
-pOzSdCTMTSlsQF1Dh8uSiKJuiAgpcFBW5iODyrghuuN0rDwUVEEUUFVFQFpf3nUkmmSTTUnjvXvW9G\
-fojOed/lu/7zne+c86X8/2mPpSPriZbitjZFF8fyUfWkA3wvV7Dx9ZQzU4HKVA4GcprKmhegM/\
-IarbFXcCdE8ZHE0KrQywVJlUn4qspnnVxNmp83QzKJhCxhKu5meRax1CknbimimXKGYHinBwlkHUOy\
-gPK2yJCazsuF84nFLcyZDNtq2TtLqlviZ5wghL4+\
-JpWJ8VTwnTWSTF6PR9RSjp4SkL7SCjVXEfZCQG41OuJiGqgDlPhx7qvYUWJhPM9JpAMRVAO4JPl/\
-GtoqoE6qe8IPqqMo+3+\
-laXPKNwIhiL5bkUuQWAZd7kYD6PudhNLSyZw9CwgYXopxzJCCWOXBE10Ky0pooVm0skTCR5BQaXxwD\
-7FYeIxKcWUg2yl7Hy8u4tSF2MTaJbpSGiaGs5FedmIsTidFMmRjI3iNTA0PqRbEclT4sjVhwTw3q1k\
-FulwkSAZvpvFJbDNpEDbvGhkJSU0snYiZgJHgWwFepasUYuDbmCaKUaQBMpHWimsDtKnr2h5M9lAEX\
-QbBRKL8kjMW8uv34gaupniuRDxiUPeHKgYZ3VxHDT8JyCYIrqXgnytpHMMRTc0YhIiJrAt0Gco38dS\
-x7MOl0DJy/\
-PdK8kGhq6nbSSWqPVXGFPfxIhQUNhQf4XVeweylReoZquDhqanS6MNQqTt3hGJuLTOSUMXW8aRzkba\
-xrvJkGZxtxrIa2Ionuf+nFix+9ueSwshN7qUtFGlLNeMS0DF1gpqFuXgrrONHc04DhVCc/\
-GltMNB2YHzWX5MaPwV2hpq1VjDZanwS6Skdrr72MCfnnGqQp4vBSgYaUkYSZz4MMOHfDLScHLPmDKp\
-TkhIQJ0CBURqpKM6ISHB/XiRDmgDRCKlo36qAusUKCAB/\
-ATVARkE9RMstw5H113iW6XRlUY1MWB0Q6xh1pDLGN3fKhUC6ZAOUv+\
-Kkv879dypqE5lfqX9KmGxVzy6V9rv5ZbsXBZXSpNSStJ4U4Ad2n02feqSIpi3o2MOrHOOtqBgRAQWy\
-ZCC1kkbcysBeWXIiLvfOCZD+mfsPb/6L4BUPfvSrqmjinyI2EjMUMTNxB39RYYcTnw/4++\
-9MhG37u4RoZWTrD5Ev+2zqYsuDkPc6cZjd/4tutiHLDh53Y6kkizEvbkPnsUyZPuzhtHkZAPiZqx/\
-5LtZCSU+JD3mzMJRzxoRtz3h04fmUzIkW3xyPDblZhly9uHYL2uH5yJOM6Do3lULZMh5w/\
-EtKfo8xPV9+6GH502RIUfb+mwpOwrIGPwtSobcfDou8UKZCXHTn+y/fdjHMqozNvV+p3g2IOt/\
-Wn9ww2oZMgizegMg7bjVKTJk2qLNr78wFJCnshe81SSXzlVCe7ntZaDgdm7ttAX/\
-KZPojiRoLh8QaKutz10y5OIb37y2uxcgGdWkY/\
-AceZ1J191GHwEZjP1H7j0sJ0PeDL3V3PYYIGtWnK1L52XIsb9uPbVoNiBv3fmPj4/\
-Ikc92ECMmlQHyOHP2/jM3yZD1oB8HkgGpxlQulSFLXgJVHA/jMxV/+\
-0mGiEp1fTbivgJ9WNAkk4HIIGNUQLAc294zKCBia8sNHlmPKA7QEB4Q8cv3MgrSfhzZJ2IsIDUjJv3\
-6eaYS8svcvQvCqSKF1sTBXSObP+\
-IknGvwcDrKoiCdIERUMyxRkZ9YS4AMhkt15iAfIk7CJ0Giq1bCMxkpUNAxIn55Pk8BEYlcl+\
-NDREHuBEQ0JrfmBMj6GqDAPZWVEFFZzxkDZhaZ2hkS1JoolJNDFCjw2rd6/\
-DyqhARx6kWCpCNqVZ9UBUQEtqRIcw4FtPZSmmxM4wKss0havdlDyc8yjr2IyLFcu8SMPYWdIeIMe0q\
-mKe4pN0rB1rtNIiCiiG9RQsRmU1BHdUiTAiLa7X05ChS4VSZHgWr3fFVCvNJJDJCfKOE6JO0WzSgYc\
-Tci2+M+OKg0WkTeGzPus68TCn3IB1Nu1G+bCUj11/88vWKyDPmy27hRDy0G5Fa+\
-dNkPd8mQCzvyahZvAGRG5fd3ES/LkLcOzy/S7AMkdkjhph+OFgbI4jTyyE+OuG2XVQG5WHjH+\
-e90xQqIm1NAqnu8eyK+TgkJkoEXCZLbgYoXPjiOkfNV+9oM2/\
-J9SNSNKyquqgFkQmjWGkuTDOn9neXtejMg166bxNC5MuTiluhfnkkCpEfJLQVLf5VpynNTX26puwCc\
-rnqrKrLsqKlDGZg6lJsMWU9cX/DGG4Ace2XFrvuOyBBH7bIPtHh8lu5/fM09v8iQiTN+\
-QEPxmEban2iZlyOjOnGdqyYX60Fu6cmNM2bIEOuAk5/kYd1ZnzeTe/\
-HpfAV980o0cK6LJT4pVpjrXiRoBoiyEEo9FnGHDBHNw+\
-2lCjPNi4ijvsCkgIgkapEC4l5JLAoUuFsL3D9iqkUKHlNCxPXCFrgy9h7TGSLahwsgnV4++\
-YmOgVgL76RsQjV2U1hDff4Cy2yK93nJPB6fItLW1MCxLsYe4PGJKOXI5kA3UIyYWUPbmvhAB9Hv0UG\
-jSuT3KpFgMViTZM16+o8ZP4viHGRrgJNWdXipDi/V4RWcUh1eqsNLdXipDi/V4aU6vFSHl+\
-rwUh1eqsNLdXipDq8g5A/u8JLJ73fhzFDdO11y72h8V+ACnDjSJTn5IV4kO6qY5ptk3h9rDPyLklL+\
-Th9x+V25qdDvWpbvClYHjoC/h4RpwkPhL9zzp5QR4ZfhzuvpyQsJDfH+r/\
-gnh7y9Jod1D3Prgx65Pw3otucXDjYv7OtNuz+jUcHgkaxt11Bv2r9eNIqZ/NGXuJ5//\
-eBy7cTSmOB2DN76/v3q0athqc6Tv2ShfdQ6/qadQ9G7ukPn8WfFUcvTOD+Qfj+\
-mGkN773C19EAj3gz7On5lojdNeT63fXN8E86X0lI9KW1bedPC2U9neOv/88Gfx/\
-Ts6etUSj96Z9xmXE5KS59S/cB6E7PgxJWQhVZdl/nMtlWJKPsAvf6RrRlo0twt2+vm+\
-eiQ6AWmEsLmRNB7124Cidyzvin1xkHoyafG1bAf6dH65dDKmSR0qv+N7fXn9ejg1VTeq/\
-YkVL7gqQXaH0Eyb4y9p/qdgagUlrg0wD/tM/\
-C1zwoHIo2GP3MO6hvD7z196ukByPLBsqHPbdajqdyHQwZWDEADyh7bsyFLj+6z/tnxeXt/\
-9OmuZTvtc5K96T3Hjx2cEJrsLc+FNi4b/oAOaYbecfUHwwei6SMeP/TQGh2a8ZxwT9/\
-5SWhtW9P0zZpkdIGc/22jbRAqnj+\
-vZ85NyejUhr3jTP20aPEwjTndoEerm5mK8X21KJBfEMLwsLnHmt7OXJmKkrQr1r0yfgh6+\
-2DzNatGpqH84ccejdyajhh70vnblqahrbtQ+S3709A54tgjq+enoY/\
-fJAZy36ei797MMz3akobeWvLito2nUlDv/bXhtRGAz3r42aqLenRge/\
-rTltJUtHzjx4nvj9UjOMAue7A4BcHeYvHYsclo8+CZSx45rEc/\
-fjF7H9qjQ1O6L2zPfFyPZk75du0TWh0aZ3lmec52PTo1pajgROtg1Hbw6BOvHdR50wOWzyTC9+\
-vQQn1bvz29dOjmFfNjW7/SoRugm5rNOhSyN7vxxCAQsmbjJmpkMjp3evnVZ8lk9P6173c/\
-tDcZtXz47a4vXkhGh19snfmJVY8WH2oMYUFo971+qGcVDN6xqi+m/7xEj35Ivf1Te1gKer9sw5Y5x/\
-Xo5zvOHDpApqDbP4wzHclOQfFA9txXU9BXZYtefXJGCsrYvaN/cX+QD2yV9t+Rgg7/\
-MjXHPicV2V2bP18PaTzGjx1ORUsOHzrTsATanTDj2rWVaajlm9FTOUcK+mnvgTWTd6ahB4/\
-UlXRPTUFJG06MGd4jHaU1vWfNOahHW386v3365HSU8zfH49dyenTvfx3udfO8dLR6UU3f2mg9ik/\
-Y9+6xlnQ0YcOonT3XJKO2n8vnfDMnHX36YL+Xo/KSkeOG/\
-ZOHTUpHZ889XznvuA6BdJrm9kxHZypXRZas1qGza16nx7+\
-WhqZERbX35nXIdGFFj2h7GrKlpx2cOFuH9Pdf/dyJi6ko6rEBU+ztWm96x2hL3S5ei7aWbexX/\
-VEaiv5r6ROR72iRrv+Ya1ZvT0fixrBlMJq1e3vJysohCJPx5LU69J6tNvL+z4agp0Z+\
-1PpJv2QUffzE6fbsDATb78gbgZ9nCTiPp2WgnndHVBz5QY/O3ZXYuy4vA/\
-U1x7YfPJqCGlccrI76YggK1GfZDXifWxnWkuqyIivrYDmuXXxOFnKDxOfFQq63+\
-Owu9C6BcYTA0c7xTDnjdAmBC61vfbTGKWV292b28GZaxNvbRGw1xUOqhi2lZRevg69PR1TjjQMfWcQ\
-KsO5eRknfFqZr15S9TcdbYcsCBSaQdjvNNATyHCfuFipJroFmeGuIAtv+WyX/O+zlDC3Q0GEbKb/\
-D3lUCIwjo+jo+Rk/A9gDqlxeX9zEa8swGkynLaDTkZhsMOWZzvjmw295+F7ndO62gW+/\
-9iFbG1sixDOvi/ckMFEF3K2lrpKTtTpCAlDQm0hdHEO5/VpCFZ/gQKSQjWlcFHI/\
-Q6oirPOEB5SAfC8OwgkgZEX7qPx6Sle+\
-ls7JQjLFX0AzoFuvgdd4wDlxTVjRMFwR1hR4cbdB1emJ0UriCf2dQ7q6d3h695RWDRALu3Os61RUHj\
-oGAjWZnTPTQFVO8DcYI09VlXjoP8oiqYd3ROOF8VDXldIC1gdyUTmnlGdpZzAo8MdGitbEOHBcA3Wr\
-ZekiJgzjMAaOoFfAwaiGpdQm0A/\
-SS4jO1cIqiyGbAYYZqW1hHPUxKN09aGyCi1nZBUpLSYnmVzLZRTjz8EUUOkmniI7EeMw2YOQIodVLC\
-b0moRwusIXh+QR8kZxfNedeCZLrWQ5SVArpFlt3Hua7U8xwCz/\
-mWjH9PzE3g5O2ywVOeiGI3CR4bFbS4SCWIKFg4Xc0ML1ta3auPpoKq9xXTwOQLLqPAWAzOAqopgQq0\
-oz08xIhkyo6gl6YluJ+uEyT1SjhJG179utyrNezyO5PpgyZAH/\
-oQjWyLewZaG0GZbDiGKlBEsVWu5jqKg8W4KQiLBy2FRZyjbDReKq3hvlEWm25lBHK22HdQ1X+\
-xGoTXsM7frwIk4DHB9mwCy9MeG+Ie4FC538UT0/UbRAdaHSx/xdGBgZ4iNTxQDQ9Ub0sFIx3Qpt6W+\
-q1T6m0p9baUeltKvS2l3pZSb0upt6XU21LqbSn1tpR6W0q9LfX/6baUGh74e78tpUpEDQ/0X/\
-pVh5fq8FIdXqrDS3V4qQ4v1eGlOrxUh5fq8PKzzqrDS3V4qQ4v1eGlOrzU8MD/I+\
-4dNTxQDQ9UwwPV8EA1PFAND1TDA9XwQDU8sAvhgZH+ZwU1PLBeDQ9UwwPV8MDfNjzwklM/\
-TjeOam1hOTvf9Skj/+\
-b3nrZoDymhmUS4LlNHdJPslo6I1GHbBeZCJ75lrh5mko6I0FkrynVElI5opBwOHdghQtQhHdETCL6e\
-FhoJygkix+KDVaKR5QLYDOkSj7G6P1EcfzlWgRAH+\
-Er6itZNnFhe3PWOUnVGY259To6BGmbON2UNyyFNOcPy8235w2y2PEOWyWgnTTaTToEUNfJTjfz8N6n\
-BHznyU7ZhDgiq7HyPS8R5Zhx2hTnqu3VxmxBWXg8ZYePFiMgKGCk+Xu+xPu6h9/\
-wslIq9i1ETGR5vfYP8iwnVLgYvrd7Vg4ioYG2kQ9wsYw0g9DWNNK9lxTd+am0kti/\
-aOkrr4im7luS1NN6lDvfyUIJfvQka2w/IxOvrdDHDA1aQdZSDD3iLKJ1eSobIhaf4Gk+ZvC5vAY/\
-mdUqk+N5AKtrKSGsjy/KUIm3lI0zZ+\
-YZsIxwTsvPyTaYcc7Y5P9eUazTlGfOM2eYcY052dla20ZyTk2UwZZtzzWaj0WTIyzcac2DN7O4RLS2\
-N6CUY9eOOTypxiHOUL3Y1Oz0FvYG+FO9TzWKqnnQ5BK/VIHrJR8QtFEU9LGcaKY4WYNQUTE+\
-otOQXw2mGbXBnSuWiShj8/\
-la73NsdzodbGNxUXBnenVFcyUwXzNxOVNN9Jrs8xRRPcZd43WvwXkqBVc++\
-SFEKShsqb5i1KFVshC7zqBjtexXutA5fhYutl7MV1m2fvSumedj8tHrVGnskfN81hIMVZF79q/\
-3VW6kWsVej/YM+5hj/WVo7ag4+5WqHFWgDT6+\
-Z2lMPPGwwn3pgbaYWNND7w0gNBRYeVxjDOuxQyYkXmdrAErX4P08fFp5nbbQI1YLSkOVMPcxPMY3bw\
-bu4TK30kwze/OPc7OFgKXLzsvLMYDWMhux8rSFLm6nF+\
-oubxkVEXXZnVYIRh2kp0oVh0P7pnrxKUrA1QrFKqpnlWq1gDwSOhDUcFwVK4HQktLp5zRZ5LZmNf+\
-yh7ONdAphnsUHOBQRCGo5cIm2EywZzAiRUStIOF0fh2SRxMm2a2JhRbAuTUl6MoVGjjIaCAjdmNgE4\
-bU7BtKAfj9wR6lidA6HoEjutCPRy18H7cI/ziA94TXEEXuyL/yem+L8B9Hwkew=="}, 
+                  "OEM6eJztXQl8E9W675IutKWURYUCJUzThVKwadOkYWlPmrSl0BbslCtQUKb\
+JtBmazoSZCaUtiAuocHlyUZRNUQEFLoJsFxFc3hXBDbd75aGgAqKIoiIKyuLyzplkkslkWgrv3au+\
+N0N/JOf8z/J93/nOd875cr7f1IdzsdVEczEzk+Tqo7noGqIBfq/XcPE1ZJPbRfAkSoZzmgqK4+\
+FndDXT7C3gzYngYnG+\
+xSWUihCr44nVJMd4WDs5tm4aaefxeNzT1ESwLaNIwoHfUMXQ5TRPsm6W5Ik6F+\
+kDpW3h4bXtl4vkkmwtNNFE2SsZh0fsW6QnEid5LrGmxU1yJD+\
+VcZO0TsdFlRIujhTRXiJKNtWRDpyHXOp0eFQ1pA5REcR6oGFFiURy3cYRNImTLsgnwwbX0FRD6sS+\
+o7iYMpZyBFcWP2NQIwiK5roUe3ieob3l4nyMettNLi0Zx1IzIAlTS1mG5ktohyhovEtpSTHFNxFuDk\
+/yCQpWGgvZJ1lEPCLFRrqIFtLBJXq7KPXQdp5i6PaEpqlhPaSfjTiL200SLEHbSU4DhyaAdCkmOFIY\
+ufowGe9dSmYQLg8BJcN1sXh4pongKbsfja4keSfjwOPGsSSULU/NkDRqcVENdBNJ86JAuWgridRB/\
+AwULW8iGkicaiWhxGJ8EvPXCuo3qoZqIjk2THgSgD8HVkywelgWNvwnSDCJdy2F8rUS7lEk1eBEJES\
+NY5phn+FcL0sdx7g8PCktz3WtJBpoqp6yE0ii1l/\
+hmAYmRpSCwoYHK6zOP5AtHE82WV0UbHqqONpQiJTDPyJRV9Y5cejiy1jC7aTsnJcMcRZ3qYF5jTTJc\
+eyfkyv2ftt9cRHMjS0l7GQpwzahErBiSwU5g3SxN9lHj6RdR4pgc4mllMtFOiDnM4KY0AQrtDXcqrF\
+GSlKRV0iJ7XQNsIE+feNUBXxfCkEo0pw0HD/1YVYA+WS4/vS+UWVinbAwWZ1CBURspL06YWGh/\
+fiRdmiDiEhKe/1UyesUKiAyfkLqQBmE9BMqt3ZH11viW6XRFUc1WTa6YdYIa9hVjO5vlQqD6bB2Uv+\
+Kkv879bypmA5lfq39KmHx1zy619rv1ZbsWBbXSpNSStR4k8wO7T2fOXlRMZy3I+\
+MOrXGPtIBQRAAWSJDClgnr8ysh8sqgYfe/\
+cUKC9M3af3HlXyBS9exLeyaPKA4gQiNxgwE7HXX0FwlyNPn9rL/3yAbsmvuHhVdOsAYQ3Y7PJi+\
+4PASwZ50n7v1brC2AzDt9066UkhzAvnkAPgslyM5n9SOJiXrATlv7xHczkkoCSGbcufkjns0F7M6kT\
+x+bS0qQPOEx+GzK7RLk/OPxX9YOzQespl/xgyvmSZCL+pOb03RGwPZ++\
+7HH50ySIMdbe20uOw6RUehbjAS5/WxC8qUyE2Cnbum7c8jHEqqzNvR8xzYTImt/\
+Wnt43UoJMgCxegtE2lCrkyTIlAUbX39hMES25s17q1Eqnev4tnL7y5CCu9nVU+\
+b9p0Siu1JgcwUQgW219rpPglx+45vX9vaASFY14Ro4S1pnwk13UcegDEb/I/\
+8BhpUgb4bfaW59CiKrlp2vy+QkyIm/bjuzYCZE3rr3Hx8fkyKf7cKHTSiDyCb6/MPnbpMga6F+\
+HEqFSDWicrEEWfQSVMWxcHwmo28/SRBBqW7OA+xXUB/mNUpkIDBI5yogSI6t7+\
+kVEKG1pXqfrIfZZBrCQUT48r2Egowfh/eKGg2RmmETfv08Wwn5Zfb+\
+eZFksUJrwuCukswfYRLO1vs4HWFRkE4IIqgZkqjAT7xFJoOhYp1ZIIAIk3ALlOiK5fCZCBQoaB8Rvj\
+xvVEAEItcYAoggyN0QEYzJnQaZrG+AFHinshIiKOuFXNnMItI7QkJaE4RyepACBX77Vo+\
+eJ5WQEE79SIh0BK3qla6ACMDmNHHOAVlrL2VIxjRBZp0F0urNPkp+\
+lnDsRwSOpdolZOwr6ggRZthWiaZ4p9wIBVvvNYkQEUR8hxIiNJsG2qtDmBQQwW4fMChQ4FUZgwLV3v\
+mqhPilkyyTnyDhOiDuFs0gFPE2ItnjPjqgNFZA3hs15rOvk4oCyAeTbtXtmA6R6q//\
+eXbZRAnyZZcxIx5bCJE7udIlP9wnQS7tMtYsXAeRaZXf34e/\
+LEHeOjq3WHMAIvGDijb8cLxIJouzwCc/KeK1XVYF5HLRPRe/w2wKiJdTiFR3e/\
+dUYp0SEiIDPxIit0MVL3xwEiEXqw606ncUBJCYW5dVXFcDkXHhOassjRKk53eWt+\
+vNELlxzQSaypcglzfH/vJMCkS6ldxRuPhXiaY8N/\
+nl5rpLkNMVb1VFlx03tSsDU7tykyBr8ZsL33gDIideWbbnoWMSxFW75AMtGp/FBzeteuAXCTJ+\
+2g9gMBrTaMfTzXMMEqqT13hq8pEe5JeeXj9tmgSx9jv9iRHpzlrjdPbF7QUK+uaXqHyuCyU+\
+sSnMdT8SMgMEWfClPou4S4II5uHuUoWZ5keEUZ9nUkAEErVAAfGuJBYFCrytyfePiGqBgqeUEGG9sM\
+tXxp6jOkIE+3AJSqdHQH6CYyDewrlJO1+N3BTW8IC/wDKT5AJeMp/Hp5iwNzawjId2yDw+\
+UaUs0SR3A8UJmTWUvZGTO4h+jw4aVSK/V4mEisGaImnW13/\
+c2Bkk6yJaZE5a1eGlOrxUh1doSnV4qQ4v1eGlOrxUh5fq8FIdXqrDS3V4qQ4v1eGlOrxCkD+\
+4w0siv9+FM0N173TKvaMJXIGTOXHES3LSQ7xAdoyN4hol3h9rHPwXI6aCnT7C8rt8Q1HQtazAFax2H\
+AF/D4vQRIbDv0jfn1JGVFCGN6+7Ly8sPMz/v+KfFPL3mhrRNcKrDzrg/dSDu56fP9A8v7c/\
+7f2MBYUDhzP2PYP96eB6sSBu4kdfonrB9UPLteGL40Lb0fvrB/erA69GpLtP/\
+5IDDpBruNt2DwbvYkcuos+K45btKF9OfxBTzvCeuzzN3cCwNyO+Tlye7E+\
+Tvs8d35zcgPLFtFhPTNuX3zZ/5vYsf/1/\
+PvrzqO7dA52K6SfvTdiIyolp8VOsL683PgeeuJJywIqbsp/\
+ZsSIZ5B2i1j6xLQtMmL15Z92cAB0ivZCppIhZUdT+1RugRB5Y25h+\
+6wCwZeuYGuYjHVi7FLZyLgWc6XtrW/1FHTh8PWl81ZECyudtnaf9EUrmjdEPVL/TH5TCJS4D4p/\
+26v/aZ0X9gUbDnbsA6+dGPnj2zPZ+wPLBksHPbdSByeyHg/pX9AP9yp7aty5HBx6y/\
+tn1eVtf8OmeJbsds1L96X0nTxweF57qL8+GO5cMfQQDmsH3XP/B0P5g6rBNRx5bhYFpz/\
+EP9J6bAla3Nk7dqEkFl4i53zrtA4Bt7pzuhttSwZl1+8eY+\
+mjBwiEac6ZeB1Y20RVje2uBnF8ohKERs080vp29PB2kaJeteWXsIPD24aYbVgzPAAVDTzwZvS0T0I6\
+Ui3ctzgDb9oDyOw5mgAv4iSdWzs0AH7+J92e/TwffvWk0PdmcAd5a9OKO9WfSQM+\
+DtZG1URCf8fizVZd14NDOzO2W0nSwdP3Hye+\
+P1gF4gF3yqC0NwL3FwtGjU8HGgdMXPXFUB378YuYBsA8Dk7rOb8vepAPTJ327+\
+mktBsZYnllq2KkDZyYVF55qGQhaDx9/+rXDmD/db+l0PPIgBubrWvvs64GB25fNjW/\
+5CgO3wG5qNmIgbH+e89QAKGTN+g3k8FRw4ezS688TqeD9G9/vemR/Kmj+8Ns9X7yQCo6+\
+2DL9E6sOLDziDGOg0B56/Uj3Kjh4J6q+mPrzIh34If3uTx0RaeD9snWbZ53UgZ/\
+vOXfkEJEG7v4wwXQsLw0kQrJnv5oGvipb8OqWaWkga++uvra+\
+UD5wq3TwnjRw9JfJBsesdODwbPx8LUyjMX7qaDpYdPTIuYZFsN1x025cXZkBmr8ZOZl1pYGf9h9aNX\
+F3Bnj0WF1J1/\
+Q0kLLu1Kih3TJBRuN7VsNhHdj208WdUydmAsPfXJtuZHXgwf862uP2OZlg5YKa3rWxOpCYdODdE82Z\
+YNy6Ebu7r0oFrT+Xz/pmVib49NE+L8cYU4HrloMTh0zIBOcvPF855yQGoHQaZ3fPBOcqV0SXrMTA+\
+VWvU2NfywCTYmLaenIYMF1a1i3WkQHsmRmHx8/\
+EgO7h6587dTkdxDzVb5KjTetP7xppqdvDacG2svV9qj/KALF/LX06+\
+h0twPqOumHlzkwgbAybB4IZe3eWLK8cBBAZW27EwHv22uiHPxsEtg7/\
+qOWTPqkg9uSps215WQBuv6Nvhfw8i8PzeEYW6H5/\
+VMWxH3Tgwn3JPeuMWaC3Ob7t8PE04Fx2uDrmi0FArs+SG/\
+ABtzJcS6rLiq2Mi2HZNuE5XcQOEJ4Xi9iewrO3yL8EJuA8S7nH0uW028PLF9rA+mhNUMrs6s/s5s+\
+0CLe38fhqkoOpGqaUkly8Dr0+\
+HVWNNg5cdDHDw3X3KkoGtjCdu6bsbzrRCrcssMA4wuGg6AY5zwnCbqGSYBsomrOGKbAdvFUKvsNeTl\
+M8BTtsJaR32DtLYBQOu76Ji9PhcHsA65fbynvl6k15uXqj2WAwmMyG/\
+Bx9Tp5e3m3PoIvc3p1WyK33PngLbXeyDM14uGAy5SLoaiXsTlLc7oQISEljogNxBJHBZwVJeEYAEUM\
+yYrEqyPEwLYZf5wsPKIfysdA0wwuU4ZFn/uMxSfkemJWBxWhHBUVD3WJcHOYP40A1JUUjsBCoM/\
+SgaIPO0xOHieEKwZ3Bcvft9vfoL68YJCK7c491qCsuFAMBN5odMdENs5GcHY4RoqvTvHQc5BFTw3ij\
+cSK5mGrS7YLWBuamdUgrR1NuG8Nz+\
+HiL1s64UFwA7FbL1MOUMIhDXHAUtTwaRi1Maj085YJ6SXLZWniKIokmiMMZqm1mXPVwUnp50tohImh\
+tJyQlKi2SV8lMO+lGwx9V7CLoRi4a6THdgJjDIaVukv8tCfVpgTUMzS/\
+YB8E6BHPeuSCZzvUQYyUh3QLL3uNcZ+\
+r5DoEXAkvGvyfmRj55O23wlCei0E2Sz0aFLC5iCTwGLpyeJpqTLK3e1UdTQdYHimng5Asto8BYHMqC\
+VJM8Kbej3XzECGRKjqBXpiW0n84TJPaKuwk7Wv063as14uo7k+iDRqYPvXAn0+\
+ydgVYnVCY7iqGSiyi+ytNUR7JwMW4MwRKhlsJFnCXtFFoqrZGBURaabqF5YqbQd0jVf7EaRNYw7t+\
+vAiShMUH2bBzDUT4b4h3gcKnfxRfT9RtEB1pdDHfN0YFyT5EaHqiGB6q3pUKRdmhTb0v91in1tpR6W\
+0q9LaXellJvS6m3pdTbUuptKfW2lHpbSr0tpd6W+v90W0oND/y935ZSJaKGBwYv/\
+arDS3V4qQ4v1eGlOrxUh5fq8FIdXqrDS3V4BVln1eGlOrxUh5fq8FIdXmp44P8R944aHqiGB6rhgWp\
+4oBoeqIYHquGBanigGh7YifDA6OCzghoeWK+GB6rhgWp44G8bHnjFqZ+AjSFbmhnWwXV+yki/\
+Bb2nLdZHSng2HollY3gX0W5heDSGbBc0F5jwlrl6OJMwPAqzVpRjeAyGO0mXC4N2CBd0CMO7Q4Jvpn\
+gnTrqhyJH44CrhZFgZm2Gd4jEe+xPJcldjFXBhgK+lr1hs/PhyW+\
+c7SsfsdpODrKt3DMk3FRiGGHLz8oeYTXbjEKMxhzQ79Ga7qSAfUyBFjfxUIz//\
+TWrwR478lGyYZUGVHe9x8QTfjEOuMFd9l05uEyLK62FGxFghIrICjhSXqPNZH+/Q+\
+34WSkfexZjxNIe2viH+xaRqD42WVv/\
+qgUdVMHbCJWyWkQbguhonxWkZ4Y2fWjuB7Iu2jtR6ONKhJTgthXapQ/\
+08lKBXb0KN7QPJROvrVCHDB1YQdaSLk71FlHLeTIRJhaf4Gk+JvK5uAY/\
+lMCVSAm8gFWxltNXJMBypSFv5MFOeOT/HZMjJN+\
+Xk6PONZnNeTkFeboEx32zUG4x5eab8PLMxN99YkJtjNuQY8nMLDDkmo8GQlwvXzK4+\
+0VLiiF6B0SDuuJQSlzBHOZunye0r6A/0JbmAatrIesLj4v1WA+\
+8hHRGvUBT1sJx2kizFw1FTMD3h4pJvg6cZpsGbKZaLKaHR+\
+1sdUm93JBdpoVFTCWVod0ayJdM9cOZ2oJreM9nVKaZwirvC615D91IKrPr2RYpSUNpQ+\
+cOsBakiI3SVR8XYwKtwp7T7KlxkvdwtcN0O2DsbxcHNT4tfrZFHIvBdg7sYXuLVvz5YvZVq4fs12j/\
+oY44LnqW1I2ahU652SKFWfnrN1p555HG9+cwjq7O1UAP9P4zUkNDCowqjGJcDVnKjRaZWXqIW/\
+efrw8JxjJ0SoFqoNEQ5XQ/np5BG7aBdXLZW/EkGbf5Rbt5Qc0F+\
+vjHHaDYZzLn6vAKtPkebrUX6i5pGRQRd9mZVQiMOp6VAF4Kh9k/\
+15VUSvN0Ji1WSTQzbYoX2gGcJuIajopASeDriW7y85gm8lsxEP/\
+aQjrEeHppnoUHWAwmEaXjkEmjDPXY4J6CESgnK5WFJNJtETqZMERrLFdpCpJTbEDRiRK6+\
+sNCLmU0QnDKrcErIj0feCHWkznIotsRBKQI9vHXQPtznPOJkrymOQou97X9iiv8bfUklWQ=="}, 
                  "ClickToCopyTemplate"]]}}, Alignment -> Left, 
-             ItemSize -> {{Automatic, Automatic, Fit}, Automatic}], 
-            FontColor -> GrayLevel[0.500000001565661], FontSize -> 12]}}, 
+             ItemSize -> {{Automatic, Automatic, Fit}, Automatic}], FontColor -> 
+            GrayLevel[0.500000001565661], FontSize -> 12]}}, 
          ItemSize -> {{Automatic, Fit}, Automatic}, Alignment -> Left, 
          Dividers -> {None, {-1 -> GrayLevel[0.937133790628161]}}, 
          Spacings -> {{1, {}, 1}, {1, {}, 2}}]}, 
@@ -22738,7 +22768,7 @@ xY6tG9AO9zDs2EcDuvRetMalxpasHaEJNB0BOvNVRIPeoKRp8nbn0PKEUyeJ9+Snkce5811pZ/+\
 KouXDOV2vNqeXMp9D7QyIujZnSeKiMG4/\
 WyabbVsUI30dbWyR5mC4Y6npzAQV7A7CHW8e0ORJGTUV01ufdzMGR2GbTwVmCj3d8A9cd0NNHoiRcl\
 98fkvn3IKDA=="]]], "CreationTimestamp" -> 
-  3.985945168292359`16.353106309296663*^9, "DefinitionNotebookFramework" -> 
+  3.986309306630316`16.353145982709353*^9, "DefinitionNotebookFramework" -> 
   "DefinitionNotebookClient", "ResourceCreateNotebook" -> True, 
   "ResourceType" -> "Function", 
   "RuntimeConfiguration" -> {
@@ -22747,11 +22777,11 @@ WyabbVsUI30dbWyR5mC4Y6npzAQV7A7CHW8e0ORJGTUV01ufdzMGR2GbTwVmCj3d8A9cd0NNHoiRcl\
     "DefaultContentMethod" -> "Legacy", "HintPods" -> True, "LoadingMethod" -> 
     "Paclet", "PacletName" -> "FunctionResource"}, 
   "SubmissionReviewData" -> {"Review" -> False}, "ToolsOpen" -> False, 
-  "UpdatedTimestamp" -> 3.986207899407705`16.353134934605958*^9, 
-  "VersionInformation" -> {"ResourceVersion" -> "1.2.1"}, "TemplateVersion" -> 
+  "UpdatedTimestamp" -> 3.992372615846686`16.353806057209688*^9, 
+  "VersionInformation" -> {"ResourceVersion" -> "1.2.2"}, "TemplateVersion" -> 
   "2025.12.18", "StatusMessage" -> "", "AutoUpdate" -> True},
 CreateCellID->True,
-FrontEndVersion->"15.1 for Linux x86 (64-bit) (April 22, 2026)",
+FrontEndVersion->"15.0 for Linux x86 (64-bit) (May 19, 2026)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]], 
@@ -26027,8 +26057,8 @@ later."]]]]],
     Background -> 
     RGBColor[0.9000004592538239, 0.9000004592538239, 0.9000004592538239]]}, 
   Visible -> False, FrontEndVersion -> 
-  "15.1 for Linux x86 (64-bit) (April 22, 2026)", StyleDefinitions -> 
+  "15.0 for Linux x86 (64-bit) (May 19, 2026)", StyleDefinitions -> 
   "PrivateStylesheetFormatting.nb"],
-ExpressionUUID->"0a6c1048-cb6e-4435-81c3-287c482d1973"
+ExpressionUUID->"004ffbca-afff-48fb-a8a3-e9d486db476e"
 ]
 

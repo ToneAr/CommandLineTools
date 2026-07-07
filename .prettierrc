@@ -2,5 +2,6 @@
 	"plugins": ["@wrel/prettier-plugin-wolfram"],
 	"useTabs": true,
 	"tabWidth": 4,
-	"printWidth": 80
+	"printWidth": 80,
+	"wolframConditionFirstFunctions": "If,Switch"
 }
