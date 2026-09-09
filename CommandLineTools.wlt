@@ -46,7 +46,7 @@ TestCreate[
 (* Section 2 - Internal spec utilities                                 *)
 (* ================================================================== *)
 
-Block[{spec = {
+With[{spec = {
 		"verbose",
 		{"output", "o"},
 		"count" -> _Integer,
@@ -289,7 +289,7 @@ TestCreate[
 (* Section 4 - Parse (with ArgumentSpecification)                     *)
 (* ================================================================== *)
 
-Block[{spec = {
+With[{spec = {
 		{"verbose", "v"},
 		{"port", "p"} -> _Integer -> 8080,
 		{"host", "h"} -> _String -> "localhost",
@@ -365,10 +365,45 @@ Block[{spec = {
 		TestID -> "Parse-strict-pattern-mismatch-fails"
 	];
 
+	(* StrictParse: missing value-taking argument without default fails *)
+	TestCreate[
+		FailureQ @ CommandLineTools["Parse",
+			"CommandLine" -> {"myscript", "--port", "9090"},
+			"ArgumentSpecification" -> spec,
+			"StrictParse" -> True
+		],
+		True,
+		TestID -> "Parse-strict-missing-required-argument-fails"
+	];
+
+	(* StrictParse: required long flag without a value fails *)
+	TestCreate[
+		FailureQ @ CommandLineTools["Parse",
+			"CommandLine" -> {"myscript", "--output"},
+			"ArgumentSpecification" -> spec,
+			"StrictParse" -> True
+		],
+		True,
+		TestID -> "Parse-strict-required-long-flag-without-value-fails"
+	];
+
+	(* StrictParse: required short alias without a value fails *)
+	TestCreate[
+		FailureQ @ CommandLineTools["Parse",
+			"CommandLine" -> {"myscript", "-o"},
+			"ArgumentSpecification" -> {{"output", "o"} -> _String},
+			"StrictParse" -> True
+		],
+		True,
+		TestID -> "Parse-strict-required-short-flag-without-value-fails"
+	];
+
 	(* StrictParse: valid input succeeds *)
 	TestCreate[
 		AssociationQ @ CommandLineTools["Parse",
-			"CommandLine" -> {"myscript", "--port", "9090"},
+			"CommandLine" -> {
+				"myscript", "--port", "9090", "--output", "file.txt"
+			},
 			"ArgumentSpecification" -> spec,
 			"StrictParse" -> True
 		],
@@ -671,14 +706,14 @@ TestCreate[
 	TestID -> "Regression-alias-short-mirrors-from-long"
 ];
 
-(* Regression: StrictParse with no flags at all → Failure *)
+(* Regression: StrictParse without a specification has no required flags *)
 TestCreate[
-	FailureQ @ CommandLineTools["Parse",
+	AssociationQ @ CommandLineTools["Parse",
 		"CommandLine" -> {"script.wls", "pos1"},
 		"StrictParse" -> True
 	],
 	True,
-	TestID -> "Regression-StrictParse-no-flags-fails"
+	TestID -> "Regression-StrictParse-no-spec-no-required-flags"
 ];
 
 (* Regression: boolean flag with spec does not consume following positional *)
@@ -765,6 +800,17 @@ TestCreate[
 	],
 	"hello",
 	TestID -> "Parse-positional-spec-string-kept"
+];
+
+(* StrictParse requires a positional argument without a default *)
+TestCreate[
+	FailureQ @ CommandLineTools["Parse",
+		"CommandLine" -> {"s"},
+		"ArgumentSpecification" -> {"$1" -> _String},
+		"StrictParse" -> True
+	],
+	True,
+	TestID -> "Parse-strict-missing-required-positional-fails"
 ];
 
 (* Positional with default — value from CLI takes precedence *)

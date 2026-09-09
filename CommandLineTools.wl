@@ -640,6 +640,7 @@ CommandLineTools["Parse", opts : OptionsPattern[]] :=
 			prePositionals,
 			groupPositionals,
 			allPositionals,
+			missingRequired,
 			spec = OptionValue["ArgumentSpecification"]
 		},
 		(* Cache args in kernel session as args will never change during a session *)
@@ -667,13 +668,13 @@ CommandLineTools["Parse", opts : OptionsPattern[]] :=
 						)
 					]
 				];
-			If[
+			(*If[
 				OptionValue["StrictParse"],
 				ConfirmAssert[
 					MemberQ[commands, optionsP],
 					"No options found in command line"
 				]
-			];
+			];*)
 			(* Find position of 1st option *)
 			from =
 				First[
@@ -790,26 +791,64 @@ CommandLineTools["Parse", opts : OptionsPattern[]] :=
 					"POSIX" -> OptionValue["POSIX"],
 					"ArgumentDelimiter" -> OptionValue["ArgumentDelimiter"]
 				];
-			ConfirmMatch[
-				Join[
-					If[!MissingQ[commandName], <|"$0" -> commandName|>, <||>],
-					parsed,
-					Association @
-					With[{
-						spec = OptionValue["ArgumentSpecification"]
-					},
+			parsed =
+				ConfirmMatch[
+					Join[
 						If[
-							spec =!= None,
-							applyPositionalSpec[spec, allPositionals],
-							MapIndexed[
-								("$" <> ToString[#2[[1]]] -> #1)&,
-								allPositionals
+							!MissingQ[commandName],
+							<|"$0" -> commandName|>,
+							<||>
+						],
+						parsed,
+						Association[
+							If[
+								spec =!= None,
+								applyPositionalSpec[spec, allPositionals],
+								MapIndexed[
+									("$" <> ToString[#2[[1]]] -> #1)&,
+									allPositionals
+								]
 							]
 						]
+					],
+					argvP
+				];
+			missingRequired =
+				Select[
+					DeleteDuplicates[
+						Cases[
+							spec,
+							HoldPattern[
+								Rule[
+									name : (_String | {_String, _String}),
+									Except[_Rule]
+								]
+							] :> First[Flatten[{name}]]
+						]
+					],
+					(
+						!KeyExistsQ[parsed, #] ||
+						Lookup[parsed, #] === Missing["NoDefault"]
+					)&
+				];
+			If[
+				OptionValue["StrictParse"] && missingRequired =!= {},
+				Confirm[
+					Failure[
+						"required-argument-not-found",
+						<|
+							"MessageTemplate" ->
+								"Required argument(s) `` not found in the " <>
+								"command line",
+							"MessageParameters" -> {
+								StringRiffle[missingRequired, ", "]
+							},
+							"Arguments" -> missingRequired
+						|>
 					]
-				],
-				argvP
-			]
+				]
+			];
+			parsed
 		]
 		(*!
 		,

@@ -137,14 +137,18 @@ Positional keys (`"$0"`, `"$1"`, ...) are only present when the corresponding
 tokens exist. `"$0"` holds the command/script name. `"$1"` onward hold
 non-flag argument tokens in order.
 
-Failures return a `Failure[ ... ]` object (e.g. unknown flag or pattern
-validation mismatch when `StrictParse -> True`).
+Failures return a `Failure[ ... ]` object (e.g. an unknown flag, a pattern
+validation mismatch, or a missing required argument when `StrictParse -> True`).
 
 ### StrictParse
 
-`"StrictParse" -> True` causes unknown flags or pattern mismatches to produce a
-`Failure`. The default is `False`, which relaxes validation: unknown flags are
-collected with their raw string values and no pattern-match failures are raised.
+`"StrictParse" -> True` causes unknown flags, pattern mismatches, or missing
+required arguments to produce a `Failure`. Pattern-only entries in
+`"ArgumentSpecification"` are required; boolean entries have an implicit
+`False` default, and entries with an explicit default remain optional. The
+default is `False`, which allows unknown flags and missing required arguments.
+Values supplied for known, specified arguments are still converted and checked
+against their declared patterns.
 
 ### Value Conversion & Pattern Matching
 
@@ -333,7 +337,7 @@ enabled.
 | `"LogToStdOut"` | `True` | Enable colored console log output. |
 | `"LogDirectory"` | `"./logs/wls-cli"` | Directory for log files. |
 | `"ArgumentSpecification"` | `None` | Enable validated parsing when set to a spec list. |
-| `"StrictParse"` | `False` | When `True`, reject unknown flags / bad values with a `Failure`. |
+| `"StrictParse"` | `False` | When `True`, reject unknown flags, bad values, and missing required arguments with a `Failure`. |
 | `"POSIX"` | `False` | When `True`, expand clustered short flags (e.g. `-abc` → `-a -b -c`). |
 
 Notes:
